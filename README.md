@@ -1,5 +1,5 @@
-## yooo why are you looking at me like that
-Dennis Espinosa - Creative Lead - Personal Page
+## site version 0336-22
+Dennis Espinosa
 
 # [OH HI YO]
 
