@@ -1,7 +1,7 @@
-# raatzkii.github.io
+## yooo why are you looking at me like that
 Dennis Espinosa - Creative Lead - Personal Page
 
-# [RAATZKII]
+# [OH HI YO]
 
 > This is Dennis Espinosa's portfolio site built to showcase Graphic Design, Braanding, and UI..
 
