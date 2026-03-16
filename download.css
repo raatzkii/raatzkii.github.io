@@ -1,0 +1,206 @@
+/*-------------------------------------------------------▼▼▼ GENERAL RESET ▼▼▼-------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background: #efefef; /* Note: Glass looks best over colorful content as you scroll! */
+    color: #333;
+    -webkit-text-size-adjust: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*-------------------------------------------------------▼▼▼ DESKTOP NAV ▼▼▼-------------------------------------------------------*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 22px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.highlight,
+.blackhighlight {
+    background-color: #32ff00;
+    color: #231f20;
+    padding: 4px 9px;
+}
+
+.responsivetext {
+    white-space: nowrap;
+}
+
+.menu {
+    font-size: 1rem;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #101720;
+}
+
+/*-------------------------------------------------------▼▼▼ LANDING PAGE CONTENT ▼▼▼-------------------------------------------------------*/
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    text-align: left;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 10vw;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 4vw;
+    color: gray;
+    margin-top: 20px;
+}
+
+.go {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 16px;
+    text-decoration: none;
+    color: gray;
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+    margin-top: 20px;
+    transition: color .3s ease;
+}
+
+.go:hover {
+    color: #231f20;
+}
+
+.arrow {
+    margin-left: 8px;
+}
+
+/*-------------------------------------------------------▼▼▼ RESPONSIVE IMAGES ▼▼▼-------------------------------------------------------*/
+.desktop-logo,
+.mobile-logo {
+    width: 150%;
+    height: auto;
+}
+
+/* Default Desktop State */
+.desktop-logo { display: block; }
+.mobile-logo { display: none; }
+
+/*-------------------------------------------------------▼▼▼ GLASS MOBILE NAV ▼▼▼-------------------------------------------------------*/
+.mobile-nav {
+    display: none; /* Hidden by default, shown in Media Query */
+    position: fixed;
+    
+    /* Positioned as a floating "dock" for better glass effect */
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    height: 70px;
+    
+    /* The Glass Core */
+    background: rgba(255, 255, 255, 0.35); /* Transparency */
+    backdrop-filter: blur(12px);           /* The Blur */
+    -webkit-backdrop-filter: blur(12px);   /* Safari Support */
+    
+    /* Visual Definition */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #231f20; /* Darker for better contrast on glass */
+    font-size: 11px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.nav-item:active {
+    transform: scale(0.9);
+}
+
+.nav-item img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+}
+
+/*-------------------------------------------------------▼▼▼ MEDIA QUERIES ▼▼▼-------------------------------------------------------*/
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+    .title { font-size: 64px; }
+    .subtitle { font-size: 18px; }
+    .container {
+        /*max-width: 600px;*/
+        width: 600px;
+        margin-right: 56%;
+    }
+    .firstname2 { display: none; }
+    .firstname, .surname { display: inline; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        /* Adjusted padding to account for the floating nav height */
+        padding-bottom: 100px; 
+    }
+
+    nav {
+      display: none;
+      padding: 22px;
+      }
+
+    /* Name Logic */
+    .firstname2 { display: inline; }
+    .firstname, .surname { display: none; }
+
+    /* Toggle Nav visibility */
+    .menu { display: none; }
+    .mobile-nav { display: flex; }
+
+    /* Image Swapping */
+    .desktop-logo { display: none; }
+    .mobile-logo { 
+        display: block; 
+        width: 100%; 
+    }
+}

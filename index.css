@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: #efefef;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.desktop-logo {
+    display: block;
+    width: 150%;
+    height: auto;
+}
+.mobile-logo {
+    display: block;
+}
+
+.container {
+    max-width: 90%;
+    text-align: left;
+    padding: 20px;
+}
+
+/* Typography adjustments for responsiveness */
+.title {
+    font-size: 10vw;
+    font-weight: bold;
+    line-height: 1.1;
+    font-kerning: none;
+    /*text-transform: uppercase;*/
+}
+
+.blackhighlight {
+    background-color: #32ff00; /* Highlight color */
+    color: #231f20; /* Text color for contrast */
+    padding: 4px 9px; /* Add some spacing around the text */
+    /*border-radius: 4px; /* Optional: Rounded corners for a softer look */
+}
+
+.subtitle {
+    font-size: 4vw;
+    color: gray;
+    margin-top: 20px;
+}
+
+/*-------------------------------------------------------▼▼▼ FOR LP CTA ▼▼▼-------------------------------------------------------*/
+.go {
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    text-decoration: none;
+    color: gray;
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.go:hover {
+    color: #231f20;
+}
+
+.arrow {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+
+/*-------------------------------------------------------▼▼▼ FOR DESKTOP ▼▼▼-------------------------------------------------------*/
+@media (min-width: 768px) {
+    .title {
+        font-size: 64px;
+    }
+    .subtitle {
+        font-size: 18px;
+    }
+    .btn {
+        font-size: 16px;
+    }
+    .container {
+        max-width: 600px;
+        margin-right: 50%;
+    }
+    .mobile-logo {
+        display: none;
+    }
+}
+
+
+/*-------------------------------------------------------▼▼▼ FOR MOBILE ▼▼▼-------------------------------------------------------*/
+@media (max-width: 768px) {
+    .desktop-logo {
+        display: none;
+    }
+    .mobile-logo {
+        display: block;
+    }
+    .mobile-break {
+        display: block;
+    }
+}
