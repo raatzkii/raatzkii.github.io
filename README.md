@@ -1,7 +1,7 @@
 ### site version 031526
 > migrated from neocities and will continue to improve site thru GitHub. Added 'View CV' to improve experience for recruiters/headhunters.
 
-### Hi.
+### oh hi yo!
 
 > This portfolio site was built to showcase handpicked designs over the years. While online gaming is a major part of my career, expect more uploads as I aim to show my creative evolution by redesigning some of my works from 2015 and earlier.
 
@@ -17,7 +17,7 @@ To create a clean, straightforward, and mobile-friendly experience for both loca
 - **[Cognitive Load] Low Extraneous Effort:** Simple approach. Site context is clear.
 
 ### Anatomy
-- **[Header] Fourth Wall:** Conversational, as if I am talking to the viewer, showwing personality.
+- **[Header] Fourth Wall:** Conversational, as if I am talking to the viewer, shows personal touch.
 - **[Body] Masonry:** Built similar to Pinterest feed shows familiarity and ease of use.
 - **[Mobile Nav] Glass:** Modern, elegant, aesthetically pleasing
 - **[Foundation 1] Development:** HTML, CSS3, JavaScript
