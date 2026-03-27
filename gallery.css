@@ -157,27 +157,49 @@ nav {
 */
 
 .mobile-nav {
-    /* ... keep your positioning/layout ... */
+    /* 1. Visibility & Positioning */
+    display: flex; /* Changed from none to show results; switch back as needed */
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    height: 65px;
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
 
-    /* 1. Higher transparency for 'liquid' feel */
-    background: rgba(255, 255, 255, 0.15); 
+    /* 2. Liquid Geometry (iOS Pill Shape) */
+    border-radius: 40px; 
     
-    /* 2. Lower blur (Liquid is clearer than Frost) */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* 3. The Liquid "Lens" Effect (Distortion & Saturation) */
+    /* Lower blur + High saturation + Contrast = Liquid feel */
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    backdrop-filter: blur(12px) saturate(190%) contrast(110%) brightness(105%);
+    -webkit-backdrop-filter: blur(12px) saturate(190%) contrast(110%) brightness(105%);
+
+    /* 4. Surface Tension & Highlights */
+    /* This creates the thin "lip" of light at the top of the glass */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.6);
     
-    /* 3. The "Liquid Edge" - use a gradient border for a highlight effect */
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Thinner on bottom */
-    
-    /* 4. Soft inner glow */
+    /* 5. Depth & Shadows */
     box-shadow: 
-        inset 0 1px 1px rgba(255, 255, 255, 0.4), 
-        0 10px 30px rgba(0, 0, 0, 0.08);
+        inset 0 1px 1px rgba(255, 255, 255, 0.4), /* Inner top highlight */
+        0 12px 35px rgba(0, 0, 0, 0.12),          /* Soft outer shadow */
+        0 4px 10px rgba(0, 0, 0, 0.05);           /* Crisp drop shadow */
 
-    border-radius: 50px; /* More fluid, pill-shaped corners */
+    /* Optional: Smooth transition if you add hover effects later */
+    transition: all 0.3s ease;
 }
 
+/* OPTIONAL: For true image warping/distortion, 
+   add an SVG filter to your HTML and link it here:
+   filter: url(#liquid-refraction); 
+*/
 
 
 
