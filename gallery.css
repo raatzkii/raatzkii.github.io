@@ -1,5 +1,5 @@
 /*-------------------------------------------------------▼▼▼ GENERAL RESET ▼▼▼-------------------------------------------------------*/
-* {
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -157,8 +157,7 @@ nav {
 */
 
 .mobile-nav {
-    /* 1. Visibility & Positioning */
-    display: none; /* Changed from none to show results; switch back as needed */
+    display: flex;
     position: fixed;
     bottom: 20px;
     left: 5%;
@@ -168,38 +167,26 @@ nav {
     justify-content: space-around;
     align-items: center;
 
-    /* 2. Liquid Geometry (iOS Pill Shape) */
-    border-radius: 40px; 
+    /* 1. Shape */
+    border-radius: 50px; /* Pill shape is more 'liquid' */
     
-    /* 3. The Liquid "Lens" Effect (Distortion & Saturation) */
-    /* Lower blur + High saturation + Contrast = Liquid feel */
-    background: linear-gradient(
-        135deg, 
-        rgba(255, 255, 255, 0.25) 0%, 
-        rgba(255, 255, 255, 0.08) 100%
-    );
-    backdrop-filter: blur(12px) saturate(190%) contrast(110%) brightness(105%);
-    -webkit-backdrop-filter: blur(12px) saturate(190%) contrast(110%) brightness(105%);
+    /* 2. The Lens (SVG Link) */
+    /* This is the secret sauce for distortion */
+    filter: url(#liquid-refraction); 
 
-    /* 4. Surface Tension & Highlights */
-    /* This creates the thin "lip" of light at the top of the glass */
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-top: 1.5px solid rgba(255, 255, 255, 0.6);
-    
-    /* 5. Depth & Shadows */
+    /* 3. The Glass Surface */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px) saturate(200%);
+    -webkit-backdrop-filter: blur(10px) saturate(200%);
+
+    /* 4. Realistic Lighting */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 
-        inset 0 1px 1px rgba(255, 255, 255, 0.4), /* Inner top highlight */
-        0 12px 35px rgba(0, 0, 0, 0.12),          /* Soft outer shadow */
-        0 4px 10px rgba(0, 0, 0, 0.05);           /* Crisp drop shadow */
-
-    /* Optional: Smooth transition if you add hover effects later */
-    transition: all 0.3s ease;
+        inset 0 4px 4px rgba(255, 255, 255, 0.3), /* Top highlight */
+        inset 0 -2px 4px rgba(0, 0, 0, 0.05),     /* Bottom depth */
+        0 10px 30px rgba(0, 0, 0, 0.1);          /* Main shadow */
 }
 
-/* OPTIONAL: For true image warping/distortion, 
-   add an SVG filter to your HTML and link it here:
-   filter: url(#liquid-refraction); 
-*/
 
 
 
