@@ -130,7 +130,7 @@ nav {
 }
 
 /*-------------------------------------------------------▼▼▼ GLASS MOBILE NAV ▼▼▼-------------------------------------------------------*/
-mobile-nav {
+.mobile-nav {
     display: none; /* Shown in media query */
     position: fixed;
     
@@ -148,15 +148,12 @@ mobile-nav {
     
     /* Styling */
     border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 30px;
+    border-radius: 50px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     
     justify-content: space-around;
     align-items: center;
 }
-
-
-
 
 
 .nav-item {
