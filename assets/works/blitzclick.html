@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blitzclick | Dennis Espinosa</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="clickathon.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+</head>
+<body>
+
+    <main class="portfolio-page clickathon-page">
+
+        <a href="play.html" class="interact-cta back-to-interact">
+            <span class="cta-arrow">←</span> Back
+        </a>
+
+        <button
+            class="leaderboard-toggle"
+            id="leaderboardToggle"
+            type="button"
+            aria-label="Show leaderboard"
+        >
+            <i class="hgi hgi-stroke hgi-rounded hgi-analytics-01"></i>
+        </button>
+
+        <div class="clickathon-center" id="clickathonStart">
+
+            <button
+                class="clickathon-note-trigger"
+                id="startSmashingBtn"
+                type="button"
+            >
+                + turn the grid green
+            </button>
+
+            <p class="clickathon-limit-notice" id="clickathonLimitNotice" aria-live="polite"></p>
+
+        </div>
+
+        <section class="game-shell" id="gameShell" hidden>
+
+            <div class="game-topbar" aria-label="Time remaining">
+                <strong id="timeLeft">30:00</strong>
+            </div>
+
+            <div class="cube-grid-wrap">
+                <div class="cube-grid" id="cubeGrid"></div>
+
+                <div class="countdown-overlay" id="countdownOverlay" hidden>
+                    <span id="countdownNumber">3</span>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="leaderboard-modal" id="leaderboardModal" hidden>
+            <div class="leaderboard-card">
+                <button
+                    class="modal-close-btn"
+                    id="closeLeaderboardBtn"
+                    type="button"
+                    aria-label="Close leaderboard"
+                >
+                    ×
+                </button>
+
+                <p class="leaderboard-label">leaderboard</p>
+
+                <ol class="leaderboard-list" id="leaderboardList">
+                    <li>
+                        <span>checking...</span>
+                        <strong>0</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="game-result" id="gameResult" hidden>
+            <div class="result-card">
+                <strong id="finalScore">0</strong>
+
+                <input
+                    type="text"
+                    id="nicknameInput"
+                    maxlength="16"
+                    placeholder="nickname"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+
+                <button id="submitScoreBtn" type="button">
+                    Submit Score
+                </button>
+
+                <p class="result-message" id="resultMessage"></p>
+            </div>
+        </div>
+
+        <div class="score-confirmation" id="scoreConfirmation" hidden>
+            <div class="confirmation-card">
+                <button
+                    class="modal-close-btn"
+                    id="closeConfirmationBtn"
+                    type="button"
+                    aria-label="Close confirmation"
+                >
+                    ×
+                </button>
+
+                <p class="confirmation-message" id="confirmationMessage">
+                    nice! you're at
+                </p>
+
+                <div class="rank-line">
+                    <strong id="rankPlace">—</strong>
+                    <span class="rank-movement" id="rankMovement">↗</span>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button id="tryAgainBtn" type="button">
+                        try again (3)
+                    </button>
+
+                    <button id="shareScoreBtn" type="button">
+                        share
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="clickathon.js"></script>
+</body>
+</html>

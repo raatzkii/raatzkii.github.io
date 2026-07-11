@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Blink | Dennis Espinosa</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="dontblink.css?v=20260709-2">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+</head>
+<body>
+    <main class="dontblink-page">
+        <a href="play.html" class="interact-cta back-to-play">
+            <span class="cta-arrow">←</span> Back
+        </a>
+
+        <button
+            class="leaderboard-toggle"
+            id="leaderboardToggle"
+            type="button"
+            aria-label="Show leaderboard"
+        >
+            <i class="hgi hgi-stroke hgi-rounded hgi-analytics-01"></i>
+        </button>
+
+        <section class="dontblink-brief" id="dontblinkBrief">
+            <button class="dontblink-find-trigger" id="dontblinkStart" type="button">
+                <span>+ find my</span>
+                <i class="hgi hgi-stroke hgi-rounded hgi-favourite" aria-hidden="true"></i>
+            </button>
+        </section>
+
+        <section class="dontblink-game" id="dontblinkGame" hidden>
+            <div class="dontblink-hud">
+                <strong id="dontblinkTimer">05:00</strong>
+            </div>
+
+            <div class="dontblink-field" id="dontblinkField" aria-label="Icon search field"></div>
+        </section>
+
+        <section class="dontblink-result" id="dontblinkResult" hidden>
+            <p id="dontblinkResultText"></p>
+            <form class="dontblink-score-form" id="dontblinkScoreForm" hidden>
+                <input
+                    id="dontblinkNickname"
+                    type="text"
+                    maxlength="16"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="enter name"
+                    required
+                >
+
+                <button id="dontblinkSubmitScore" type="submit">
+                    submit
+                </button>
+            </form>
+            <p class="dontblink-score-status" id="dontblinkScoreStatus"></p>
+            <button class="dontblink-start" id="dontblinkRestart" type="button">+ try again</button>
+        </section>
+
+        <div class="leaderboard-modal" id="leaderboardModal" hidden>
+            <div class="leaderboard-card">
+                <button
+                    class="modal-close-btn"
+                    id="closeLeaderboardBtn"
+                    type="button"
+                    aria-label="Close leaderboard"
+                >
+                    ×
+                </button>
+
+                <ol class="leaderboard-list" id="leaderboardList">
+                    <li>
+                        <span>checking...</span>
+                        <strong>00:00</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="dontblink.js?v=20260709-2"></script>
+</body>
+</html>

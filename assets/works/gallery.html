@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Feed | Dennis Espinosa</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="sticky-banner.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <svg class="liquid-glass-filter" aria-hidden="true" focusable="false">
+        <filter id="liquid-glass" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.018 0.045"
+                numOctaves="2"
+                seed="8"
+                result="noise"
+            />
+            <feGaussianBlur in="noise" stdDeviation="1.6" result="softNoise" />
+            <feDisplacementMap
+                in="SourceGraphic"
+                in2="softNoise"
+                scale="14"
+                xChannelSelector="R"
+                yChannelSelector="G"
+            />
+        </filter>
+    </svg>
+
+    <main class="portfolio-page">
+
+        <section class="portfolio-intro">
+            <p class="portfolio-kicker">
+                well, if you're wondering what I'm good at,
+            </p>
+
+            <h1 class="portfolio-title">
+                <span class="portfolio-highlight">
+                    you're already looking at it.
+                </span>
+            </h1>
+        </section>
+
+        <div class="portfolio-filters">
+            <button class="chip active" data-filter="all">all</button>
+            <button class="chip" data-filter="latest">latest</button>
+            <button class="chip" data-filter="igaming">igaming</button>
+            <button class="chip" data-filter="retail">retail</button>
+            <button class="chip" data-filter="healthcare">healthcare</button>
+            <button class="chip" data-filter="sports">sports</button>
+            <button class="chip" data-filter="uiux">ui/ux</button>
+            <button class="chip" data-filter="motion">motion</button>
+            <button class="chip" data-filter="events">events</button>
+            <button class="chip" data-filter="digital">digital</button>
+            <button class="chip" data-filter="print">print</button>
+        </div>
+
+        <div class="masonry" id="masonry"></div>
+
+    </main>
+
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+        <div class="gallery-modal-backdrop" data-modal-close></div>
+
+        <section class="gallery-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectName">
+            <button class="gallery-modal-close" type="button" data-modal-close aria-label="Close project preview">
+                ×
+            </button>
+
+            <div class="gallery-modal-media" id="modalMedia"></div>
+
+            <div class="gallery-modal-details">
+                <div class="modal-actions portfolio-reactions">
+                    <button class="reaction-btn modal-like-btn" type="button" aria-label="Like this project">
+                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-up"></i>
+                        <span class="modal-like-count">0</span>
+                    </button>
+
+                    <button class="reaction-btn modal-dislike-btn" type="button" aria-label="Dislike this project">
+                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-down"></i>
+                        <span class="modal-dislike-count">0</span>
+                    </button>
+                </div>
+
+                <div class="modal-project-copy">
+                    <h2 id="modalProjectName">Project name</h2>
+                    <p class="modal-project-meta">
+                        <span id="modalProjectYear">2026</span>
+                        <span class="modal-meta-dot" aria-hidden="true"></span>
+                        <span id="modalCountry">Philippines</span>
+                    </p>
+                    <span class="modal-rule" aria-hidden="true"></span>
+                    <p id="modalProjectDescription">Project description</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <aside class="sticky-cv-banner" aria-label="CV download banner">
+        <button class="sticky-cv-close" type="button" aria-label="Close CV banner">×</button>
+        <a href="assets/DennisEspinosa_2026_CV.pdf" download aria-label="Download Dennis Espinosa CV">
+            <img src="assets/sticky.png" alt="Get a copy of my CV here">
+        </a>
+    </aside>
+
+    <nav class="floating-nav" aria-label="Main navigation">
+        <span class="liquid-glass-surface" aria-hidden="true"></span>
+        <span class="liquid-glass-edge" aria-hidden="true"></span>
+        <span class="liquid-glass-shine" aria-hidden="true"></span>
+
+        <a href="index.html" class="nav-item" aria-label="Home">
+            <i class="hgi hgi-stroke hgi-rounded hgi-home-01"></i>
+        </a>
+
+        <a href="gallery.html" class="nav-item active" aria-label="Gallery">
+            <i class="hgi hgi-stroke hgi-rounded hgi-carousel-vertical"></i>
+        </a>
+
+        <a href="play.html" class="nav-item" aria-label="Play">
+            <i class="hgi hgi-stroke hgi-rounded hgi-cells"></i>
+        </a>
+
+        <a href="contact.html" class="nav-item" aria-label="Contact">
+            <i class="hgi hgi-stroke hgi-rounded hgi-message-add-02"></i>
+        </a>
+    </nav>
+
+    <script>
+    const SUPABASE_URL = "https://bkngawvthptxdswshcbm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_gW9mV7KogmX_ZR1xmTUk8w_O9IRap8H";
+
+    window.supabaseClient = supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+    </script>
+    <script src="gallery.js"></script>
+    <script src="sticky-banner.js"></script>
+
+</body>
+</html>

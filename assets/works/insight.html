@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight | Dennis Espinosa</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="ask.css">
+</head>
+<body>
+
+    <main class="portfolio-page ask-cio-page">
+
+        <a href="play.html" class="interact-cta">
+            <span class="cta-arrow">←</span>
+            Back
+        </a>
+
+        <section class="wall-center ask-cio-intro" id="askCioIntro">
+            <button
+                class="wall-note-trigger"
+                id="startConversationBtn"
+                type="button"
+            >
+                + say hello
+            </button>
+        </section>
+
+        <section class="ask-chat-shell" id="chatShell" hidden>
+
+            <div class="chat-thread" id="chatThread"></div>
+
+            <div
+                class="question-pills"
+                id="questionPills"
+                hidden
+            ></div>
+
+        </section>
+
+    </main>
+
+    <script src="ask.js"></script>
+
+</body>
+</html>
