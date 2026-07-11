@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word War | Dennis Espinosa</title>
+
+    <link rel="stylesheet" href="word.css">
+</head>
+<body>
+
+    <main class="portfolio-page last-word-page">
+
+        <a href="play.html" class="interact-cta">
+            <span class="cta-arrow">←</span>
+            Back
+        </a>
+
+        <section class="last-word-center">
+            <p class="last-word-kicker">
+                the word
+            </p>
+
+            <h1 class="last-word-current" id="currentWord"></h1>
+
+            <p class="last-word-meta" id="wordMeta">
+                is the defending champion
+            </p>
+
+            <button class="last-word-trigger" id="changeWordBtn" type="button">
+                + change the word
+            </button>
+        </section>
+
+        <aside class="last-word-panel">
+            <section class="last-word-card">
+                <h2>stats</h2>
+
+                <div class="stat-row">
+                    <span>current age</span>
+                    <strong id="currentAge">since launch</strong>
+                </div>
+
+                <div class="stat-row">
+                    <span>total changes</span>
+                    <strong id="totalChanges">0</strong>
+                </div>
+
+                <div class="stat-row">
+                    <span>unique words</span>
+                    <strong id="uniqueWords">1</strong>
+                </div>
+            </section>
+
+            <section class="last-word-card">
+                <h2>hall of fame</h2>
+
+                <div class="hall-list" id="hallOfFame"></div>
+            </section>
+        </aside>
+
+        <div class="word-modal" id="wordModal" hidden>
+            <div class="word-modal-card">
+                <button class="modal-close" id="closeModalBtn" type="button">
+                    ×
+                </button>
+
+                <p class="modal-kicker">
+                    
+                </p>
+
+                <h2>
+                    cure my boredom
+                </h2>
+
+                <form id="wordForm">
+                    <input
+                        id="wordInput"
+                        type="text"
+                        maxlength="10"
+                        autocomplete="off"
+                        placeholder="what's the word?"
+                        required
+                    >
+
+                    <button type="submit">
+                        change the word
+                    </button>
+                </form>
+
+                <p class="modal-note" id="modalNote">
+                    maximum 10 characters. 
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="word.js"></script>
+
+</body>
+</html>

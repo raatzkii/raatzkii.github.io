@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-note: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+.portfolio-page {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.wall-page {
+    min-height: 100vh;
+}
+
+/* Back link */
+
+.interact-cta {
+    position: relative;
+    z-index: 80;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--color-text);
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.interact-cta:hover {
+    transform: translateX(-6px);
+    opacity: 0.7;
+}
+
+.cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+.interact-cta:hover .cta-arrow {
+    transform: translateX(-6px);
+}
+
+/* Center intro */
+
+.wall-center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 50;
+
+    width: min(720px, calc(100vw - 48px));
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.portfolio-kicker {
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+}
+
+.portfolio-title {
+    max-width: 20ch;
+    margin: 0 auto;
+
+    font-size: clamp(4rem, 5vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+}
+
+.portfolio-highlight {
+    display: inline;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: 0.7em;
+    padding: 0.02em 0.12em 0.08em;
+
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+
+    line-height: 1.25;
+}
+
+.wall-note-trigger {
+    margin-top: 28px;
+
+    border: none;
+    background: transparent;
+
+    font: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+
+    color: var(--color-text);
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.wall-note-trigger:hover {
+    opacity: 0.65;
+    transform: translateY(-2px);
+}
+
+.wall-cooldown {
+    margin-top: 10px;
+
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    color: var(--color-muted);
+
+    pointer-events: auto;
+}
+
+.wall-fineprint {
+    max-width: 520px;
+    margin: 18px auto 0;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+
+    color: var(--color-muted);
+
+    pointer-events: auto;
+}
+
+/* Notes layer */
+
+.wall-notes {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+}
+
+.wall-note {
+    position: absolute;
+
+    max-width: 260px;
+
+    padding: 14px 16px;
+
+    border-radius: 18px;
+
+    background: var(--color-note);
+
+    color: var(--color-text);
+
+    font-size: 15px;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+
+    cursor: grab;
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Note composer */
+
+.note-composer {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.note-composer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.composer-box {
+    width: min(520px, calc(100vw - 32px));
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: var(--color-bg);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.composer-box textarea {
+    width: 100%;
+    height: 140px;
+
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font: inherit;
+    font-size: 18px;
+    line-height: 1.5;
+
+    color: var(--color-text);
+}
+
+.composer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 16px;
+}
+
+.composer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.composer-actions button {
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#cancelNote {
+    background: transparent;
+    color: var(--color-text);
+}
+
+#postNote {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .portfolio-page {
+        padding: 24px 16px;
+    }
+}

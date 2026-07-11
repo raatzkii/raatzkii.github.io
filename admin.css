@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-white: #ffffff;
+    --color-danger: #ff3b30;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.admin-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.admin-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--color-text);
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.admin-back:hover {
+    transform: translateX(-6px);
+    opacity: 0.7;
+}
+
+.admin-shell {
+    width: min(900px, 100%);
+    margin: 96px auto 0;
+}
+
+.admin-header {
+    margin-bottom: 28px;
+}
+
+.admin-kicker {
+    margin-bottom: 8px;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: lowercase;
+    letter-spacing: -0.03em;
+
+    color: var(--color-muted);
+}
+
+.admin-header h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+}
+
+.admin-header p:last-child {
+    margin-top: 14px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    letter-spacing: -0.03em;
+}
+
+.reset-list {
+    display: grid;
+    gap: 12px;
+}
+
+.reset-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 20px 22px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.reset-row h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.reset-row p {
+    margin-top: 4px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    letter-spacing: -0.02em;
+}
+
+.reset-row button {
+    flex-shrink: 0;
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 999px;
+
+    background: var(--color-danger);
+    color: var(--color-white);
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.reset-row button:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.admin-status {
+    min-height: 24px;
+    margin-top: 20px;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+
+    color: var(--color-muted);
+}
+
+@media (max-width: 768px) {
+    .admin-page {
+        padding: 24px 16px;
+    }
+
+    .admin-shell {
+        margin-top: 72px;
+    }
+
+    .reset-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reset-row button {
+        width: 100%;
+    }
+}
+
+.wall-admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wall-toggle-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+
+    background: #1c1c1c;
+    color: #efefef;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.wall-toggle-btn:hover {
+    transform: translateY(-1px);
+}
+
+.wall-notes-panel {
+    display: grid;
+    gap: 12px;
+
+    margin-top: -6px;
+    margin-bottom: 12px;
+}
+
+.wall-notes-status {
+    margin: 0;
+
+    color: #6f6f6f;
+    font-size: 14px;
+}
+
+.wall-notes-list {
+    display: grid;
+    gap: 10px;
+}
+
+.wall-note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 14px;
+
+    background: #ffffff;
+    border-radius: 18px;
+}
+
+.wall-note-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wall-note-text {
+    margin: 0;
+
+    color: #1c1c1c;
+    font-size: 14px;
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+.wall-note-date {
+    margin-top: 6px;
+
+    color: #8a8a8a;
+    font-size: 12px;
+}
+
+.wall-note-delete {
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 999px;
+
+    padding: 10px 14px;
+
+    background: #ff4d4d;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.wall-note-delete:hover {
+    opacity: 0.9;
+}

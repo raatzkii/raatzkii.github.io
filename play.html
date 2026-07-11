@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play | Dennis Espinosa</title>
+
+    <link rel="stylesheet" href="interact.css?v=20260708-3">
+    <link rel="stylesheet" href="sticky-banner.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+</head>
+<body>
+    <svg class="liquid-glass-filter" aria-hidden="true" focusable="false">
+        <filter id="liquid-glass" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.018 0.045"
+                numOctaves="2"
+                seed="8"
+                result="noise"
+            />
+            <feGaussianBlur in="noise" stdDeviation="1.6" result="softNoise" />
+            <feDisplacementMap
+                in="SourceGraphic"
+                in2="softNoise"
+                scale="14"
+                xChannelSelector="R"
+                yChannelSelector="G"
+            />
+        </filter>
+    </svg>
+
+    <main class="portfolio-page">
+
+        <section class="portfolio-intro">
+            <p class="portfolio-kicker">
+                most people just want you to look at pictures.
+            </p>
+
+            <h1 class="portfolio-title">
+                <span class="portfolio-highlight">
+                    i'm not most people.
+                </span>
+            </h1>
+        </section>
+
+        <section class="interact-list">
+
+            <a href="insight.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">insight</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        you ask, i answer. (most of it)
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="word.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title interact-title--word-war">
+                            <span class="word-war-word">word</span>
+                            <span class="word-war-war">war</span>
+                        </span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        can you keep the streak alive?
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="blitzclick.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">blitzclick</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        show me the speeeed.
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="note.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">ok, 'noted'</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        safe haven for your bullsh*t.
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="dontblink.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">don't blink</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        i hid something.
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="mood.html" class="interact-item">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title interact-title--mood-board">
+                            m<span class="mood-speaker mood-speaker--left">o</span><span class="mood-speaker mood-speaker--right">o</span>d board
+                        </span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        slow down. work can wait
+                    </p>
+                </div>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+        </section>
+
+    </main>
+
+    <aside class="sticky-cv-banner" aria-label="CV download banner">
+        <button class="sticky-cv-close" type="button" aria-label="Close CV banner">×</button>
+        <a href="assets/DennisEspinosa_2026_CV.pdf" download aria-label="Download Dennis Espinosa CV">
+            <img src="assets/sticky.png" alt="Get a copy of my CV here">
+        </a>
+    </aside>
+
+    <nav class="floating-nav" aria-label="Main navigation">
+        <span class="liquid-glass-surface" aria-hidden="true"></span>
+        <span class="liquid-glass-edge" aria-hidden="true"></span>
+        <span class="liquid-glass-shine" aria-hidden="true"></span>
+
+        <a href="index.html" class="nav-item" aria-label="Home">
+            <i class="hgi hgi-stroke hgi-rounded hgi-home-01"></i>
+        </a>
+
+        <a href="gallery.html" class="nav-item" aria-label="Gallery">
+            <i class="hgi hgi-stroke hgi-rounded hgi-carousel-vertical"></i>
+        </a>
+
+        <a href="play.html" class="nav-item active" aria-label="Play">
+            <i class="hgi hgi-stroke hgi-rounded hgi-cells"></i>
+        </a>
+
+        <a href="contact.html" class="nav-item" aria-label="Contact">
+            <i class="hgi hgi-stroke hgi-rounded hgi-message-add-02"></i>
+        </a>
+    </nav>
+
+    <script src="sticky-banner.js"></script>
+
+</body>
+</html>

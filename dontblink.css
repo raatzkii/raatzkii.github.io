@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.dontblink-page {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 32px 24px;
+}
+
+.interact-cta {
+    position: relative;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.interact-cta:hover {
+    transform: translateX(-6px);
+    opacity: 0.7;
+}
+
+.leaderboard-toggle {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.leaderboard-toggle:hover {
+    transform: translateY(-2px);
+    color: var(--color-accent);
+}
+
+body.hunt-active .leaderboard-toggle {
+    top: 28px;
+    bottom: auto;
+    right: max(24px, calc((100vw - 1600px) / 2 + 24px));
+}
+
+.dontblink-brief,
+.dontblink-result {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    width: min(720px, calc(100vw - 48px));
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.dontblink-result {
+    z-index: 30;
+}
+
+.dontblink-result.is-failure {
+    top: auto;
+    bottom: 78px;
+    z-index: 45;
+    transform: translateX(-50%);
+}
+
+.dontblink-kicker,
+.dontblink-copy {
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+}
+
+#dontblinkResultText {
+    color: var(--color-text);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+.dontblink-title {
+    margin: 0 auto;
+    max-width: 10ch;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: clamp(4rem, 7vw, 9rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+}
+
+.dontblink-target-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 22px 0 14px;
+    color: var(--color-text);
+    font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.dontblink-find-trigger {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dontblink-find-trigger i {
+    font-size: 1.1em;
+}
+
+.dontblink-find-trigger:hover {
+    opacity: 0.68;
+    transform: translateY(-2px);
+}
+
+.dontblink-start {
+    margin-top: 10px;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dontblink-start:hover {
+    opacity: 0.65;
+    transform: translateY(-2px);
+}
+
+.dontblink-score-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: min(480px, 100%);
+    margin: 34px auto 0;
+}
+
+.dontblink-score-form[hidden] {
+    display: none;
+}
+
+.dontblink-score-form input,
+.dontblink-score-form button {
+    height: 48px;
+    border: none;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.dontblink-score-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 0 22px;
+    background: #ffffff;
+    color: var(--color-text);
+    text-align: center;
+    outline: none;
+}
+
+.dontblink-score-form button {
+    padding: 0 22px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.dontblink-score-form button:disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+.dontblink-result .dontblink-score-status {
+    min-height: 1.4em;
+    margin-top: 12px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.dontblink-game {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+}
+
+.dontblink-game.is-over {
+    pointer-events: none;
+}
+
+.dontblink-game.is-over .dontblink-icon:not(.is-revealed) {
+    opacity: 0.5;
+}
+
+.dontblink-hud {
+    position: fixed;
+    left: 50%;
+    top: 28px;
+    z-index: 40;
+    transform: translateX(-50%);
+    color: var(--color-text);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.dontblink-hud strong {
+    display: block;
+    font: inherit;
+}
+
+.dontblink-field {
+    position: absolute;
+    inset: 82px 20px 20px;
+}
+
+.dontblink-icon {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--icon-color, var(--color-text));
+    font-size: var(--icon-size, 56px);
+    line-height: 1;
+    cursor: pointer;
+    transform: translate(-50%, -50%) rotate(var(--icon-rotation, 0deg));
+    transition: transform 0.16s ease, opacity 0.16s ease;
+}
+
+.dontblink-icon:hover {
+    transform: translate(-50%, -50%) rotate(var(--icon-rotation, 0deg)) scale(1.12);
+}
+
+.dontblink-icon i {
+    display: block;
+}
+
+.dontblink-icon.is-target {
+    z-index: 2;
+}
+
+.dontblink-icon.is-revealed {
+    z-index: 70;
+    width: calc(var(--icon-size, 56px) + 18px);
+    height: calc(var(--icon-size, 56px) + 18px);
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    transform: translate(-50%, -50%) rotate(var(--icon-rotation, 0deg));
+}
+
+.leaderboard-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(239, 239, 239, 0.68);
+    backdrop-filter: blur(18px);
+}
+
+.leaderboard-modal[hidden] {
+    display: none;
+}
+
+.leaderboard-card {
+    position: relative;
+    width: min(440px, 100%);
+    padding: 44px 34px 36px;
+    border-radius: 34px;
+    background: #ffffff;
+    box-shadow: 0 24px 70px rgba(28, 28, 28, 0.12);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.leaderboard-label {
+    margin-bottom: 24px;
+    color: var(--color-text);
+    font-size: clamp(2.1rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    text-align: center;
+}
+
+.leaderboard-list {
+    display: grid;
+    gap: 10px;
+    list-style: decimal-leading-zero;
+    list-style-position: inside;
+}
+
+.leaderboard-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+    color: var(--color-muted);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.leaderboard-list span {
+    overflow: hidden;
+    color: var(--color-text);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.leaderboard-list strong {
+    flex: 0 0 auto;
+    color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .dontblink-field {
+        inset: 88px 12px 12px;
+    }
+
+    .leaderboard-toggle {
+        right: 18px;
+    }
+
+    body.hunt-active .leaderboard-toggle {
+        right: 24px;
+    }
+
+    .dontblink-score-form {
+        flex-direction: column;
+    }
+}
