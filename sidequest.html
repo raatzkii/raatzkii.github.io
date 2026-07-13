@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Quest | Dennis Espinosa</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="sidequest.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+    <link rel="stylesheet" href="mobile-gate.css">
+</head>
+<body>
+    <main class="sidequest-page">
+        <a href="play.html" class="interact-cta back-to-play">
+            <span class="cta-arrow">←</span> Back
+        </a>
+
+        <section class="sidequest-gate" id="sidequestGate">
+            <div class="sidequest-copy">
+                <h1>side quest</h1>
+                <p>anonymous, temporary, and gps-gated.</p>
+                <button class="sidequest-primary" id="enterGateBtn" type="button">
+                    + enter gate
+                </button>
+                <p class="sidequest-status" id="gateStatus" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="sidequest-compass" id="sidequestCompass" hidden>
+            <div class="sidequest-arrow-wrap">
+                <i class="hgi hgi-stroke hgi-rounded hgi-circle-arrow-up-02" id="questArrow" aria-hidden="true"></i>
+            </div>
+
+            <p class="sidequest-distance" id="questDistance">locating...</p>
+            <button class="sidequest-primary sidequest-proof-btn" id="postProofBtn" type="button" hidden>
+                + post proof
+            </button>
+        </section>
+
+        <section class="sidequest-feed" id="sidequestFeed" hidden>
+            <div class="sidequest-feed-header">
+                <h2>posted</h2>
+                <p>last 24 hours only.</p>
+            </div>
+            <div class="sidequest-posts" id="sidequestPosts"></div>
+        </section>
+
+        <div class="sidequest-modal" id="proofModal" hidden>
+            <form class="sidequest-modal-card" id="proofForm">
+                <button class="modal-close-btn" id="closeProofModal" type="button" aria-label="Close proof modal">
+                    ×
+                </button>
+
+                <img class="proof-preview" id="proofPreview" alt="Proof preview">
+
+                <textarea
+                    id="proofCaption"
+                    maxlength="120"
+                    placeholder="caption"
+                    rows="3"
+                ></textarea>
+
+                <button class="sidequest-submit" id="submitProofBtn" type="submit">
+                    + post
+                </button>
+
+                <p class="sidequest-status" id="proofStatus" aria-live="polite"></p>
+            </form>
+        </div>
+
+        <input id="proofInput" type="file" accept="image/*" capture="environment" hidden>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="sidequest.js"></script>
+    <script src="mobile-gate.js"></script>
+</body>
+</html>

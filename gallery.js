@@ -9,6 +9,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "digital"],
         image: "assets/works/lates-sports-digital_thunderpistons.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -23,6 +25,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_6events.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -37,6 +41,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_pplaydragon.jpg",
+        width: 980,
+        height: 485,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -51,6 +57,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_pplaygirlpromo.jpg",
+        width: 980,
+        height: 485,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -65,6 +73,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_pplaypromo.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -79,6 +89,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_referpromo.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -93,6 +105,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "digital"],
         image: "assets/works/latest-igaming-digital_promovariation.jpg",
+        width: 630,
+        height: 430,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -107,6 +121,8 @@ const projects = [
         category: "igaming",
         categories: ["latest", "igaming", "events", "digital"],
         image: "assets/works/latest-igaming-events-digital_cny26promo.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -121,6 +137,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "digital", "events"],
         image: "assets/works/latest-sports-digital-events_nbafinalsgame4.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -135,6 +153,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "digital", "events"],
         image: "assets/works/latest-sports-digital-events_wc26promo.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -149,6 +169,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "digital"],
         image: "assets/works/latest-sports-digital_heatceltics.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -163,6 +185,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "events", "digital"],
         image: "assets/works/latest-sports-events-digital_hollowayoliviera2.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -177,6 +201,8 @@ const projects = [
         category: "sports",
         categories: ["latest", "sports", "events", "digital"],
         image: "assets/works/latest-sports-events-digital_nbafinalsgame5.jpg",
+        width: 700,
+        height: 700,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -191,6 +217,8 @@ const projects = [
         category: "print",
         categories: ["print", "igaming"],
         image: "assets/works/print-igaming_bangaloreposter.jpg",
+        width: 705,
+        height: 1000,
         likes: 0,
         dislikes: 0,
         userVote: null
@@ -552,6 +580,7 @@ const modalCountry = document.getElementById("modalCountry");
 const modalProjectYear = document.getElementById("modalProjectYear");
 const modalProjectName = document.getElementById("modalProjectName");
 const modalProjectDescription = document.getElementById("modalProjectDescription");
+const modalCategoryPills = document.getElementById("modalCategoryPills");
 const modalLikeBtn = galleryModal?.querySelector(".modal-like-btn");
 const modalDislikeBtn = galleryModal?.querySelector(".modal-dislike-btn");
 const modalLikeCount = galleryModal?.querySelector(".modal-like-count");
@@ -559,7 +588,11 @@ const modalDislikeCount = galleryModal?.querySelector(".modal-dislike-count");
 let activeModalProjectId = null;
 let activeGalleryFilter = "all";
 let currentGalleryColumns = 0;
+let currentGalleryMode = "";
+let currentGalleryIsMobile = false;
+let mobileOmniState = null;
 const gallerySkeletonMinTime = 360;
+const mobileGalleryQuery = window.matchMedia("(max-width: 768px)");
 
 function getGalleryUserId() {
     let userId = localStorage.getItem("gallery_user_id");
@@ -587,10 +620,6 @@ function getActiveChip() {
     return document.querySelector(".chip.active");
 }
 
-function shuffle(array) {
-    return [...array].sort(() => Math.random() - 0.5);
-}
-
 function moveIndicator(activeChip) {
     if (!activeChip) return;
 
@@ -599,7 +628,7 @@ function moveIndicator(activeChip) {
 
     indicator.style.width = `${activeChip.offsetWidth}px`;
     indicator.style.height = `${activeChip.offsetHeight}px`;
-    indicator.style.transform = `translate(${activeRect.left - filtersRect.left}px, ${activeRect.top - filtersRect.top}px)`;
+    indicator.style.transform = `translate(${activeRect.left - filtersRect.left + filters.scrollLeft}px, ${activeRect.top - filtersRect.top}px)`;
 }
 
 function getProjectById(projectId) {
@@ -609,6 +638,20 @@ function getProjectById(projectId) {
 function projectMatchesFilter(project, filter) {
     if (filter === "all") return true;
     return (project.categories || [project.category]).includes(filter);
+}
+
+function projectIsLatest(project) {
+    return (project.categories || [project.category]).includes("latest");
+}
+
+function orderGalleryProjects(projectList) {
+    return [...projectList].sort((a, b) => {
+        if (projectIsLatest(a) !== projectIsLatest(b)) {
+            return projectIsLatest(a) ? -1 : 1;
+        }
+
+        return a.id - b.id;
+    });
 }
 
 function getProjectAspectRatio(project) {
@@ -625,6 +668,15 @@ function getProjectAspectRatio(project) {
     return 1.4;
 }
 
+function getProjectRatioGroup(project) {
+    const ratio = getProjectAspectRatio(project);
+
+    if (ratio < 0.86) return "tall";
+    if (ratio > 1.18) return "wide";
+
+    return "square";
+}
+
 function setGalleryImageRatio(image) {
     const shell = image.closest(".gallery-image-shell");
 
@@ -638,6 +690,220 @@ function setGalleryImageRatio(image) {
     window.setTimeout(() => {
         shell.classList.add("is-loaded");
     }, remainingTime);
+}
+
+function prepareGalleryImage(image) {
+    if (!image) return;
+
+    const shell = image.closest(".gallery-image-shell");
+
+    if (shell) {
+        shell.dataset.skeletonStarted = String(performance.now());
+    }
+
+    if (image.complete && image.naturalWidth) {
+        setGalleryImageRatio(image);
+        return;
+    }
+
+    image.addEventListener("load", () => {
+        setGalleryImageRatio(image);
+    }, { once: true });
+
+    image.addEventListener("error", () => {
+        shell?.classList.add("is-loaded");
+    }, { once: true });
+}
+
+function createGalleryImageMarkup(project) {
+    return project.image
+        ? `<div class="gallery-image-shell" style="aspect-ratio:${getProjectAspectRatio(project)};">
+            <img src="${project.image}" alt="${project.title}" loading="lazy">
+        </div>`
+        : `<div class="placeholder" style="height:${project.height}px;"></div>`;
+}
+
+function createMobileOmniCard(project, index) {
+    const card = document.createElement("div");
+
+    card.className = `mobile-omni-card mobile-omni-card--${getProjectRatioGroup(project)}`;
+    card.dataset.projectId = project.id;
+    card.dataset.index = String(index);
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", `Open ${project.title}`);
+    card.innerHTML = createGalleryImageMarkup(project);
+
+    prepareGalleryImage(card.querySelector(".gallery-image-shell img"));
+
+    card.addEventListener("keydown", event => {
+        if (!["Enter", " "].includes(event.key)) return;
+        event.preventDefault();
+        openProjectModal(project.id);
+    });
+
+    return card;
+}
+
+function getMobileOmniProjects(projectList) {
+    const repeats = projectList.length < 90 ? 3 : 1;
+    const repeatedProjects = [];
+
+    for (let repeatIndex = 0; repeatIndex < repeats; repeatIndex += 1) {
+        const offset = (repeatIndex * 3) % projectList.length;
+        const orderedProjects = [
+            ...projectList.slice(offset),
+            ...projectList.slice(0, offset)
+        ];
+
+        repeatedProjects.push(...orderedProjects);
+    }
+
+    return repeatedProjects;
+}
+
+function updateMobileOmniPositions() {
+    if (!mobileOmniState) return;
+
+    mobileOmniState.field.style.transform = `translate3d(${mobileOmniState.offsetX}px, ${mobileOmniState.offsetY}px, 0)`;
+}
+
+function clampMobileOmniOffset() {
+    if (!mobileOmniState) return;
+
+    const rect = mobileOmniState.viewport.getBoundingClientRect();
+    const padding = 36;
+    const minX = Math.min(padding, rect.width - mobileOmniState.width - padding);
+    const minY = Math.min(padding, rect.height - mobileOmniState.height - padding);
+
+    mobileOmniState.offsetX = Math.min(padding, Math.max(minX, mobileOmniState.offsetX));
+    mobileOmniState.offsetY = Math.min(padding, Math.max(minY, mobileOmniState.offsetY));
+}
+
+function scheduleMobileOmniUpdate() {
+    if (!mobileOmniState || mobileOmniState.frame) return;
+
+    mobileOmniState.frame = requestAnimationFrame(() => {
+        mobileOmniState.frame = 0;
+        clampMobileOmniOffset();
+        updateMobileOmniPositions();
+    });
+}
+
+function renderMobileGalleryOmni(projectList) {
+    currentGalleryMode = "mobile-omni";
+    currentGalleryColumns = 0;
+    masonry.className = "masonry is-mobile-omni";
+    masonry.innerHTML = `<div class="mobile-omni-field" aria-label="Draggable gallery"></div>`;
+
+    const field = masonry.querySelector(".mobile-omni-field");
+    const omniProjects = getMobileOmniProjects(projectList);
+    const columns = 6;
+    const gap = 18;
+    const columnWidth = 220;
+    const fieldWidth = (columns * columnWidth) + ((columns - 1) * gap);
+    const columnHeights = Array.from({ length: columns }, () => 0);
+    const rect = masonry.getBoundingClientRect();
+    const columnElements = Array.from({ length: columns }, () => {
+        const column = document.createElement("div");
+
+        column.className = "mobile-omni-column";
+        field.appendChild(column);
+
+        return column;
+    });
+
+    mobileOmniState = {
+        viewport: masonry,
+        field,
+        width: fieldWidth,
+        height: 0,
+        offsetX: (rect.width - fieldWidth) / 2,
+        offsetY: 0,
+        startX: 0,
+        startY: 0,
+        startOffsetX: 0,
+        startOffsetY: 0,
+        dragging: false,
+        moved: false,
+        targetCard: null,
+        frame: 0
+    };
+
+    omniProjects.forEach((project, index) => {
+        const card = createMobileOmniCard(project, index);
+        const col = columnHeights.indexOf(Math.min(...columnHeights));
+        const estimatedHeight = Math.round(columnWidth / getProjectAspectRatio(project));
+
+        columnElements[col].appendChild(card);
+        columnHeights[col] += estimatedHeight + gap;
+    });
+
+    mobileOmniState.height = Math.max(...columnHeights) - gap;
+    mobileOmniState.offsetY = (rect.height - mobileOmniState.height) / 2;
+
+    clampMobileOmniOffset();
+    updateMobileOmniPositions();
+
+    masonry.onpointerdown = event => {
+        if (!mobileOmniState) return;
+
+        mobileOmniState.targetCard = event.target.closest(".mobile-omni-card");
+        mobileOmniState.dragging = true;
+        mobileOmniState.moved = false;
+        mobileOmniState.startX = event.clientX;
+        mobileOmniState.startY = event.clientY;
+        mobileOmniState.startOffsetX = mobileOmniState.offsetX;
+        mobileOmniState.startOffsetY = mobileOmniState.offsetY;
+        masonry.classList.add("is-dragging");
+        masonry.setPointerCapture(event.pointerId);
+    };
+
+    masonry.onpointermove = event => {
+        if (!mobileOmniState?.dragging) return;
+
+        const deltaX = event.clientX - mobileOmniState.startX;
+        const deltaY = event.clientY - mobileOmniState.startY;
+
+        if (Math.hypot(deltaX, deltaY) > 5) {
+            mobileOmniState.moved = true;
+        }
+
+        mobileOmniState.offsetX = mobileOmniState.startOffsetX + deltaX;
+        mobileOmniState.offsetY = mobileOmniState.startOffsetY + deltaY;
+        scheduleMobileOmniUpdate();
+    };
+
+    masonry.onpointerup = event => {
+        if (!mobileOmniState) return;
+
+        const targetCard = mobileOmniState.targetCard || event.target.closest(".mobile-omni-card");
+        const shouldOpenCard = targetCard && !mobileOmniState.moved;
+
+        mobileOmniState.dragging = false;
+        masonry.classList.remove("is-dragging");
+
+        if (masonry.hasPointerCapture(event.pointerId)) {
+            masonry.releasePointerCapture(event.pointerId);
+        }
+
+        if (shouldOpenCard) {
+            openProjectModal(Number(targetCard.dataset.projectId));
+        }
+
+        mobileOmniState.targetCard = null;
+    };
+
+    masonry.onpointercancel = event => {
+        if (!mobileOmniState) return;
+        mobileOmniState.dragging = false;
+        mobileOmniState.targetCard = null;
+        masonry.classList.remove("is-dragging");
+
+        if (masonry.hasPointerCapture(event.pointerId)) {
+            masonry.releasePointerCapture(event.pointerId);
+        }
+    };
 }
 
 function getGalleryColumnCount() {
@@ -723,6 +989,11 @@ function updateProjectCard(project) {
     const likeCount = card.querySelector(".like-count");
     const dislikeCount = card.querySelector(".dislike-count");
 
+    if (!likeBtn || !dislikeBtn || !likeCount || !dislikeCount) {
+        updateModalReactions(project);
+        return;
+    }
+
     likeCount.textContent = project.likes;
     dislikeCount.textContent = project.dislikes;
 
@@ -740,7 +1011,7 @@ function updateModalReactions(project) {
     modalDislikeBtn.classList.toggle("is-disliked", project.userVote === "dislike");
 }
 
-async function handleVote(projectId, voteType) {
+async function handleVote(projectId, voteType, sourceButton = null) {
     const project = getProjectById(projectId);
 
     if (!project || !["like", "dislike"].includes(voteType)) return;
@@ -767,6 +1038,7 @@ async function handleVote(projectId, voteType) {
 
     const card = masonry.querySelector(`[data-project-id="${project.id}"]`);
     const activeBtn =
+        sourceButton ||
         card?.querySelector(voteType === "like" ? ".like-btn" : ".dislike-btn") ||
         (voteType === "like" ? modalLikeBtn : modalDislikeBtn);
 
@@ -784,7 +1056,8 @@ function getProjectDetails(project) {
         country: project.country,
         year: project.year,
         name: project.projectName,
-        description: project.description
+        description: project.description,
+        categories: project.categories || [project.category]
     };
 }
 
@@ -798,6 +1071,13 @@ function renderModalMedia(project) {
     if (project.image) {
         modalMedia.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
         const image = modalMedia.querySelector("img");
+
+        if (mobileGalleryQuery.matches) {
+            modalMedia.style.width = "";
+            modalMedia.style.height = "";
+            modalMedia.classList.add("is-edge-image");
+            return;
+        }
 
         function sizeLoadedImage() {
             const ratio = image.naturalWidth / image.naturalHeight || 1;
@@ -861,6 +1141,14 @@ function openProjectModal(projectId) {
     modalCountry.textContent = details.country;
     modalProjectName.textContent = details.name;
     modalProjectDescription.textContent = details.description;
+
+    if (modalCategoryPills) {
+        modalCategoryPills.innerHTML = details.categories
+            .filter(Boolean)
+            .map(category => `<span class="modal-category-pill">${category}</span>`)
+            .join("");
+    }
+
     updateModalReactions(project);
 
     galleryModal.classList.add("is-open");
@@ -879,14 +1167,31 @@ function closeProjectModal() {
 
 function renderProjects(filter = activeGalleryFilter) {
     activeGalleryFilter = filter;
+    currentGalleryIsMobile = mobileGalleryQuery.matches;
     masonry.innerHTML = "";
+    masonry.classList.remove("is-mobile-omni", "is-dragging");
+    masonry.onpointerdown = null;
+    masonry.onpointermove = null;
+    masonry.onpointerup = null;
+    masonry.onpointercancel = null;
+
+    if (mobileOmniState?.frame) {
+        cancelAnimationFrame(mobileOmniState.frame);
+    }
+
+    mobileOmniState = null;
 
     let filteredProjects =
         filter === "all"
             ? projects
             : projects.filter(project => projectMatchesFilter(project, filter));
 
-    filteredProjects = shuffle(filteredProjects);
+    filteredProjects = orderGalleryProjects(filteredProjects);
+
+    if (mobileGalleryQuery.matches) {
+        renderMobileGalleryOmni(orderGalleryProjects(projects));
+        return;
+    }
 
     if (!filteredProjects.length) {
         masonry.innerHTML = `
@@ -897,6 +1202,7 @@ function renderProjects(filter = activeGalleryFilter) {
         return;
     }
 
+    currentGalleryMode = "masonry";
     const columnCount = getGalleryColumnCount();
     const columns = createGalleryColumns(columnCount);
     const columnWidth = (masonry.clientWidth - ((columnCount - 1) * 16)) / columnCount;
@@ -911,13 +1217,7 @@ function renderProjects(filter = activeGalleryFilter) {
         card.dataset.projectId = project.id;
 
         card.innerHTML = `
-            ${
-                project.image
-                    ? `<div class="gallery-image-shell" style="aspect-ratio:${getProjectAspectRatio(project)};">
-                        <img src="${project.image}" alt="${project.title}" loading="lazy">
-                    </div>`
-                    : `<div class="placeholder" style="height:${project.height}px;"></div>`
-            }
+            ${createGalleryImageMarkup(project)}
 
             <div class="portfolio-card-footer">
                 <h3 class="portfolio-card-title">${project.title}</h3>
@@ -937,34 +1237,16 @@ function renderProjects(filter = activeGalleryFilter) {
         `;
 
         const image = card.querySelector(".gallery-image-shell img");
-
-        if (image) {
-            const shell = image.closest(".gallery-image-shell");
-
-            if (shell) {
-                shell.dataset.skeletonStarted = String(performance.now());
-            }
-
-            if (image.complete && image.naturalWidth) {
-                setGalleryImageRatio(image);
-            } else {
-                image.addEventListener("load", () => {
-                    setGalleryImageRatio(image);
-                }, { once: true });
-                image.addEventListener("error", () => {
-                    shell?.classList.add("is-loaded");
-                }, { once: true });
-            }
-        }
+        prepareGalleryImage(image);
 
         card.querySelector(".like-btn").addEventListener("click", event => {
             event.stopPropagation();
-            handleVote(project.id, "like");
+            handleVote(project.id, "like", event.currentTarget);
         });
 
         card.querySelector(".dislike-btn").addEventListener("click", event => {
             event.stopPropagation();
-            handleVote(project.id, "dislike");
+            handleVote(project.id, "dislike", event.currentTarget);
         });
 
         card.addEventListener("click", () => {
@@ -978,12 +1260,12 @@ function renderProjects(filter = activeGalleryFilter) {
 
 modalLikeBtn?.addEventListener("click", () => {
     if (!activeModalProjectId) return;
-    handleVote(activeModalProjectId, "like");
+    handleVote(activeModalProjectId, "like", modalLikeBtn);
 });
 
 modalDislikeBtn?.addEventListener("click", () => {
     if (!activeModalProjectId) return;
-    handleVote(activeModalProjectId, "dislike");
+    handleVote(activeModalProjectId, "dislike", modalDislikeBtn);
 });
 
 galleryModal?.addEventListener("click", event => {
@@ -1002,6 +1284,10 @@ chips.forEach(chip => {
         document.querySelector(".chip.active").classList.remove("active");
         chip.classList.add("active");
 
+        if (mobileGalleryQuery.matches) {
+            chip.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+
         moveIndicator(chip);
         renderProjects(chip.dataset.filter);
     });
@@ -1011,8 +1297,13 @@ window.addEventListener("resize", () => {
     moveIndicator(getActiveChip());
 
     const nextGalleryColumns = getGalleryColumnCount();
+    const nextGalleryIsMobile = mobileGalleryQuery.matches;
 
-    if (nextGalleryColumns !== currentGalleryColumns) {
+    if (
+        nextGalleryColumns !== currentGalleryColumns ||
+        nextGalleryIsMobile !== currentGalleryIsMobile ||
+        (nextGalleryIsMobile && currentGalleryMode !== "mobile-omni")
+    ) {
         renderProjects(activeGalleryFilter);
     }
 });
@@ -1027,6 +1318,7 @@ async function initGallery() {
     }
 
     await loadGalleryReactions();
+    currentGalleryIsMobile = mobileGalleryQuery.matches;
     renderProjects();
     moveIndicator(getActiveChip());
 }

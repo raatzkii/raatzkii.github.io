@@ -6,7 +6,13 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Admin | Dennis Espinosa</title>
 
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
 
@@ -101,6 +107,30 @@
                     </button>
                 </div>
 
+                <p class="admin-section-label">mobile</p>
+
+                <div class="reset-row admin-info-row">
+                    <div>
+                        <h2>fastlane</h2>
+                        <p>mobile-only reaction page.</p>
+                    </div>
+
+                    <span class="admin-row-pill">
+                        mobile only
+                    </span>
+                </div>
+
+                <div class="reset-row admin-info-row">
+                    <div>
+                        <h2>side quest</h2>
+                        <p>mobile-only gps photo quest.</p>
+                    </div>
+
+                    <span class="admin-row-pill">
+                        mobile only
+                    </span>
+                </div>
+
             </section>
 
             <p class="admin-status" id="adminStatus"></p>
@@ -112,5 +142,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="admin.js"></script>
 
+    <script src="mobile-gate.js"></script>
 </body>
 </html>

@@ -688,14 +688,39 @@ body.contact-modal-open {
 
 @media (max-width: 480px) {
     .floating-nav {
-        width: calc(100% - 28px);
-        bottom: 14px;
-        padding: 6px 10px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 8px 14px calc(8px + env(safe-area-inset-bottom));
+        border-radius: 0;
+        transform: none;
+        background: var(--color-text);
+        border: 0;
+        box-shadow: none;
+    }
+
+    .liquid-glass-surface {
+        display: none;
+    }
+
+    .liquid-glass-edge {
+        display: none;
+    }
+
+    .liquid-glass-shine {
+        display: none;
     }
 
     .nav-item {
         flex: 1;
         min-width: 0;
+        color: var(--color-bg);
+    }
+
+    .nav-item.active {
+        color: var(--color-text);
     }
 
     .contact-title {

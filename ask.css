@@ -365,18 +365,110 @@ body {
 /* Responsive - same base padding as Wall */
 
 @media (max-width: 768px) {
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
     .portfolio-page {
-        padding: 24px 16px;
+        width: 100%;
+        min-height: 100svh;
+        padding: 20px 16px calc(20px + env(safe-area-inset-bottom));
+        overflow: hidden;
+    }
+
+    .interact-cta {
+        position: fixed;
+        left: 18px;
+        top: calc(18px + env(safe-area-inset-top));
+        z-index: 90;
+        font-size: 1.5rem;
+    }
+
+    .wall-center {
+        width: calc(100vw - 32px);
+    }
+
+    .wall-note-trigger {
+        margin-top: 0;
+        font-size: 1.5rem;
     }
 
     .ask-chat-shell {
-        left: 50%;
-        width: min(100vw - 32px, 900px);
-        height: calc(100vh - 130px);
-        transform: translate(-50%, -50%);
+        inset: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100svh;
+        padding:
+            calc(62px + env(safe-area-inset-top))
+            16px
+            calc(18px + env(safe-area-inset-bottom));
+        transform: none;
+        z-index: 40;
+    }
+
+    .chat-thread {
+        padding: 18px 0 18px;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .chat-message {
+        margin-bottom: 10px;
     }
 
     .chat-bubble {
-        max-width: 85%;
+        width: fit-content;
+        max-width: min(78%, 320px);
+        padding: 11px 14px;
+        border-radius: 17px;
+        font-size: 20px;
+        line-height: 1.42;
+    }
+
+    .chat-message.user .chat-bubble {
+        border-top-right-radius: 6px;
+    }
+
+    .chat-message.cio .chat-bubble,
+    .typing-bubble {
+        border-top-left-radius: 6px;
+    }
+
+    .typing-bubble {
+        gap: 7px;
+        padding: 16px 18px;
+        border-radius: 17px;
+        border-top-left-radius: 6px;
+    }
+
+    .typing-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .question-pills {
+        flex: 0 0 auto;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 0 0;
+        overflow: visible;
+        flex-wrap: wrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .question-pills::-webkit-scrollbar {
+        display: none;
+    }
+
+    .question-pill {
+        flex: 0 1 auto;
+        padding: 10px 14px;
+        font-size: 20px;
+        white-space: normal;
     }
 }

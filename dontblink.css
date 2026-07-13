@@ -317,8 +317,8 @@ body.hunt-active .leaderboard-toggle {
     display: grid;
     place-items: center;
     padding: 24px;
-    background: rgba(239, 239, 239, 0.68);
-    backdrop-filter: blur(18px);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
 }
 
 .leaderboard-modal[hidden] {
@@ -328,66 +328,73 @@ body.hunt-active .leaderboard-toggle {
 .leaderboard-card {
     position: relative;
     width: min(440px, 100%);
+    max-height: 80vh;
     padding: 44px 34px 36px;
+    overflow-y: auto;
     border-radius: 34px;
     background: #ffffff;
-    box-shadow: 0 24px 70px rgba(28, 28, 28, 0.12);
+    box-shadow: none;
+    text-align: initial;
 }
 
 .modal-close-btn {
     position: absolute;
-    top: 20px;
-    right: 24px;
+    top: 16px;
+    right: 16px;
     border: none;
     background: transparent;
     color: var(--color-text);
     font: inherit;
-    font-size: 1.7rem;
-    font-weight: 800;
+    font-size: 1.4rem;
+    font-weight: 700;
     line-height: 1;
     cursor: pointer;
 }
 
 .leaderboard-label {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     color: var(--color-text);
-    font-size: clamp(2.1rem, 5vw, 4.5rem);
+    font-size: 0.9rem;
     font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -0.06em;
-    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: left;
+    text-transform: lowercase;
 }
 
 .leaderboard-list {
     display: grid;
-    gap: 10px;
-    list-style: decimal-leading-zero;
-    list-style-position: inside;
+    gap: 8px;
+    color: #c3c3c3;
+    list-style: none;
 }
 
 .leaderboard-list li {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    gap: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(28, 28, 28, 0.12);
-    color: var(--color-muted);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    gap: 14px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(28, 28, 28, 0.08);
+    border-bottom: 0;
+    color: #c3c3c3;
 }
 
 .leaderboard-list span {
     overflow: hidden;
-    color: var(--color-text);
+    color: #c3c3c3;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 800;
 }
 
 .leaderboard-list strong {
     flex: 0 0 auto;
-    color: var(--color-text);
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: right;
 }
 
 @media (max-width: 768px) {

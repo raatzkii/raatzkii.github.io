@@ -9,10 +9,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-    <link rel="manifest" href="assets/favicons/site.webmanifest"> 
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link rel="stylesheet" href="interact.css?v=20260708-3">
     <link rel="stylesheet" href="sticky-banner.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
     <svg class="liquid-glass-filter" aria-hidden="true" focusable="false">
@@ -51,7 +52,7 @@
 
         <section class="interact-list">
 
-            <a href="insight.html" class="interact-item">
+            <a href="insight.html" class="interact-item mobile-play-feature">
 
                 <div class="interact-content">
                     <h2 class="portfolio-title">
@@ -62,6 +63,10 @@
                         you ask, i answer. (most of it)
                     </p>
                 </div>
+
+                <p class="mobile-play-description">
+                    you ask, i answer. (most of it)
+                </p>
 
                 <span class="interact-cta">
                     Go <span class="cta-arrow">→</span>
@@ -90,7 +95,7 @@
 
             </a>
 
-            <a href="blitzclick.html" class="interact-item">
+            <a href="blitzclick.html" class="interact-item mobile-play-feature">
 
                 <div class="interact-content">
                     <h2 class="portfolio-title">
@@ -101,6 +106,10 @@
                         show me the speeeed.
                     </p>
                 </div>
+
+                <p class="mobile-play-description">
+                    show me the speeeed.
+                </p>
 
                 <span class="interact-cta">
                     Go <span class="cta-arrow">→</span>
@@ -116,7 +125,7 @@
                     </h2>
 
                     <p class="portfolio-kicker">
-                        safe haven for your bullshit.
+                        safe haven for your bullsh*t.
                     </p>
                 </div>
 
@@ -164,6 +173,50 @@
 
             </a>
 
+            <a href="fastlane.html" class="interact-item mobile-play-feature mobile-only-play">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">fastlane</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        think you can beat verstappen?
+                    </p>
+                </div>
+
+                <p class="mobile-play-description">
+                    think you can beat verstappen?
+                </p>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
+            <a href="sidequest.html" class="interact-item mobile-play-feature mobile-only-play">
+
+                <div class="interact-content">
+                    <h2 class="portfolio-title">
+                        <span class="interact-title">side quest</span>
+                    </h2>
+
+                    <p class="portfolio-kicker">
+                        follow the arrow. bring back proof.
+                    </p>
+                </div>
+
+                <p class="mobile-play-description">
+                    follow the arrow. bring back proof.
+                </p>
+
+                <span class="interact-cta">
+                    Go <span class="cta-arrow">→</span>
+                </span>
+
+            </a>
+
         </section>
 
     </main>
@@ -199,5 +252,7 @@
 
     <script src="sticky-banner.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="mobile-gate.js"></script>
 </body>
 </html>

@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.fastlane-page {
+    min-height: 100vh;
+    padding: 32px 24px;
+}
+
+.interact-cta {
+    position: fixed;
+    top: 32px;
+    left: 32px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.interact-cta:hover {
+    opacity: 0.7;
+    transform: translateX(-6px);
+}
+
+.leaderboard-toggle {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 130;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.leaderboard-toggle i {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.fastlane-start,
+.fastlane-game,
+.fastlane-result {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 96px 24px;
+}
+
+.fastlane-start-btn,
+.fastlane-try-again {
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: clamp(1.5rem, 2vw, 1.6rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+}
+
+.fastlane-stage {
+    display: grid;
+    justify-items: center;
+    gap: 28px;
+    width: min(560px, calc(100vw - 48px));
+}
+
+.fastlane-lights {
+    display: flex;
+    justify-content: center;
+    gap: clamp(14px, 4vw, 24px);
+    width: 100%;
+}
+
+.fastlane-light {
+    display: block;
+    width: clamp(78px, 16vw, 120px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #dedede;
+    box-shadow: inset 0 -8px 16px rgba(28, 28, 28, 0.08);
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.fastlane-light.is-black {
+    background: var(--color-text);
+    box-shadow: inset 0 -8px 16px rgba(255, 255, 255, 0.08);
+}
+
+.fastlane-light.is-green {
+    background: var(--color-accent);
+    box-shadow:
+        0 0 34px rgba(50, 255, 0, 0.36),
+        inset 0 -8px 18px rgba(28, 28, 28, 0.08);
+}
+
+.fastlane-status {
+    min-height: 1.2em;
+    color: var(--color-muted);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.fastlane-result {
+    z-index: 115;
+    background: rgba(239, 239, 239, 0.72);
+    backdrop-filter: blur(16px);
+    text-align: center;
+}
+
+.fastlane-result.is-retry-only {
+    background: transparent;
+    backdrop-filter: none;
+}
+
+.fastlane-result.is-retry-only .fastlane-result-card {
+    display: none;
+}
+
+.fastlane-result.is-retry-only .fastlane-try-again {
+    display: inline-flex;
+}
+
+.fastlane-result-card {
+    display: grid;
+    justify-items: center;
+    gap: 0;
+    width: min(760px, calc(100vw - 32px));
+    padding: 58px 48px 48px;
+    border-radius: 34px;
+    background: var(--color-white);
+    box-shadow: 0 28px 80px rgba(28, 28, 28, 0.12);
+}
+
+.fastlane-result-text {
+    margin: 0;
+    font-size: clamp(3rem, 10vw, 5.4rem);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+}
+
+.fastlane-score-form {
+    display: grid;
+    gap: 18px;
+    width: 100%;
+    margin-top: 34px;
+}
+
+.fastlane-score-form input,
+.fastlane-score-form button {
+    width: 100%;
+    min-height: 76px;
+    border: 0;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.fastlane-score-form input {
+    background: var(--color-white);
+    color: var(--color-text);
+    outline: none;
+}
+
+.fastlane-score-form input::placeholder {
+    color: var(--color-muted);
+}
+
+.fastlane-score-form button {
+    background: var(--color-accent);
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.fastlane-exit-result {
+    width: min(100%, 320px);
+    min-height: 68px;
+    margin-top: 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-text);
+    color: var(--color-white);
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+}
+
+.fastlane-score-status {
+    min-height: 1.3em;
+    margin-top: 14px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.fastlane-try-again[hidden] {
+    display: none !important;
+}
+
+.leaderboard-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.leaderboard-card {
+    position: relative;
+    width: min(440px, 100%);
+    max-height: 80vh;
+    padding: 44px 34px 36px;
+    overflow-y: auto;
+    border-radius: 34px;
+    background: var(--color-white);
+    box-shadow: none;
+    text-align: initial;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.leaderboard-label {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: lowercase;
+}
+
+.leaderboard-list {
+    display: grid;
+    gap: 8px;
+    color: #c3c3c3;
+    list-style: none;
+}
+
+.leaderboard-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(28, 28, 28, 0.08);
+    color: #c3c3c3;
+}
+
+.leaderboard-list span {
+    overflow: hidden;
+    color: #c3c3c3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.leaderboard-list strong {
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .fastlane-page {
+        min-height: 100svh;
+        padding: 24px 18px;
+    }
+
+    .interact-cta {
+        top: calc(24px + env(safe-area-inset-top));
+        left: 18px;
+        font-size: 1.5rem;
+    }
+
+    .leaderboard-toggle {
+        right: 18px;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .fastlane-page.is-playing .leaderboard-toggle {
+        display: none;
+    }
+
+    .fastlane-start,
+    .fastlane-game,
+    .fastlane-result {
+        padding: 92px 18px;
+    }
+
+    .fastlane-stage {
+        gap: 22px;
+        width: 100%;
+    }
+
+    .fastlane-light {
+        width: clamp(78px, 25vw, 110px);
+    }
+
+    .fastlane-score-form {
+        width: 100%;
+    }
+
+    .fastlane-result-card {
+        width: min(100%, 420px);
+        padding: 48px 28px 36px;
+        border-radius: 30px;
+    }
+
+    .fastlane-score-form input,
+    .fastlane-score-form button {
+        min-height: 64px;
+        font-size: 1.15rem;
+    }
+
+    .leaderboard-card {
+        padding: 52px 34px 38px;
+        border-radius: 30px;
+    }
+
+    .leaderboard-label,
+    .leaderboard-list span,
+    .leaderboard-list strong {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}

@@ -50,7 +50,7 @@ body {
     color: var(--color-text);
     text-decoration: none;
 
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.03em;
 
@@ -222,6 +222,10 @@ body {
     visibility: hidden;
     transform: scale(0.2) rotate(12deg);
     pointer-events: none;
+}
+
+.mobile-tap-zone {
+    display: none;
 }
 
 .countdown-overlay {
@@ -462,6 +466,127 @@ body {
         width: 100%;
 
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow: hidden;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .portfolio-page {
+        min-height: 100svh;
+        padding: 20px 18px calc(20px + env(safe-area-inset-bottom));
+    }
+
+    .back-to-interact {
+        position: fixed;
+        left: 18px;
+        top: calc(18px + env(safe-area-inset-top));
+    }
+
+    .clickathon-center {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    .clickathon-note-trigger {
+        font-size: 1.5rem;
+    }
+
+    .game-shell {
+        justify-content: stretch;
+        padding: calc(64px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .game-topbar {
+        top: calc(22px + env(safe-area-inset-top));
+        left: auto;
+        right: 18px;
+        transform: none;
+        font-size: 1.5rem;
+    }
+
+    .cube-grid-wrap {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border-radius: 28px;
+    }
+
+    .cube-grid {
+        display: none;
+    }
+
+    .mobile-tap-zone {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 420px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: none;
+        border-radius: 28px;
+        background: #e8e8e8;
+        color: var(--color-text);
+        font: inherit;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-tap-zone span {
+        font-size: clamp(5.5rem, 26vw, 8.5rem);
+        font-weight: 800;
+        line-height: 0.86;
+        letter-spacing: -0.08em;
+    }
+
+    .mobile-tap-zone small {
+        font-size: 1rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    .mobile-tap-zone:active {
+        background: var(--color-accent);
+    }
+
+    .game-shell.is-counting-down .mobile-tap-zone {
+        visibility: hidden;
+    }
+
+    .countdown-overlay {
+        border-radius: 28px;
+        background: var(--color-bg);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    body.blitz-active .leaderboard-toggle {
+        display: none;
+    }
+
+    .leaderboard-modal .leaderboard-card {
+        width: min(440px, calc(100vw - 48px));
+        padding: 44px 34px 36px;
+        border-radius: 34px;
+    }
+
+    .leaderboard-modal .leaderboard-label,
+    .leaderboard-modal .leaderboard-list span,
+    .leaderboard-modal .leaderboard-list strong {
+        font-size: 1.5rem;
+        font-weight: 500;
     }
 }
 

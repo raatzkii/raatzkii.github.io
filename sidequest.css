@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+.sidequest-page {
+    min-height: 100svh;
+}
+
+.interact-cta {
+    position: fixed;
+    top: calc(24px + env(safe-area-inset-top));
+    left: 18px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-gate,
+.sidequest-compass {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 92px 18px 32px;
+}
+
+.sidequest-copy {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    width: min(420px, 100%);
+    text-align: center;
+}
+
+.sidequest-copy h1 {
+    font-size: clamp(3.4rem, 16vw, 5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+}
+
+.sidequest-copy p {
+    max-width: 24ch;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-primary,
+.sidequest-submit {
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+}
+
+.sidequest-primary:disabled,
+.sidequest-submit:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.sidequest-status {
+    min-height: 1.3em;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-compass {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+.sidequest-arrow-wrap {
+    display: grid;
+    place-items: center;
+    width: min(46vw, 210px);
+    aspect-ratio: 1;
+}
+
+.sidequest-arrow-wrap i {
+    display: block;
+    color: var(--color-text);
+    font-size: min(42vw, 190px);
+    line-height: 1;
+    transform: rotate(var(--arrow-rotation, 0deg));
+    transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.sidequest-distance {
+    margin-top: 24px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.sidequest-proof-btn {
+    margin-top: 28px;
+}
+
+.sidequest-feed {
+    padding: 36px 18px calc(32px + env(safe-area-inset-bottom));
+}
+
+.sidequest-feed-header {
+    margin: 0 auto 18px;
+    width: min(430px, 100%);
+}
+
+.sidequest-feed-header h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+}
+
+.sidequest-feed-header p {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-posts {
+    display: grid;
+    gap: 14px;
+    width: min(430px, 100%);
+    margin: 0 auto;
+}
+
+.sidequest-post {
+    overflow: hidden;
+    border-radius: 28px;
+    background: var(--color-white);
+}
+
+.sidequest-post img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.sidequest-post p {
+    padding: 16px 18px 18px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.sidequest-modal-card {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    width: min(440px, 100%);
+    max-height: 86vh;
+    padding: 44px 34px 36px;
+    overflow-y: auto;
+    border-radius: 34px;
+    background: var(--color-white);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.proof-preview {
+    width: 100%;
+    max-height: 48vh;
+    object-fit: contain;
+    border-radius: 24px;
+    background: #dedede;
+}
+
+.sidequest-modal-card textarea {
+    width: 100%;
+    min-height: 112px;
+    padding: 18px 20px;
+    border: 0;
+    border-radius: 28px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    resize: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-modal-card textarea::placeholder {
+    color: var(--color-muted);
+}
+
+.sidequest-submit {
+    min-height: 64px;
+    background: var(--color-accent);
+}

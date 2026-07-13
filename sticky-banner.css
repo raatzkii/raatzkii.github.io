@@ -44,9 +44,7 @@
 
 @media (max-width: 640px) {
     .sticky-cv-banner {
-        right: 14px;
-        bottom: 92px;
-        width: clamp(108px, 30vw, 148px);
+        display: none;
     }
 }
 

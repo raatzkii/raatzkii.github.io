@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | Dennis Espinosa</title>
+    <title>Project Feed | Dennis Espinosa</title>
 
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="sticky-banner.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
     <svg class="liquid-glass-filter" aria-hidden="true" focusable="false">
@@ -98,6 +99,7 @@
                         <span class="modal-meta-dot" aria-hidden="true"></span>
                         <span id="modalCountry">Philippines</span>
                     </p>
+                    <div class="modal-category-pills" id="modalCategoryPills" aria-label="Project categories"></div>
                     <span class="modal-rule" aria-hidden="true"></span>
                     <p id="modalProjectDescription">Project description</p>
                 </div>
@@ -146,5 +148,6 @@
     <script src="gallery.js"></script>
     <script src="sticky-banner.js"></script>
 
+    <script src="mobile-gate.js"></script>
 </body>
 </html>

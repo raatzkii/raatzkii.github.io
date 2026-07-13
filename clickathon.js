@@ -41,12 +41,16 @@ const leaderboardList = document.getElementById("leaderboardList");
 
 const countdownOverlay = document.getElementById("countdownOverlay");
 const countdownNumber = document.getElementById("countdownNumber");
+const mobileTapZone = document.getElementById("mobileTapZone");
+const mobileTapScore = document.getElementById("mobileTapScore");
+const mobileBlitzQuery = window.matchMedia("(max-width: 768px)");
 
 let score = 0;
 let timer = null;
 let gameEndsAt = 0;
 let gameActive = false;
 let latestSubmittedScore = 0;
+let activeGameMode = mobileBlitzQuery.matches ? "mobile" : "desktop";
 
 function formatTime(milliseconds) {
     const safeMilliseconds = Math.max(0, milliseconds);
@@ -96,10 +100,26 @@ function updateAttemptsUI() {
     tryAgainBtn.disabled = getAttemptsRemaining() <= 0;
 }
 
+function updateScoreUI() {
+    if (scoreCount) {
+        scoreCount.textContent = score;
+    }
+
+    if (mobileTapScore) {
+        mobileTapScore.textContent = score;
+    }
+}
+
 function showLimitNotice() {
     if (!clickathonLimitNotice) return;
 
     clickathonLimitNotice.textContent = "limit reached. try again after 24hrs";
+}
+
+function updateStartCopy() {
+    startSmashingBtn.textContent = mobileBlitzQuery.matches
+        ? "+ tap like you mean it"
+        : "+ turn the grid green";
 }
 
 function getOrdinal(number) {
@@ -136,10 +156,7 @@ function createGrid() {
             cube.style.pointerEvents = "none";
 
             score++;
-
-            if (scoreCount) {
-                scoreCount.textContent = score;
-            }
+            updateScoreUI();
         });
 
         cubeGrid.appendChild(cube);
@@ -147,6 +164,7 @@ function createGrid() {
 }
 
 async function runCountdown() {
+    gameShell.classList.add("is-counting-down");
     countdownOverlay.hidden = false;
 
     for (let i = 3; i > 0; i--) {
@@ -155,6 +173,7 @@ async function runCountdown() {
     }
 
     countdownOverlay.hidden = true;
+    gameShell.classList.remove("is-counting-down");
 }
 
 async function startGame() {
@@ -167,10 +186,8 @@ async function startGame() {
 
     score = 0;
     gameActive = false;
-
-    if (scoreCount) {
-        scoreCount.textContent = score;
-    }
+    activeGameMode = mobileBlitzQuery.matches ? "mobile" : "desktop";
+    updateScoreUI();
 
     timeLeft.textContent = formatTime(GAME_DURATION_MS);
     clickathonLimitNotice.textContent = "";
@@ -181,13 +198,21 @@ async function startGame() {
     gameShell.hidden = false;
     document.body.classList.add("blitz-active");
 
-    createGrid();
+    if (activeGameMode === "desktop") {
+        createGrid();
+    } else {
+        cubeGrid.innerHTML = "";
+        cubeGrid.classList.remove("is-active");
+    }
 
     await runCountdown();
 
     gameActive = true;
     gameEndsAt = performance.now() + GAME_DURATION_MS;
-    cubeGrid.classList.add("is-active");
+
+    if (activeGameMode === "desktop") {
+        cubeGrid.classList.add("is-active");
+    }
 
     timer = setInterval(() => {
         const remaining = gameEndsAt - performance.now();
@@ -213,6 +238,14 @@ function endGame() {
 
     gameResult.hidden = false;
     nicknameInput.focus();
+}
+
+function handleMobileTap(event) {
+    if (activeGameMode !== "mobile" || !gameActive) return;
+
+    event.preventDefault();
+    score++;
+    updateScoreUI();
 }
 
 async function getLeaderboard() {
@@ -269,7 +302,7 @@ async function submitScore() {
     const nickname = nicknameInput.value.trim().slice(0, 24);
 
     if (!nickname) {
-        resultMessage.textContent = "Nickname first, legend.";
+        resultMessage.textContent = "nickname first, legend.";
         return;
     }
 
@@ -343,6 +376,7 @@ function sharePage() {
 }
 
 startSmashingBtn.addEventListener("click", startGame);
+mobileTapZone?.addEventListener("pointerdown", handleMobileTap);
 submitScoreBtn.addEventListener("click", submitScore);
 
 tryAgainBtn.addEventListener("click", () => {
@@ -368,9 +402,13 @@ closeLeaderboardBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("resize", () => {
-    if (!gameShell.hidden && !gameActive) {
+    activeGameMode = mobileBlitzQuery.matches ? "mobile" : "desktop";
+    updateStartCopy();
+
+    if (!gameShell.hidden && !gameActive && activeGameMode === "desktop") {
         createGrid();
     }
 });
 
 updateAttemptsUI();
+updateStartCopy();

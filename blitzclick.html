@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blitzclick | Dennis Espinosa</title>
-    
+
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
@@ -12,6 +12,7 @@
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link rel="stylesheet" href="clickathon.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
 
@@ -52,6 +53,10 @@
 
             <div class="cube-grid-wrap">
                 <div class="cube-grid" id="cubeGrid"></div>
+                <button class="mobile-tap-zone" id="mobileTapZone" type="button" aria-label="Tap as many times as you can">
+                    <span id="mobileTapScore">0</span>
+                    <small>tap anywhere</small>
+                </button>
 
                 <div class="countdown-overlay" id="countdownOverlay" hidden>
                     <span id="countdownNumber">3</span>
@@ -139,5 +144,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="clickathon.js"></script>
+    <script src="mobile-gate.js"></script>
 </body>
 </html>
