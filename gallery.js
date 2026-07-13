@@ -7,7 +7,7 @@ const projects = [
         country: "south korea",
         description: "odds banner for elite matchup of the two top seeds in the east and the west",
         category: "sports",
-        categories: ["sports", "digital"],
+        categories: ["latest", "sports", "digital"],
         image: "assets/works/lates-sports-digital_thunderpistons.jpg",
         likes: 0,
         dislikes: 0,
