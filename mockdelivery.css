@@ -403,6 +403,7 @@ button {
 }
 
 .mock-food-thumb {
+    position: relative;
     display: grid;
     place-items: center;
     aspect-ratio: 1;
@@ -420,16 +421,31 @@ button {
 }
 
 .mock-food-card.is-selected .mock-food-thumb {
-    box-shadow:
-        0 0 0 4px var(--color-accent),
-        0 16px 34px rgba(50, 255, 0, 0.18);
+    background: var(--color-accent);
+    box-shadow: 0 16px 34px rgba(50, 255, 0, 0.18);
     transform: translateY(-2px);
 }
 
+.mock-food-card.is-selected .mock-food-thumb::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    z-index: 0;
+    background: #ffffff;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 0C86 0 100 14 100 50S86 100 50 100 0 86 0 50 14 0 50 0Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 0C86 0 100 14 100 50S86 100 50 100 0 86 0 50 14 0 50 0Z'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
 .mock-food-thumb img {
+    position: relative;
+    z-index: 1;
     display: block;
-    width: 76%;
-    height: 76%;
+    width: 68%;
+    height: 68%;
     object-fit: cover;
     border-radius: 18px;
 }
