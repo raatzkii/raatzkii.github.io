@@ -341,7 +341,7 @@ const projects = [
         projectName: "the grand getaway awaits",
         year: "2024",
         country: "japan",
-        description: "socmed campaign designed to promote playojo's grand givewaay of a trip",
+        description: "socmed campaign designed to promote playojo's grand giveaway of a trip",
         category: "igaming",
         categories: ["igaming", "digital"],
         image: "assets/works/digital-igaming-ojo.jpg",
