@@ -1675,6 +1675,10 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
         font-size: clamp(3.4rem, 15vw, 5.4rem);
     }
 
+    .feature-cards-section .interact-item .portfolio-kicker {
+        font-size: 1.5rem;
+    }
+
     .feature-cards-section .hello-card .interact-content {
         transform: translateY(14px);
     }
@@ -1684,8 +1688,10 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
         margin-bottom: 0;
     }
 
-    .feature-cards-section .tenure-card .portfolio-kicker {
+    .feature-cards-section .stats-card .portfolio-kicker {
         font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.25;
     }
 
     .feature-cards-section .career-card {
