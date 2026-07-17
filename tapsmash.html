@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blitzclick | Dennis Espinosa</title>
+    <title>Tap Smash | Dennis Espinosa</title>
 
     <meta
         name="description"
-        content="A fast-tapping interaction built for quick reflexes and leaderboard bragging rights. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+        content="A tapping challenge that puts restless thumbs and anger issues to good use. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
     >
 
     <link rel="shortcut icon" href="favicon.ico">
@@ -15,14 +15,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
-    <link rel="stylesheet" href="blitzclick.css">
+    <link rel="stylesheet" href="tapsmash.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
 </head>
 <body>
-
-    <main class="portfolio-page clickathon-page">
-
-        <a href="play.html" class="interact-cta back-to-interact">
+    <main class="tap-smash-page">
+        <a href="play.html" class="interact-cta back-to-play">
             <span class="cta-arrow">←</span> back
         </a>
 
@@ -35,34 +33,23 @@
             <i class="hgi hgi-stroke hgi-rounded hgi-analytics-01"></i>
         </button>
 
-        <div class="clickathon-center" id="clickathonStart">
+        <section class="tap-start" id="tapStart">
+            <button class="tap-start-button" id="startTapBtn" type="button">
+                + start smashing
+            </button>
+            <p class="tap-limit-notice" id="tapLimitNotice" aria-live="polite"></p>
+        </section>
 
-            <button
-                class="clickathon-note-trigger"
-                id="startSmashingBtn"
-                type="button"
-            >
-                + turn the grid green
+        <section class="tap-game" id="tapGame" hidden>
+            <strong class="tap-timer" id="timeLeft">30:00</strong>
+
+            <button class="tap-zone" id="tapZone" type="button" aria-label="Tap as many times as you can">
+                <span id="tapScore">0</span>
             </button>
 
-            <p class="clickathon-limit-notice" id="clickathonLimitNotice" aria-live="polite"></p>
-
-        </div>
-
-        <section class="game-shell" id="gameShell" hidden>
-
-            <div class="game-topbar" aria-label="Time remaining">
-                <strong id="timeLeft">30:00</strong>
+            <div class="countdown-overlay" id="countdownOverlay" hidden>
+                <span id="countdownNumber">3</span>
             </div>
-
-            <div class="cube-grid-wrap">
-                <div class="cube-grid" id="cubeGrid"></div>
-
-                <div class="countdown-overlay" id="countdownOverlay" hidden>
-                    <span id="countdownNumber">3</span>
-                </div>
-            </div>
-
         </section>
 
         <div class="leaderboard-modal" id="leaderboardModal" hidden>
@@ -101,7 +88,7 @@
                 >
 
                 <button id="submitScoreBtn" type="button">
-                    Submit Score
+                    submit score
                 </button>
 
                 <p class="result-message" id="resultMessage"></p>
@@ -120,12 +107,11 @@
                 </button>
 
                 <p class="confirmation-message" id="confirmationMessage">
-                    nice! you're at
+                    nice! you landed at
                 </p>
 
                 <div class="rank-line">
                     <strong id="rankPlace">—</strong>
-                    <span class="rank-movement" id="rankMovement">↗</span>
                 </div>
 
                 <div class="confirmation-actions">
@@ -139,10 +125,9 @@
                 </div>
             </div>
         </div>
-
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="blitzclick.js"></script>
+    <script src="tapsmash.js"></script>
 </body>
 </html>

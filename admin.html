@@ -6,13 +6,17 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Admin | Dennis Espinosa</title>
 
+    <meta
+        name="description"
+        content="Admin controls for managing site interactions and resets. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+    >
+
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
 
@@ -43,10 +47,10 @@
                     </button>
                 </div>
 
-                <div class="reset-row wall-reset-row">
+                <div class="reset-row wall-reset-row admin-desktop-only">
                     <div>
-                        <h2>wall</h2>
-                        <p>reset wall notes.</p>
+                        <h2>notes</h2>
+                        <p>reset notes.</p>
                     </div>
 
                     <div class="wall-admin-actions">
@@ -58,7 +62,7 @@
                             type="button"
                             class="wall-toggle-btn"
                             id="wallToggleBtn"
-                            aria-label="Show wall notes"
+                            aria-label="Show notes"
                             aria-expanded="false"
                         >
                             ⌄
@@ -66,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="wall-notes-panel" id="wallNotesPanel" hidden>
+                <div class="wall-notes-panel admin-desktop-only" id="wallNotesPanel" hidden>
                     <p class="wall-notes-status" id="wallNotesStatus">
                         loading notes...
                     </p>
@@ -74,7 +78,7 @@
                     <div class="wall-notes-list" id="wallNotesList"></div>
                 </div>
 
-                <div class="reset-row">
+                <div class="reset-row admin-desktop-only">
                     <div>
                         <h2>word</h2>
                         <p>reset the last word.</p>
@@ -85,7 +89,7 @@
                     </button>
                 </div>
 
-                <div class="reset-row">
+                <div class="reset-row admin-desktop-only">
                     <div>
                         <h2>blitzclick</h2>
                         <p>reset blitzclick scores.</p>
@@ -96,10 +100,10 @@
                     </button>
                 </div>
 
-                <div class="reset-row">
+                <div class="reset-row admin-desktop-only">
                     <div>
-                        <h2>dontblink</h2>
-                        <p>reset dontblink scores.</p>
+                        <h2>dont blink</h2>
+                        <p>reset dont blink scores.</p>
                     </div>
 
                     <button type="button" data-reset="dontblink">
@@ -107,28 +111,37 @@
                     </button>
                 </div>
 
-                <p class="admin-section-label">mobile</p>
-
-                <div class="reset-row admin-info-row">
+                <div class="reset-row admin-mobile-only">
                     <div>
-                        <h2>fastlane</h2>
-                        <p>mobile-only reaction page.</p>
+                        <h2>tap smash</h2>
+                        <p>reset tap smash scores.</p>
                     </div>
 
-                    <span class="admin-row-pill">
-                        mobile only
-                    </span>
+                    <button type="button" data-reset="tapsmash">
+                        reset
+                    </button>
                 </div>
 
-                <div class="reset-row admin-info-row">
+                <div class="reset-row admin-mobile-only">
                     <div>
-                        <h2>side quest</h2>
-                        <p>mobile-only gps photo quest.</p>
+                        <h2>fast lane</h2>
+                        <p>reset fast lane scores.</p>
                     </div>
 
-                    <span class="admin-row-pill">
-                        mobile only
-                    </span>
+                    <button type="button" data-reset="fastlane">
+                        reset
+                    </button>
+                </div>
+
+                <div class="reset-row admin-mobile-only">
+                    <div>
+                        <h2>side quest</h2>
+                        <p>reset side quest posts.</p>
+                    </div>
+
+                    <button type="button" data-reset="sidequest">
+                        reset
+                    </button>
                 </div>
 
             </section>
@@ -141,7 +154,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="admin.js"></script>
-
-    <script src="mobile-gate.js"></script>
 </body>
 </html>

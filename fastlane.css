@@ -40,7 +40,7 @@ input {
     position: fixed;
     top: 32px;
     left: 32px;
-    z-index: 80;
+    z-index: 260;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -110,15 +110,16 @@ input {
 }
 
 .fastlane-lights {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: clamp(14px, 4vw, 24px);
-    width: 100%;
+    width: min(100%, 460px);
 }
 
 .fastlane-light {
     display: block;
-    width: clamp(78px, 16vw, 120px);
+    width: clamp(68px, 16vw, 112px);
     aspect-ratio: 1;
     border-radius: 50%;
     background: #dedede;

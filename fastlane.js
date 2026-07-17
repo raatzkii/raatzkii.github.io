@@ -29,6 +29,10 @@ let greenAt = 0;
 let latestReactionMs = null;
 let sequenceTimers = [];
 
+const LIGHT_COLUMN_INTERVAL = 700;
+const FINAL_GREEN_MIN_DELAY = 400;
+const FINAL_GREEN_MAX_DELAY = 3000;
+
 function randomBetween(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -43,9 +47,10 @@ function queueStep(callback, delay) {
     sequenceTimers.push(timerId);
 }
 
-function setLightState(blackCount = 0, green = false) {
+function setLightState(blackColumns = 0, green = false) {
     fastlaneLights.forEach((light, index) => {
-        light.classList.toggle("is-black", !green && index < blackCount);
+        const columnIndex = index % 3;
+        light.classList.toggle("is-black", !green && columnIndex < blackColumns);
         light.classList.toggle("is-green", green);
     });
 }
@@ -141,17 +146,17 @@ function startRun() {
     queueStep(() => {
         if (runState !== "arming") return;
         setLightState(1);
-    }, randomBetween(650, 950));
+    }, LIGHT_COLUMN_INTERVAL);
 
     queueStep(() => {
         if (runState !== "arming") return;
         setLightState(2);
-    }, randomBetween(1400, 1900));
+    }, LIGHT_COLUMN_INTERVAL * 2);
 
     queueStep(() => {
         if (runState !== "arming") return;
         setLightState(3);
-    }, randomBetween(2300, 3200));
+    }, LIGHT_COLUMN_INTERVAL * 3);
 
     queueStep(() => {
         if (runState !== "arming") return;
@@ -159,7 +164,7 @@ function startRun() {
         runState = "green";
         greenAt = performance.now();
         fastlaneStatus.textContent = "tap";
-    }, randomBetween(3600, 4300));
+    }, (LIGHT_COLUMN_INTERVAL * 3) + randomBetween(FINAL_GREEN_MIN_DELAY, FINAL_GREEN_MAX_DELAY));
 }
 
 function handleGameTap(event) {

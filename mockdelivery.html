@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Delivery | Dennis Espinosa</title>
+
+    <meta
+        name="description"
+        content="Order nothing. Receive nothing. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+    >
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css">
+    <link rel="stylesheet" href="mockdelivery.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+</head>
+<body>
+    <main class="mock-delivery-page">
+        <a href="play.html" class="interact-cta back-to-play">
+            <span class="cta-arrow">←</span> back
+        </a>
+
+        <section class="mock-delivery-start" id="mockDeliveryStart">
+            <button class="mock-order-now" id="mockOrderNow" type="button">
+                + order now
+            </button>
+        </section>
+
+        <section class="mock-delivery-app" id="mockDeliveryApp" hidden>
+            <section class="mock-menu-view" id="mockMenuView">
+                <div class="mock-food-grid" id="mockFoodGrid" aria-label="Mock food menu"></div>
+            </section>
+
+            <section class="mock-summary-view" id="mockSummaryView" hidden>
+                <h1>order summary</h1>
+
+                <div class="mock-summary-list" id="mockSummaryList"></div>
+
+                <div class="mock-summary-totals">
+                    <p>
+                        <span>subtotal</span>
+                        <strong id="mockSubtotal">0 coins</strong>
+                    </p>
+                    <p>
+                        <span>delivery</span>
+                        <strong id="mockDeliveryFee">0 coins</strong>
+                    </p>
+                    <p class="mock-total-row">
+                        <span>total</span>
+                        <strong id="mockTotal">0 coins</strong>
+                    </p>
+                </div>
+
+                <div class="mock-wallet">
+                    <span>mock wallet</span>
+                    <strong id="mockWalletBalance">10,000 coins</strong>
+                </div>
+            </section>
+
+            <section class="mock-tracking-view" id="mockTrackingView" hidden>
+                <div class="mock-tracking-status">
+                    <p id="mockEta">arriving in 05:00</p>
+                    <span>rider is out for delivery</span>
+                </div>
+
+                <div class="mock-map" aria-label="Simulated delivery map">
+                    <div id="mockMap" class="mock-map-canvas"></div>
+                </div>
+            </section>
+
+            <button class="mock-add-bag" id="mockAddBag" type="button" hidden>
+                <span id="mockBasketCount">basket - 0</span>
+                <span id="mockBasketTotal">0 coins</span>
+            </button>
+
+            <p class="mock-bag-note" id="mockBagNote" aria-live="polite"></p>
+        </section>
+
+        <div class="mock-delivery-modal" id="mockDeliveryModal" hidden>
+            <div class="mock-delivery-modal-card" role="dialog" aria-modal="true" aria-labelledby="mockDeliveryModalTitle">
+                <h2 id="mockDeliveryModalTitle">congrats!</h2>
+                <p>you receive nothing.</p>
+                <p>thank you using our service.</p>
+                <button class="mock-delivery-complete" id="mockDeliveryComplete" type="button">
+                    complete delivery
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+    <script src="mockdelivery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</body>
+</html>

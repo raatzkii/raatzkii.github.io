@@ -383,10 +383,3 @@ leaderboardModal?.addEventListener("click", event => {
         leaderboardModal.hidden = true;
     }
 });
-
-window.addEventListener("beforeunload", event => {
-    if (!gameActive) return;
-
-    event.preventDefault();
-    event.returnValue = "";
-});

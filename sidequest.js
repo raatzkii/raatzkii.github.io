@@ -3,28 +3,43 @@ const SUPABASE_ANON_KEY = "sb_publishable_gW9mV7KogmX_ZR1xmTUk8w_O9IRap8H";
 const SIDEQUEST_TABLE = "side_quest_posts";
 const SIDEQUEST_BUCKET = "side-quest-photos";
 const POST_LIMIT = 5;
-const TARGET_MIN_METERS = 35;
-const TARGET_MAX_METERS = 95;
+const TARGET_MIN_METERS = 20;
+const TARGET_MAX_METERS = 120;
 const UNLOCK_RADIUS_METERS = 18;
+const LOCATION_MAX_ACCURACY_METERS = 35;
+const LOCATION_JITTER_METERS = 10;
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const sidequestGate = document.getElementById("sidequestGate");
 const sidequestCompass = document.getElementById("sidequestCompass");
 const sidequestFeed = document.getElementById("sidequestFeed");
-const enterGateBtn = document.getElementById("enterGateBtn");
+const startQuestBtn = document.getElementById("startQuestBtn");
+const viewOthersBtn = document.getElementById("viewOthersBtn");
 const gateStatus = document.getElementById("gateStatus");
 const questArrow = document.getElementById("questArrow");
 const questDistance = document.getElementById("questDistance");
-const postProofBtn = document.getElementById("postProofBtn");
+const captureMomentBtn = document.getElementById("captureMomentBtn");
 const proofInput = document.getElementById("proofInput");
 const proofModal = document.getElementById("proofModal");
+const proofPreviewStep = document.getElementById("proofPreviewStep");
 const closeProofModal = document.getElementById("closeProofModal");
+const closeShareModal = document.getElementById("closeShareModal");
+const openShareStepBtn = document.getElementById("openShareStepBtn");
 const proofForm = document.getElementById("proofForm");
 const proofPreview = document.getElementById("proofPreview");
-const proofCaption = document.getElementById("proofCaption");
+const proofNickname = document.getElementById("proofNickname");
+const shareAnonymous = document.getElementById("shareAnonymous");
 const submitProofBtn = document.getElementById("submitProofBtn");
 const proofStatus = document.getElementById("proofStatus");
+const postedModal = document.getElementById("postedModal");
+const viewPostedBtn = document.getElementById("viewPostedBtn");
+const nextLocationBtn = document.getElementById("nextLocationBtn");
+const postDetailModal = document.getElementById("postDetailModal");
+const closePostDetail = document.getElementById("closePostDetail");
+const postDetailImage = document.getElementById("postDetailImage");
+const postDetailDate = document.getElementById("postDetailDate");
+const postDetailAuthor = document.getElementById("postDetailAuthor");
 const sidequestPosts = document.getElementById("sidequestPosts");
 
 let currentPosition = null;
@@ -33,6 +48,7 @@ let watchId = null;
 let deviceHeading = null;
 let selectedFile = null;
 let latestDistance = null;
+let lastAcceptedPosition = null;
 
 function getAnonymousId() {
     const key = "sidequest_anon_id";
@@ -47,13 +63,16 @@ function getAnonymousId() {
     return newId;
 }
 
-function escapeHtml(value) {
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+function getAnonLabel() {
+    return `anon${Math.floor(100000 + Math.random() * 900000)}`;
+}
+
+function formatPostDate(value) {
+    const date = new Date(value);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = String(date.getFullYear()).slice(-2);
+    return `${month}/${day}/${year}`;
 }
 
 function toRadians(degrees) {
@@ -90,6 +109,33 @@ function getBearingDegrees(from, to) {
     return (toDegrees(Math.atan2(y, x)) + 360) % 360;
 }
 
+function getPositionFromGeolocation(position) {
+    return {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        accuracy: position.coords.accuracy || null
+    };
+}
+
+function shouldAcceptLocationUpdate(nextPosition) {
+    if (
+        nextPosition.accuracy
+        && nextPosition.accuracy > LOCATION_MAX_ACCURACY_METERS
+    ) {
+        return false;
+    }
+
+    if (!lastAcceptedPosition) return true;
+
+    const movement = getDistanceMeters(lastAcceptedPosition, nextPosition);
+    const jitterLimit = Math.max(
+        LOCATION_JITTER_METERS,
+        (nextPosition.accuracy || 0) * 0.5
+    );
+
+    return movement >= jitterLimit;
+}
+
 function createTarget(origin) {
     const distance = TARGET_MIN_METERS + Math.random() * (TARGET_MAX_METERS - TARGET_MIN_METERS);
     const bearing = Math.random() * 360;
@@ -114,6 +160,12 @@ function createTarget(origin) {
     };
 }
 
+function showOnly(section) {
+    sidequestGate.hidden = section !== sidequestGate;
+    sidequestCompass.hidden = section !== sidequestCompass;
+    sidequestFeed.hidden = section !== sidequestFeed;
+}
+
 function updateCompass() {
     if (!currentPosition || !targetPosition) return;
 
@@ -126,13 +178,15 @@ function updateCompass() {
     questArrow.style.setProperty("--arrow-rotation", `${rotation}deg`);
 
     if (latestDistance <= UNLOCK_RADIUS_METERS) {
-        questDistance.textContent = "you found it.";
-        postProofBtn.hidden = false;
+        sidequestCompass.classList.add("is-arrived");
+        questDistance.textContent = "you made it!";
+        captureMomentBtn.hidden = false;
         return;
     }
 
-    questDistance.textContent = `${Math.ceil(latestDistance)}m remaining`;
-    postProofBtn.hidden = true;
+    sidequestCompass.classList.remove("is-arrived");
+    questDistance.textContent = `${Math.ceil(latestDistance)}m away`;
+    captureMomentBtn.hidden = true;
 }
 
 function handleOrientation(event) {
@@ -150,13 +204,8 @@ async function requestCompassAccess() {
         typeof DeviceOrientationEvent !== "undefined"
         && typeof DeviceOrientationEvent.requestPermission === "function"
     ) {
-        try {
-            const permission = await DeviceOrientationEvent.requestPermission();
-            if (permission !== "granted") return;
-        } catch (error) {
-            console.warn(error);
-            return;
-        }
+        const permission = await DeviceOrientationEvent.requestPermission();
+        if (permission !== "granted") return;
     }
 
     window.addEventListener("deviceorientation", handleOrientation, true);
@@ -196,10 +245,14 @@ function startLocationWatch() {
     }
 
     watchId = navigator.geolocation.watchPosition(position => {
-        currentPosition = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        };
+        const nextPosition = getPositionFromGeolocation(position);
+
+        if (!shouldAcceptLocationUpdate(nextPosition)) {
+            return;
+        }
+
+        currentPosition = nextPosition;
+        lastAcceptedPosition = nextPosition;
         updateCompass();
     }, error => {
         console.warn(error);
@@ -211,9 +264,9 @@ function startLocationWatch() {
     });
 }
 
-async function enterGate() {
-    enterGateBtn.disabled = true;
-    gateStatus.textContent = "asking gps...";
+async function startQuest() {
+    startQuestBtn.disabled = true;
+    gateStatus.textContent = "";
 
     try {
         const anonymousId = getAnonymousId();
@@ -221,33 +274,34 @@ async function enterGate() {
 
         if (count >= POST_LIMIT) {
             gateStatus.textContent = "quest limit reached. try again tomorrow.";
-            enterGateBtn.disabled = false;
+            startQuestBtn.disabled = false;
             return;
         }
 
         await requestCompassAccess();
 
         const position = await getCurrentPosition();
-        currentPosition = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        };
+        currentPosition = getPositionFromGeolocation(position);
+        lastAcceptedPosition = currentPosition;
         targetPosition = createTarget(currentPosition);
 
-        sidequestGate.hidden = true;
-        sidequestCompass.hidden = false;
-        sidequestFeed.hidden = false;
-
+        showOnly(sidequestCompass);
         startLocationWatch();
         updateCompass();
-        await loadPosts();
     } catch (error) {
         console.error(error);
         gateStatus.textContent = error?.message?.toLowerCase().includes("permission")
             ? "can't start without location."
             : "quest setup unavailable.";
-        enterGateBtn.disabled = false;
+        startQuestBtn.disabled = false;
     }
+}
+
+async function startNextLocation() {
+    postedModal.hidden = true;
+    proofStatus.textContent = "";
+    startQuestBtn.disabled = false;
+    await startQuest();
 }
 
 function openProofPicker() {
@@ -257,12 +311,21 @@ function openProofPicker() {
 function openProofModal(file) {
     selectedFile = file;
     proofPreview.src = URL.createObjectURL(file);
-    proofCaption.value = "";
+    proofNickname.value = "";
+    shareAnonymous.checked = false;
     proofStatus.textContent = "";
+    proofPreviewStep.hidden = false;
+    proofForm.hidden = true;
     proofModal.hidden = false;
 }
 
-function closeModal() {
+function openShareStep() {
+    proofPreviewStep.hidden = true;
+    proofForm.hidden = false;
+    proofNickname.focus();
+}
+
+function closeProofFlow() {
     proofModal.hidden = true;
     selectedFile = null;
     proofInput.value = "";
@@ -280,6 +343,14 @@ async function submitProof(event) {
 
     if (!selectedFile || !targetPosition || latestDistance === null) return;
 
+    const nickname = proofNickname.value.trim().slice(0, 24);
+    const isAnonymous = shareAnonymous.checked;
+
+    if (!isAnonymous && !nickname) {
+        proofStatus.textContent = "nickname first.";
+        return;
+    }
+
     submitProofBtn.disabled = true;
     proofStatus.textContent = "posting...";
 
@@ -293,6 +364,7 @@ async function submitProof(event) {
             return;
         }
 
+        const authorLabel = isAnonymous ? getAnonLabel() : nickname;
         const filePath = `${anonymousId}/${Date.now()}.${getFileExtension(selectedFile)}`;
         const { error: uploadError } = await supabaseClient.storage
             .from(SIDEQUEST_BUCKET)
@@ -308,15 +380,16 @@ async function submitProof(event) {
             .insert({
                 anon_user_id: anonymousId,
                 image_path: filePath,
-                caption: proofCaption.value.trim(),
+                nickname,
+                is_anonymous: isAnonymous,
+                author_label: authorLabel,
                 distance_m: Math.round(latestDistance)
             });
 
         if (insertError) throw insertError;
 
-        proofStatus.textContent = "posted.";
-        closeModal();
-        await loadPosts();
+        closeProofFlow();
+        postedModal.hidden = false;
     } catch (error) {
         console.error(error);
         proofStatus.textContent = "post failed.";
@@ -325,51 +398,92 @@ async function submitProof(event) {
     }
 }
 
+function openPostDetail(post) {
+    const { data: publicData } = supabaseClient.storage
+        .from(SIDEQUEST_BUCKET)
+        .getPublicUrl(post.image_path);
+
+    postDetailImage.src = publicData.publicUrl;
+    postDetailDate.textContent = formatPostDate(post.created_at);
+    postDetailAuthor.textContent = post.author_label || "anon000000";
+    postDetailModal.hidden = false;
+}
+
+function closePostDetailModal() {
+    postDetailModal.hidden = true;
+    postDetailImage.removeAttribute("src");
+}
+
+async function showPostedFeed() {
+    postedModal.hidden = true;
+    await showOthers();
+}
+
+async function showOthers() {
+    showOnly(sidequestFeed);
+    gateStatus.textContent = "";
+    await loadPosts();
+}
+
 async function loadPosts() {
     const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     const { data, error } = await supabaseClient
         .from(SIDEQUEST_TABLE)
-        .select("image_path, caption, created_at")
+        .select("image_path, created_at, author_label")
         .gte("created_at", since)
         .order("created_at", { ascending: false })
-        .limit(24);
+        .limit(48);
 
     if (error) {
         console.error(error);
-        sidequestPosts.innerHTML = "";
+        sidequestPosts.innerHTML = `<p class="sidequest-empty">nothing here yet.</p>`;
+        return;
+    }
+
+    const posts = data || [];
+
+    if (!posts.length) {
+        sidequestPosts.innerHTML = `<p class="sidequest-empty">nothing here yet.</p>`;
         return;
     }
 
     sidequestPosts.innerHTML = "";
 
-    (data || []).forEach(post => {
+    posts.forEach(post => {
         const { data: publicData } = supabaseClient.storage
             .from(SIDEQUEST_BUCKET)
             .getPublicUrl(post.image_path);
 
-        const article = document.createElement("article");
-        article.className = "sidequest-post";
-        const caption = post.caption ? escapeHtml(post.caption) : "";
-        article.innerHTML = `
-            <img src="${publicData.publicUrl}" alt="">
-            ${caption ? `<p>${caption}</p>` : ""}
-        `;
+        const button = document.createElement("button");
+        button.className = "sidequest-post";
+        button.type = "button";
+        button.innerHTML = `<img src="${publicData.publicUrl}" alt="">`;
+        button.addEventListener("click", () => openPostDetail(post));
 
-        sidequestPosts.appendChild(article);
+        sidequestPosts.appendChild(button);
     });
 }
 
-enterGateBtn.addEventListener("click", enterGate);
-postProofBtn.addEventListener("click", openProofPicker);
+startQuestBtn.addEventListener("click", startQuest);
+viewOthersBtn.addEventListener("click", showOthers);
+captureMomentBtn.addEventListener("click", openProofPicker);
 proofInput.addEventListener("change", event => {
     const [file] = Array.from(event.target.files || []);
     if (file) openProofModal(file);
 });
-closeProofModal.addEventListener("click", closeModal);
+closeProofModal.addEventListener("click", closeProofFlow);
+closeShareModal.addEventListener("click", closeProofFlow);
 proofModal.addEventListener("click", event => {
-    if (event.target === proofModal) closeModal();
+    if (event.target === proofModal) closeProofFlow();
 });
+openShareStepBtn.addEventListener("click", openShareStep);
 proofForm.addEventListener("submit", submitProof);
+viewPostedBtn.addEventListener("click", showPostedFeed);
+nextLocationBtn.addEventListener("click", startNextLocation);
+closePostDetail.addEventListener("click", closePostDetailModal);
+postDetailModal.addEventListener("click", event => {
+    if (event.target === postDetailModal) closePostDetailModal();
+});
 
 window.addEventListener("beforeunload", () => {
     if (watchId !== null) {

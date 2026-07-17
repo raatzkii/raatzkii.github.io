@@ -92,6 +92,10 @@ body {
     gap: 12px;
 }
 
+.admin-mobile-only {
+    display: none;
+}
+
 .admin-section-label {
     margin: 18px 8px 0;
     color: var(--color-muted);
@@ -202,6 +206,14 @@ body {
 
     .admin-shell {
         margin-top: 72px;
+    }
+
+    .admin-desktop-only {
+        display: none !important;
+    }
+
+    .admin-mobile-only.reset-row {
+        display: flex;
     }
 
     .reset-row {

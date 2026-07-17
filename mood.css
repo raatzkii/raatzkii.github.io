@@ -31,7 +31,7 @@ body {
 
 .interact-cta {
     position: relative;
-    z-index: 80;
+    z-index: 260;
     display: inline-flex;
     align-items: center;
     gap: 8px;

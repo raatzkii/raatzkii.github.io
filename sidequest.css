@@ -27,7 +27,7 @@ body {
 }
 
 button,
-textarea {
+input {
     font: inherit;
 }
 
@@ -39,7 +39,7 @@ textarea {
     position: fixed;
     top: calc(24px + env(safe-area-inset-top));
     left: 18px;
-    z-index: 80;
+    z-index: 260;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -62,8 +62,8 @@ textarea {
 .sidequest-copy {
     display: grid;
     justify-items: center;
-    gap: 18px;
-    width: min(420px, 100%);
+    gap: 30px;
+    width: min(620px, 100%);
     text-align: center;
 }
 
@@ -81,6 +81,26 @@ textarea {
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -0.03em;
+}
+
+.sidequest-choice-divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 26px;
+    width: 100%;
+    color: var(--color-muted);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.sidequest-choice-divider::before,
+.sidequest-choice-divider::after {
+    content: "";
+    height: 1px;
+    background: #d0d0d0;
 }
 
 .sidequest-primary,
@@ -115,6 +135,12 @@ textarea {
     color: var(--color-text);
 }
 
+.sidequest-compass-group {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+}
+
 .sidequest-arrow-wrap {
     display: grid;
     place-items: center;
@@ -131,8 +157,11 @@ textarea {
     transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.sidequest-compass.is-arrived .sidequest-arrow-wrap i {
+    color: var(--color-white);
+}
+
 .sidequest-distance {
-    margin-top: 24px;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1;
@@ -140,57 +169,41 @@ textarea {
 }
 
 .sidequest-proof-btn {
-    margin-top: 28px;
+    min-height: 58px;
+    padding: 0 28px;
+    background: var(--color-text);
+    color: var(--color-white);
 }
 
 .sidequest-feed {
-    padding: 36px 18px calc(32px + env(safe-area-inset-bottom));
-}
-
-.sidequest-feed-header {
-    margin: 0 auto 18px;
-    width: min(430px, 100%);
-}
-
-.sidequest-feed-header h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.06em;
-}
-
-.sidequest-feed-header p {
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    min-height: 100svh;
+    padding: 92px 14px calc(32px + env(safe-area-inset-bottom));
+    overflow: auto;
 }
 
 .sidequest-posts {
-    display: grid;
-    gap: 14px;
-    width: min(430px, 100%);
+    column-count: 2;
+    column-gap: 14px;
+    width: min(760px, 100%);
     margin: 0 auto;
 }
 
 .sidequest-post {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 14px;
     overflow: hidden;
-    border-radius: 28px;
-    background: var(--color-white);
+    border: 0;
+    border-radius: 24px;
+    background: transparent;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
 }
 
 .sidequest-post img {
     display: block;
     width: 100%;
     height: auto;
-}
-
-.sidequest-post p {
-    padding: 16px 18px 18px;
-    color: var(--color-text);
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.03em;
 }
 
 .sidequest-modal {
@@ -211,6 +224,18 @@ textarea {
     width: min(440px, 100%);
     max-height: 86vh;
     padding: 44px 34px 36px;
+    overflow-y: auto;
+    border-radius: 34px;
+    background: var(--color-white);
+}
+
+.sidequest-detail-card {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    width: min(440px, 100%);
+    max-height: 86vh;
+    padding: 34px;
     overflow-y: auto;
     border-radius: 34px;
     background: var(--color-white);
@@ -237,27 +262,85 @@ textarea {
     background: #dedede;
 }
 
-.sidequest-modal-card textarea {
+.sidequest-input {
     width: 100%;
-    min-height: 112px;
-    padding: 18px 20px;
+    min-height: 64px;
+    padding: 0 22px;
     border: 0;
-    border-radius: 28px;
+    border-radius: 999px;
     background: var(--color-bg);
     color: var(--color-text);
-    resize: none;
     outline: none;
     font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.25;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+.sidequest-input::placeholder {
+    color: var(--color-muted);
+}
+
+.sidequest-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 700;
     letter-spacing: -0.03em;
 }
 
-.sidequest-modal-card textarea::placeholder {
-    color: var(--color-muted);
+.sidequest-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
 }
 
 .sidequest-submit {
     min-height: 64px;
     background: var(--color-accent);
+}
+
+.sidequest-posted-card {
+    text-align: center;
+}
+
+.sidequest-posted-text {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.sidequest-detail-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+}
+
+.sidequest-detail-copy {
+    display: grid;
+    gap: 6px;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+.sidequest-empty {
+    display: grid;
+    min-height: calc(100svh - 150px);
+    place-items: center;
+    color: var(--color-muted);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -0.04em;
 }

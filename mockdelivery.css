@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100svh;
+    overflow-x: hidden;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button {
+    font: inherit;
+}
+
+.mock-delivery-page {
+    min-height: 100svh;
+}
+
+.interact-cta {
+    position: fixed;
+    top: calc(24px + env(safe-area-inset-top));
+    left: 18px;
+    z-index: 260;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.mock-delivery-start {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 96px 24px;
+    text-align: center;
+}
+
+.mock-order-now {
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mock-delivery-app {
+    height: 100svh;
+    padding: calc(92px + env(safe-area-inset-top)) 14px calc(132px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mock-delivery-app.is-tracking {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    overflow: hidden;
+}
+
+.mock-delivery-app::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    height: calc(116px + env(safe-area-inset-top));
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg) 0%,
+        rgba(239, 239, 239, 0.92) 38%,
+        rgba(239, 239, 239, 0) 100%
+    );
+}
+
+.mock-delivery-app.has-selection::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    height: calc(118px + env(safe-area-inset-bottom));
+    background: #ffffff;
+    pointer-events: none;
+}
+
+.mock-food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 22px;
+    width: min(520px, 100%);
+    margin: 0 auto;
+}
+
+.mock-summary-view {
+    display: grid;
+    gap: 24px;
+    width: min(520px, 100%);
+    margin: 0 auto;
+}
+
+.mock-tracking-view {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 28px;
+    width: min(520px, 100%);
+    min-height: calc(100svh - 106px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    margin: 0 auto;
+}
+
+.mock-tracking-status {
+    display: grid;
+    gap: 14px;
+}
+
+.mock-tracking-status p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 2.35rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+}
+
+.mock-tracking-status span {
+    color: var(--color-text);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mock-map {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 0;
+    background: #efefef;
+}
+
+.mock-map-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mock-map-route-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.mock-map-route-path {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 4px rgba(50, 255, 0, 0.28));
+}
+
+.mock-map-rider-svg {
+    filter: drop-shadow(0 0 6px rgba(50, 255, 0, 0.32));
+}
+
+.mock-map-rider-glow {
+    fill: rgba(50, 255, 0, 0.18);
+}
+
+.mock-map-rider-core {
+    fill: var(--color-bg);
+    stroke: var(--color-text);
+    stroke-width: 5;
+}
+
+.mock-map .maplibregl-marker {
+    z-index: 3;
+}
+
+.mock-location-marker {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 0 0 8px rgba(50, 255, 0, 0.16);
+}
+
+.mock-location-marker i {
+    display: block;
+    line-height: 1;
+}
+
+.mock-delivery-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(28, 28, 28, 0.28);
+    backdrop-filter: blur(14px);
+}
+
+.mock-delivery-modal-card {
+    display: grid;
+    gap: 18px;
+    width: min(520px, 100%);
+    padding: 42px 30px 30px;
+    border-radius: 34px;
+    background: #ffffff;
+    color: var(--color-text);
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(28, 28, 28, 0.18);
+}
+
+.mock-delivery-modal-card h2 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+}
+
+.mock-delivery-modal-card p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.mock-delivery-complete {
+    min-height: 66px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.maplibregl-ctrl-attrib,
+.maplibregl-ctrl-logo {
+    display: none !important;
+}
+
+.mock-summary-view h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+}
+
+.mock-summary-list {
+    display: grid;
+    gap: 14px;
+}
+
+.mock-summary-item {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.mock-summary-item img {
+    display: block;
+    width: 64px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.mock-summary-item p {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mock-summary-item strong,
+.mock-summary-totals strong,
+.mock-wallet strong {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+}
+
+.mock-summary-totals p:not(.mock-total-row) strong {
+    font-weight: 500;
+}
+
+.mock-summary-totals {
+    display: grid;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(28, 28, 28, 0.12);
+}
+
+.mock-summary-totals p,
+.mock-wallet {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.mock-delivery-app.is-tracking::before {
+    display: none;
+}
+
+.mock-summary-totals span,
+.mock-wallet span {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mock-total-row span,
+.mock-wallet span {
+    font-weight: 700;
+}
+
+.mock-total-row {
+    padding-top: 14px;
+    border-top: 1px solid rgba(28, 28, 28, 0.12);
+}
+
+.mock-wallet {
+    padding-top: 4px;
+}
+
+.mock-food-card {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mock-food-thumb {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 30%;
+    background: #ffffff;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 0C86 0 100 14 100 50S86 100 50 100 0 86 0 50 14 0 50 0Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 0C86 0 100 14 100 50S86 100 50 100 0 86 0 50 14 0 50 0Z'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    box-shadow: 0 14px 30px rgba(28, 28, 28, 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.mock-food-card.is-selected .mock-food-thumb {
+    box-shadow:
+        0 0 0 4px var(--color-accent),
+        0 16px 34px rgba(50, 255, 0, 0.18);
+    transform: translateY(-2px);
+}
+
+.mock-food-thumb img {
+    display: block;
+    width: 76%;
+    height: 76%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.mock-food-name,
+.mock-food-price {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mock-food-name {
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-weight: 800;
+}
+
+.mock-food-price {
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.mock-add-bag {
+    position: fixed;
+    left: 50%;
+    bottom: calc(29px + env(safe-area-inset-bottom));
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: min(460px, calc(100% - 56px));
+    min-height: 60px;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    padding: 0 30px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mock-add-bag[hidden] {
+    display: none;
+}
+
+.mock-add-bag:disabled {
+    background: #dedede;
+    color: #8b8b8b;
+}
+
+.mock-add-bag span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mock-add-bag span:first-child {
+    text-align: left;
+}
+
+.mock-add-bag span:last-child {
+    text-align: right;
+}
+
+.mock-add-bag.is-insufficient {
+    justify-content: center;
+}
+
+.mock-add-bag.is-insufficient span:first-child {
+    flex: 1;
+    text-align: center;
+}
+
+.mock-add-bag.is-insufficient span:last-child {
+    display: none;
+}
+
+.mock-bag-note {
+    position: fixed;
+    left: 18px;
+    right: 18px;
+    bottom: calc(98px + env(safe-area-inset-bottom));
+    z-index: 60;
+    min-height: 1.2em;
+    margin-top: 0;
+    color: var(--color-muted);
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+@media (min-width: 769px) {
+    .mock-delivery-page::after {
+        content: "mobile only.";
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: var(--color-text);
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        background: var(--color-bg);
+    }
+
+    .mock-delivery-page > * {
+        display: none;
+    }
+}
+
+@media (max-width: 390px) {
+    .mock-delivery-app {
+        padding-inline: 10px;
+    }
+
+    .mock-food-grid {
+        column-gap: 8px;
+        row-gap: 18px;
+    }
+
+    .mock-food-thumb {
+        border-radius: 30%;
+    }
+
+    .mock-food-name {
+        font-size: 0.82rem;
+    }
+}

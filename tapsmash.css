@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg: #efefef;
+    --color-text: #1c1c1c;
+    --color-accent: #32ff00;
+    --color-muted: #6f6f6f;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100svh;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.tap-smash-page {
+    min-height: 100svh;
+}
+
+.interact-cta {
+    position: fixed;
+    top: calc(24px + env(safe-area-inset-top));
+    left: 18px;
+    z-index: 260;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.tap-start {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 96px 24px;
+    text-align: center;
+}
+
+.tap-start-button {
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.tap-limit-notice {
+    position: fixed;
+    left: 24px;
+    right: 24px;
+    top: calc(50% + 34px);
+    min-height: 1.3em;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -0.03em;
+}
+
+.tap-game {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    padding: calc(76px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom));
+}
+
+.tap-timer {
+    position: fixed;
+    top: calc(24px + env(safe-area-inset-top));
+    right: 18px;
+    z-index: 80;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.tap-zone {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 28px;
+    background: #e8e8e8;
+    color: var(--color-text);
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tap-zone:active {
+    background: var(--color-accent);
+}
+
+.tap-zone span {
+    font-size: clamp(6rem, 32vw, 10rem);
+    font-weight: 800;
+    line-height: 0.86;
+    letter-spacing: -0.08em;
+}
+
+.tap-game.is-counting-down .tap-zone {
+    visibility: hidden;
+}
+
+.countdown-overlay {
+    position: fixed;
+    inset: calc(76px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom));
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    border-radius: 28px;
+    background: var(--color-bg);
+}
+
+.countdown-overlay span {
+    font-size: clamp(5rem, 28vw, 9rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+}
+
+.leaderboard-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.8rem;
+}
+
+body.tap-active .leaderboard-toggle {
+    display: none;
+}
+
+.leaderboard-modal,
+.game-result,
+.score-confirmation {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.leaderboard-card,
+.result-card,
+.confirmation-card {
+    position: relative;
+    width: min(440px, 100%);
+    max-height: 80vh;
+    padding: 44px 34px 36px;
+    overflow-y: auto;
+    border-radius: 34px;
+    background: var(--color-white);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.leaderboard-label {
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.leaderboard-list {
+    display: grid;
+    gap: 0;
+    list-style: none;
+    color: #c3c3c3;
+}
+
+.leaderboard-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 0 0;
+    border-top: 1px solid rgba(28, 28, 28, 0.1);
+}
+
+.leaderboard-list span,
+.leaderboard-list strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.result-card,
+.confirmation-card {
+    display: grid;
+    gap: 10px;
+    text-align: center;
+}
+
+#finalScore,
+#rankPlace {
+    display: block;
+    margin: 0 auto 14px;
+    color: var(--color-text);
+    font-size: clamp(4rem, 18vw, 6rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+}
+
+#nicknameInput,
+#submitScoreBtn,
+.confirmation-actions button {
+    width: 100%;
+    min-height: 58px;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 18px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+#nicknameInput {
+    outline: none;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+#submitScoreBtn,
+#tryAgainBtn {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+#shareScoreBtn {
+    background: var(--color-text);
+    color: var(--color-white);
+}
+
+.result-message {
+    min-height: 1.2em;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.confirmation-message {
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+.confirmation-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}

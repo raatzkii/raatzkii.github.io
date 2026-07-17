@@ -94,12 +94,12 @@ async function resetWord() {
 
 async function resetWall() {
     const confirmed = confirm(
-        "Reset Wall?"
+        "Reset notes?"
     );
 
     if (!confirmed) return;
 
-    adminStatus.textContent = "Resetting Wall...";
+    adminStatus.textContent = "Resetting notes...";
 
     const { error } = await supabaseClient.rpc(
         "reset_wall_everything",
@@ -112,13 +112,13 @@ async function resetWall() {
         console.error(error);
 
         adminStatus.textContent =
-            "Wall reset failed.";
+            "Notes reset failed.";
 
         return;
     }
 
     adminStatus.textContent =
-        "Wall reset complete.";
+        "Notes reset complete.";
 
     if (!wallNotesPanel.hidden) {
         await loadWallNotes();
@@ -185,15 +185,45 @@ async function resetClickathon() {
         "Clickathon reset complete.";
 }
 
-async function resetDontBlink() {
+async function resetTapSmash() {
     const confirmed = confirm(
-        "Reset Don't Blink scores?"
+        "Reset Tap Smash scores?"
     );
 
     if (!confirmed) return;
 
     adminStatus.textContent =
-        "Resetting Don't Blink...";
+        "Resetting Tap Smash...";
+
+    const { error } = await supabaseClient.rpc(
+        "reset_tap_smash_scores",
+        {
+            input_password: mainAdminPassword
+        }
+    );
+
+    if (error) {
+        console.error(error);
+
+        adminStatus.textContent =
+            "Tap Smash reset failed.";
+
+        return;
+    }
+
+    adminStatus.textContent =
+        "Tap Smash reset complete.";
+}
+
+async function resetDontBlink() {
+    const confirmed = confirm(
+        "Reset dont blink scores?"
+    );
+
+    if (!confirmed) return;
+
+    adminStatus.textContent =
+        "Resetting dont blink...";
 
     const { error } = await supabaseClient.rpc(
         "reset_mostwanted_scores",
@@ -206,13 +236,73 @@ async function resetDontBlink() {
         console.error(error);
 
         adminStatus.textContent =
-            "Don't Blink reset failed.";
+            "dont blink reset failed.";
 
         return;
     }
 
     adminStatus.textContent =
-        "Don't Blink reset complete.";
+        "dont blink reset complete.";
+}
+
+async function resetFastLane() {
+    const confirmed = confirm(
+        "Reset Fast Lane scores?"
+    );
+
+    if (!confirmed) return;
+
+    adminStatus.textContent =
+        "Resetting Fast Lane...";
+
+    const { error } = await supabaseClient.rpc(
+        "reset_fastlane_scores",
+        {
+            input_password: mainAdminPassword
+        }
+    );
+
+    if (error) {
+        console.error(error);
+
+        adminStatus.textContent =
+            "Fast Lane reset failed.";
+
+        return;
+    }
+
+    adminStatus.textContent =
+        "Fast Lane reset complete.";
+}
+
+async function resetSideQuest() {
+    const confirmed = confirm(
+        "Reset Side Quest posts?"
+    );
+
+    if (!confirmed) return;
+
+    adminStatus.textContent =
+        "Resetting Side Quest...";
+
+    const { error } = await supabaseClient.rpc(
+        "reset_side_quest_posts",
+        {
+            input_password: mainAdminPassword
+        }
+    );
+
+    if (error) {
+        console.error(error);
+
+        adminStatus.textContent =
+            "Side Quest reset failed.";
+
+        return;
+    }
+
+    adminStatus.textContent =
+        "Side Quest reset complete.";
 }
 
 async function loadWallNotes() {
@@ -284,7 +374,7 @@ async function loadWallNotes() {
 
 async function deleteWallNote(noteId, button) {
     const confirmed = confirm(
-        "Delete this wall note?"
+        "Delete this note?"
     );
 
     if (!confirmed) return;
@@ -314,7 +404,7 @@ async function deleteWallNote(noteId, button) {
     button.closest(".wall-note-item")?.remove();
 
     adminStatus.textContent =
-        "Wall note deleted.";
+        "Note deleted.";
 
     if (!wallNotesList.children.length) {
         wallNotesStatus.textContent =
@@ -389,8 +479,20 @@ document.addEventListener("click", async event => {
             await resetClickathon();
             break;
 
+        case "tapsmash":
+            await resetTapSmash();
+            break;
+
         case "dontblink":
             await resetDontBlink();
+            break;
+
+        case "fastlane":
+            await resetFastLane();
+            break;
+
+        case "sidequest":
+            await resetSideQuest();
             break;
     }
 });

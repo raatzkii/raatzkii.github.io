@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Side | Dennis Espinosa</title>
+
+    <meta
+        name="description"
+        content="A mobile scratch-off message hunt built around tiny optimism and hidden notes. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+    >
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="stylesheet" href="brightside.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+</head>
+<body>
+    <main class="bright-side-page" id="brightSidePage">
+        <a href="play.html" class="interact-cta back-to-play">
+            <span class="cta-arrow">←</span> back
+        </a>
+
+        <section class="bright-side-start" id="brightSideStart">
+            <button class="bright-side-start-btn" id="brightSideStartBtn" type="button">
+                + from me to you
+            </button>
+        </section>
+
+        <section class="bright-side-stage" id="brightSideStage" aria-label="Scratch message" hidden>
+            <div class="bright-side-message" id="brightSideMessage">
+                <p id="brightSideText">you made room for something better.</p>
+            </div>
+
+            <canvas class="bright-side-canvas" id="brightSideCanvas" aria-label="Scratch area"></canvas>
+        </section>
+    </main>
+
+    <script src="brightside.js"></script>
+</body>
+</html>

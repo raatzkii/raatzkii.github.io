@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fastlane | Dennis Espinosa</title>
+    <title>Fast Lane | Dennis Espinosa</title>
+
+    <meta
+        name="description"
+        content="A mobile reaction challenge inspired by racing lights and split-second timing. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+    >
 
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
@@ -12,12 +17,11 @@
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link rel="stylesheet" href="fastlane.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
-    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
     <main class="fastlane-page">
         <a href="play.html" class="interact-cta back-to-play">
-            <span class="cta-arrow">←</span> Back
+            <span class="cta-arrow">←</span> back
         </a>
 
         <button
@@ -31,13 +35,16 @@
 
         <section class="fastlane-start" id="fastlaneStart">
             <button class="fastlane-start-btn" id="fastlaneStartBtn" type="button">
-                + start engine
+                + full throttle
             </button>
         </section>
 
         <section class="fastlane-game" id="fastlaneGame" aria-label="Fastlane reaction game" hidden>
             <div class="fastlane-stage">
                 <div class="fastlane-lights" aria-hidden="true">
+                    <span class="fastlane-light"></span>
+                    <span class="fastlane-light"></span>
+                    <span class="fastlane-light"></span>
                     <span class="fastlane-light"></span>
                     <span class="fastlane-light"></span>
                     <span class="fastlane-light"></span>
@@ -104,6 +111,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="fastlane.js"></script>
-    <script src="mobile-gate.js"></script>
 </body>
 </html>

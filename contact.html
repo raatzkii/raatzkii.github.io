@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Dennis Espinosa</title>
 
+    <meta
+        name="description"
+        content="Ways to connect, collaborate, or send support through direct channels. Explore Dennis Espinosa's site that reflects more than a decade of diverse experience in the creative field."
+    >
+
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
@@ -13,7 +18,6 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="sticky-banner.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
-    <link rel="stylesheet" href="mobile-gate.css">
 </head>
 <body>
     <main class="contact-page">
@@ -30,9 +34,19 @@
 
                 <section class="contact-panel" aria-label="Contact options">
                     <div class="contact-copy">
-                        <p class="contact-kicker">whether you're here to connect, support, or just look around</p>
+                        <p class="contact-kicker">
+                            <span class="contact-copy-line contact-copy-line--black">whether</span>
+                            <span class="contact-copy-line contact-copy-line--black">you're here to</span>
+                            <span class="contact-copy-line contact-copy-line--black">connect,</span>
+                            <span class="contact-copy-line contact-copy-line--black">support,</span>
+                            <span class="contact-copy-line contact-copy-line--black">or just</span>
+                            <span class="contact-copy-line contact-copy-line--black">look around</span>
+                        </p>
                         <h1 class="contact-title">
-                            <span class="contact-highlight">i'd call that a win.</span>
+                            <span class="contact-highlight">
+                                <span class="contact-copy-line contact-copy-line--green">i'd call that </span>
+                                <span class="contact-copy-line contact-copy-line--green">a win.</span>
+                            </span>
                         </h1>
                     </div>
 
@@ -89,12 +103,21 @@
                 </section>
             </div>
 
-            <div class="qr-channel-list qr-channel-list--single" data-qr-panel="burger" hidden>
+            <div class="qr-channel-list qr-channel-list--burger" data-qr-panel="burger" hidden>
                 <section class="qr-channel">
                     <div class="qr-placeholder qr-placeholder--image" aria-label="GCash QR code">
                         <img src="assets/gcqr.png" alt="GCash QR code">
                     </div>
-                    <p>thank you!</p>
+                    <p>gcash</p>
+                </section>
+
+                <span class="qr-divider" aria-hidden="true"></span>
+
+                <section class="qr-channel">
+                    <div class="qr-placeholder qr-placeholder--image" aria-label="PayPal QR code">
+                        <img src="assets/ppqr.png" alt="PayPal QR code">
+                    </div>
+                    <p>paypal</p>
                 </section>
             </div>
         </div>
@@ -132,6 +155,5 @@
     <script src="contact.js"></script>
     <script src="sticky-banner.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="mobile-gate.js"></script>
 </body>
 </html>

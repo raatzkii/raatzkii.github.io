@@ -112,6 +112,22 @@ const projects = [
         userVote: null
     },
     {
+        id: 36,
+        title: "rolling bonus",
+        projectName: "cash or crypto, both are welcome  ",
+        year: "2026",
+        country: "south korea",
+        description: "promotional creative that offers reload rewards whether you use won or tether",
+        category: "igaming",
+        categories: ["latest", "igaming", "digital"],
+        image: "assets/works/latest-igaming-digital_reload2.jpg",
+        width: 700,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 5,
         title: "lunar new year '26",
         projectName: "the bearers of fortune have arrived",
