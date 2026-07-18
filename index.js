@@ -6,12 +6,34 @@ const firstHero = document.querySelector(".hero-panel--primary");
 const secondHero = document.querySelector(".hero-layer");
 const featureCardsSection = document.querySelector(".feature-cards-section");
 const repelImages = [...document.querySelectorAll(".hero-repel-image")];
+const mobileEffectiveWord = document.getElementById("mobileEffectiveWord");
 
 let revealTicking = false;
 let forwardBandTop = 0;
 let secondBandTop = 0;
 let forwardSlowOffset = 0;
 let secondSlowOffset = 0;
+let mobileEffectiveTimer = 0;
+let mobileEffectiveShiftTimer = 0;
+let mobileEffectiveIndex = 0;
+let desktopEffectiveTimer = 0;
+let desktopEffectiveShiftTimer = 0;
+let desktopEffectiveIndex = 0;
+
+const mobileEffectiveWords = [
+    "effective",
+    "impactful",
+    "consistent",
+    "clean",
+    "useful",
+    "seamless",
+    "responsive",
+    "scalable",
+    "practical"
+];
+const mobileEffectiveQuery = window.matchMedia("(max-width: 768px)");
+const desktopEffectiveQuery = window.matchMedia("(min-width: 769px)");
+const mobileEffectiveReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(value, max));
@@ -20,6 +42,81 @@ function clamp(value, min, max) {
 function setPx(element, property, value) {
     if (!element) return;
     element.style.setProperty(property, `${value}px`);
+}
+
+function setMobileEffectiveWord() {
+    if (!mobileEffectiveWord || !mobileEffectiveQuery.matches) return;
+
+    if (mobileEffectiveReduceMotion.matches) {
+        mobileEffectiveIndex = (mobileEffectiveIndex + 1) % mobileEffectiveWords.length;
+        mobileEffectiveWord.textContent = mobileEffectiveWords[mobileEffectiveIndex];
+        return;
+    }
+
+    mobileEffectiveWord.classList.add("is-shifting");
+
+    window.clearTimeout(mobileEffectiveShiftTimer);
+    mobileEffectiveShiftTimer = window.setTimeout(() => {
+        if (!mobileEffectiveQuery.matches) return;
+
+        mobileEffectiveIndex = (mobileEffectiveIndex + 1) % mobileEffectiveWords.length;
+        mobileEffectiveWord.textContent = mobileEffectiveWords[mobileEffectiveIndex];
+        mobileEffectiveWord.classList.remove("is-shifting");
+    }, 280);
+}
+
+function setDesktopEffectiveWord() {
+    if (!mobileEffectiveWord || !desktopEffectiveQuery.matches) return;
+
+    if (mobileEffectiveReduceMotion.matches) {
+        desktopEffectiveIndex = (desktopEffectiveIndex + 1) % mobileEffectiveWords.length;
+        mobileEffectiveWord.textContent = mobileEffectiveWords[desktopEffectiveIndex];
+        return;
+    }
+
+    mobileEffectiveWord.classList.add("is-shifting");
+
+    window.clearTimeout(desktopEffectiveShiftTimer);
+    desktopEffectiveShiftTimer = window.setTimeout(() => {
+        if (!desktopEffectiveQuery.matches) return;
+
+        desktopEffectiveIndex = (desktopEffectiveIndex + 1) % mobileEffectiveWords.length;
+        mobileEffectiveWord.textContent = mobileEffectiveWords[desktopEffectiveIndex];
+        mobileEffectiveWord.classList.remove("is-shifting");
+    }, 280);
+}
+
+function syncEffectiveWordRotator() {
+    if (!mobileEffectiveWord) return;
+
+    window.clearInterval(mobileEffectiveTimer);
+    window.clearTimeout(mobileEffectiveShiftTimer);
+    window.clearInterval(desktopEffectiveTimer);
+    window.clearTimeout(desktopEffectiveShiftTimer);
+    mobileEffectiveTimer = 0;
+    mobileEffectiveShiftTimer = 0;
+    desktopEffectiveTimer = 0;
+    desktopEffectiveShiftTimer = 0;
+    mobileEffectiveWord.classList.remove("is-shifting");
+
+    if (mobileEffectiveQuery.matches) {
+        desktopEffectiveIndex = 0;
+        mobileEffectiveWord.textContent = mobileEffectiveWords[mobileEffectiveIndex];
+        mobileEffectiveTimer = window.setInterval(setMobileEffectiveWord, 1700);
+        return;
+    }
+
+    mobileEffectiveIndex = 0;
+    mobileEffectiveWord.textContent = mobileEffectiveWords[desktopEffectiveIndex];
+    desktopEffectiveTimer = window.setInterval(setDesktopEffectiveWord, 1700);
+}
+
+syncEffectiveWordRotator();
+
+if (mobileEffectiveQuery.addEventListener) {
+    mobileEffectiveQuery.addEventListener("change", syncEffectiveWordRotator);
+} else if (mobileEffectiveQuery.addListener) {
+    mobileEffectiveQuery.addListener(syncEffectiveWordRotator);
 }
 
 function updateLayerReveal() {

@@ -52,7 +52,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
-    <link rel="stylesheet" href="index.css?v=20260717-3">
+    <link rel="stylesheet" href="index.css?v=20260719-2">
     <link rel="stylesheet" href="sticky-banner.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
 </head>
@@ -69,12 +69,12 @@
                         <span class="mobile-text-line">hi.</span>
                         <span class="mobile-text-line">my name is</span>
                         <span class="mobile-text-line">dennis</span>
-                        <span class="mobile-text-line mobile-text-line--green">and i make</span>
+                        <span class="mobile-text-line">and i make</span>
                     </p>
                     <h1 class="hero-title">
                         <span class="hero-highlight">
-                            <span class="mobile-text-line">effective</span>
-                            <span class="mobile-text-line">designs</span>
+                            <span class="mobile-text-line" id="mobileEffectiveWord">effective</span>
+                            <span class="mobile-text-line">designs.</span>
                         </span>
                     </h1>
                 </div>
@@ -104,14 +104,16 @@
             <div class="hero-layout hero-layout--second">
                 <div class="hero-copy hero-copy--second">
                     <p class="hero-kicker">
-                        <span class="mobile-text-line">but more</span>
-                        <span class="mobile-text-line">importantly,</span>
-                        <span class="mobile-text-line">im just here</span>
-                        <span class="mobile-text-line mobile-text-line--green">to outdo</span>
+                        <span class="desktop-only-text">but more importantly, im just here to</span>
+                        <span class="mobile-only-text mobile-text-line">but more</span>
+                        <span class="mobile-only-text mobile-text-line">importantly,</span>
+                        <span class="mobile-only-text mobile-text-line">im just here</span>
+                        <span class="mobile-only-text mobile-text-line mobile-text-line--green">to outdo</span>
                     </p>
                     <h2 class="hero-title">
                         <span class="hero-highlight">
-                            <span class="mobile-text-line">myself.</span>
+                            <span class="desktop-only-text">outdo myself.</span>
+                            <span class="mobile-only-text mobile-text-line">myself.</span>
                         </span>
                     </h2>
                 </div>
@@ -417,7 +419,7 @@
         </a>
     </nav>
 
-    <script src="index.js?v=20260717-1"></script>
+    <script src="index.js?v=20260718-2"></script>
     <script src="sticky-banner.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </body>

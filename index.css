@@ -1026,6 +1026,12 @@ body {
     max-width: 100%;
 }
 
+.hero-panel--primary .hero-layout {
+    justify-content: flex-start;
+    width: min(100%, 1450px);
+    min-height: calc(100vh - 64px);
+}
+
 .hero-layout--second {
     align-items: center;
     gap: clamp(6px, 0.8vw, 16px);
@@ -1050,6 +1056,10 @@ body {
     will-change: transform;
 }
 
+.hero-panel--primary .hero-figure img {
+    transform: translate3d(calc(-12% + var(--hero-avoid-x, 0px)), calc(-96px + var(--hero-avoid-y, 0px)), 0);
+}
+
 .hero-figure--second {
     width: min(58vw, 720px);
     align-self: center;
@@ -1070,6 +1080,26 @@ body {
     gap: 0.08em;
     text-align: center;
     transform: translate(-24px, -65%);
+}
+
+.hero-panel--primary .hero-copy {
+    position: absolute;
+    top: 50%;
+    right: clamp(88px, 20vw, 220px);
+    z-index: 3;
+    width: max-content;
+    max-width: calc(100vw - 112px);
+    padding-bottom: 6.4rem;
+    transform: translateY(calc(-65% - 48px));
+}
+
+.hero-panel--primary .hero-title {
+    position: absolute;
+    top: calc(100% - 6.2rem);
+    left: 50%;
+    width: max-content;
+    max-width: none;
+    transform: translateX(-50%);
 }
 
 .hero-copy--second {
@@ -1107,6 +1137,24 @@ body {
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
     line-height: 1.25;
+}
+
+.mobile-only-text {
+    display: none;
+}
+
+.desktop-only-text {
+    display: inline;
+}
+
+#mobileEffectiveWord {
+    display: inline-block;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+#mobileEffectiveWord.is-shifting {
+    opacity: 0;
+    transform: translateY(0.12em);
 }
 
 .warning-reveal {
@@ -1504,6 +1552,12 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
         width: min(100%, 560px);
     }
 
+    .hero-panel--primary .hero-layout {
+        justify-content: center;
+        width: min(100%, 560px);
+        min-height: auto;
+    }
+
     .hero-layout--second {
         flex-direction: column-reverse;
         min-height: auto;
@@ -1519,9 +1573,30 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
     .hero-copy--second {
         align-items: center;
         text-align: center;
+        position: static;
         transform: none;
         gap: 0;
         width: min(100%, 34rem);
+        max-width: min(100%, 34rem);
+    }
+
+    .hero-panel--primary .hero-copy {
+        position: static;
+        top: auto;
+        right: auto;
+        width: min(100%, 34rem);
+        max-width: min(100%, 34rem);
+        padding-bottom: 0;
+        transform: none;
+    }
+
+    .hero-panel--primary .hero-title {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        max-width: none;
+        transform: none;
     }
 
     .warning-copy {
@@ -1533,7 +1608,10 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
 
     .hero-title,
     .warning-title {
+        position: static;
+        width: auto;
         max-width: none;
+        transform: none;
         font-size: clamp(3rem, 11.8vw, 5.2rem);
         line-height: 1.12;
         text-wrap: balance;
@@ -1563,6 +1641,20 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
         margin: 0 0 0.18em;
         padding: 0.02em 0.14em 0.08em;
         line-height: 1.06;
+    }
+
+    .desktop-only-text {
+        display: none;
+    }
+
+    .mobile-only-text {
+        display: block;
+    }
+
+    #mobileEffectiveWord {
+        display: block;
+        width: fit-content;
+        text-align: center;
     }
 
     .hero-title .mobile-text-line:last-child,
