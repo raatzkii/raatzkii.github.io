@@ -686,7 +686,10 @@ body {
 @media (max-width: 768px) {
     .portfolio-page {
         min-height: 100svh;
-        padding: 34px 18px 104px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px calc(104px + env(safe-area-inset-bottom));
         overflow-x: hidden;
     }
 
@@ -696,13 +699,14 @@ body {
 
     .interact-list {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        grid-template-columns: 1fr;
+        gap: 0;
         width: 100%;
-        max-width: 430px;
+        max-width: 680px;
         margin: 0 auto;
         padding: 0;
         overflow: visible;
+        transform: translateY(3px);
     }
 
     .interact-item {
@@ -711,24 +715,26 @@ body {
 
     .interact-item.mobile-play-feature {
         display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
         grid-column: 1 / -1;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        min-height: 220px;
-        padding: 26px 24px;
-        border-radius: 28px;
-        background: #e8e8e8;
+        gap: 16px;
+        min-height: 136px;
+        padding: 18px 0 20px;
+        border-bottom: 2px solid #d0d0d0;
+        border-radius: 0;
+        background: transparent;
         box-shadow: none;
         color: var(--color-text);
         transform: none;
-        overflow: hidden;
+        overflow: visible;
     }
 
     .interact-item.mobile-play-half {
-        grid-column: auto;
-        min-height: 190px;
-        padding: 24px 14px;
+        grid-column: 1 / -1;
+        min-height: 136px;
+        padding: 18px 0 20px;
     }
 
     .mobile-play-insight {
@@ -757,58 +763,66 @@ body {
 
     .interact-item.mobile-play-feature:hover,
     .interact-item.mobile-play-feature:focus-within {
-        background: #e8e8e8;
+        background: transparent;
         box-shadow: none;
         transform: none;
     }
 
     .mobile-play-feature .interact-content {
-        flex: 0 0 auto;
-        width: 100%;
+        flex: 1 1 auto;
+        align-self: stretch;
+        width: auto;
+        min-width: 0;
         min-height: 0;
         padding: 0;
         border-radius: 0;
         background: transparent;
         color: var(--color-text);
         box-shadow: none;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        text-align: center;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 8px;
+        text-align: left;
     }
 
     .mobile-play-feature .portfolio-title {
         margin: 0;
-        font-size: clamp(3.1rem, 14vw, 4.8rem);
+        font-size: clamp(3rem, 12vw, 5.2rem);
         line-height: 0.9;
         letter-spacing: -0.05em;
-        text-align: center;
+        text-align: left;
     }
 
     .mobile-play-half .portfolio-title {
-        font-size: clamp(2.15rem, 9.5vw, 3.4rem);
+        font-size: clamp(3rem, 12vw, 5.2rem);
+        line-height: 0.9;
     }
 
     .mobile-play-feature .interact-title {
         color: var(--color-text);
     }
 
+    .mobile-play-insight:hover .interact-title,
+    .mobile-play-insight:focus-within .interact-title {
+        animation: none;
+    }
+
     .mobile-play-feature .interact-content .portfolio-kicker {
         display: block;
-        max-width: 22ch;
+        max-width: 24ch;
         margin: 0;
         color: var(--color-text);
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 500;
-        line-height: 1.25;
+        line-height: 1.14;
         letter-spacing: -0.03em;
-        text-align: center;
+        text-align: left;
     }
 
     .mobile-play-half .interact-content .portfolio-kicker {
-        max-width: 12ch;
-        font-size: 1.1rem;
-        line-height: 1.16;
+        max-width: 24ch;
+        font-size: 1.3rem;
+        line-height: 1.14;
     }
 
     .mobile-play-description {
@@ -816,26 +830,50 @@ body {
     }
 
     .mobile-play-feature .interact-cta {
-        align-self: center;
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-self: flex-end;
+        width: auto;
+        height: auto;
         min-width: 0;
         min-height: 0;
+        align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 0;
         margin-top: 0;
         padding: 0;
+        border: 0;
         border-radius: 0;
         background: transparent;
         color: var(--color-text);
-        font-size: 1.5rem;
+        font-size: 0;
+        line-height: 1;
+        opacity: 1;
+        transform: translateY(clamp(0.3rem, 2vw, 0.8rem));
     }
 
-    .mobile-play-feature .interact-cta {
-        display: none;
+    .mobile-play-half .interact-cta {
+        width: auto;
+        height: auto;
+        min-width: 0;
+        min-height: 0;
+        border-width: 0;
+    }
+
+    .mobile-play-feature .cta-arrow {
+        display: block;
+        font-size: clamp(2rem, 8vw, 3.2rem);
+        line-height: 1;
+        transform: translateY(-1px);
+    }
+
+    .mobile-play-half .cta-arrow {
+        font-size: clamp(2rem, 8vw, 3.2rem);
     }
 
     .mobile-play-feature:hover .interact-cta,
     .mobile-play-feature:focus-within .interact-cta {
         opacity: 1;
-        transform: none;
+        transform: translateY(clamp(0.3rem, 2vw, 0.8rem));
     }
 }
