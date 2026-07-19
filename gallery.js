@@ -341,7 +341,7 @@ const projects = [
         projectName: "the grand getaway awaits",
         year: "2024",
         country: "japan",
-        description: "socmed campaign designed to promote playojo's grand giveaway of a trip",
+        description: "socmed campaign designed to promote playojo's grand givewaay of a trip",
         category: "igaming",
         categories: ["igaming", "digital"],
         image: "assets/works/digital-igaming-ojo.jpg",
@@ -602,7 +602,7 @@ const modalDislikeBtn = galleryModal?.querySelector(".modal-dislike-btn");
 const modalLikeCount = galleryModal?.querySelector(".modal-like-count");
 const modalDislikeCount = galleryModal?.querySelector(".modal-dislike-count");
 let activeModalProjectId = null;
-let activeGalleryFilter = "all";
+let activeGalleryFilter = "latest";
 let currentGalleryColumns = 0;
 let currentGalleryMode = "";
 let currentGalleryIsMobile = false;
