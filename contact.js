@@ -3,7 +3,10 @@ const burgerButton = document.getElementById("burgerButton");
 const contactFormModal = document.getElementById("contactFormModal");
 const contactFrameStage = document.getElementById("contactFrameStage");
 const contactMaskImage = document.querySelector(".contact-mask-image");
+const mobileCvPopup = document.getElementById("mobileCvPopup");
+const mobileCvPopupClose = document.getElementById("mobileCvPopupClose");
 const qrPanels = document.querySelectorAll("[data-qr-panel]");
+const mobileCvQuery = window.matchMedia("(max-width: 768px)");
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(value, max));
@@ -39,9 +42,49 @@ contactFormModal?.addEventListener("click", event => {
     closeContactModal();
 });
 
+function openMobileCvPopup() {
+    if (!mobileCvPopup || !mobileCvQuery.matches) return;
+
+    mobileCvPopup.hidden = false;
+    document.body.classList.add("contact-modal-open");
+}
+
+function closeMobileCvPopup() {
+    if (!mobileCvPopup) return;
+
+    mobileCvPopup.hidden = true;
+    document.body.classList.remove("contact-modal-open");
+}
+
+openMobileCvPopup();
+
+mobileCvPopupClose?.addEventListener("click", closeMobileCvPopup);
+
+mobileCvPopup?.addEventListener("click", event => {
+    if (!event.target.closest(".mobile-cv-popup-backdrop")) return;
+    closeMobileCvPopup();
+});
+
+mobileCvQuery.addEventListener("change", event => {
+    if (event.matches) {
+        openMobileCvPopup();
+        return;
+    }
+
+    closeMobileCvPopup();
+});
+
 document.addEventListener("keydown", event => {
-    if (event.key !== "Escape" || contactFormModal?.hidden) return;
-    closeContactModal();
+    if (event.key !== "Escape") return;
+
+    if (mobileCvPopup && !mobileCvPopup.hidden) {
+        closeMobileCvPopup();
+        return;
+    }
+
+    if (!contactFormModal?.hidden) {
+        closeContactModal();
+    }
 });
 
 if (contactFrameStage && contactMaskImage) {

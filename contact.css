@@ -331,6 +331,10 @@ body.contact-modal-open {
     display: none;
 }
 
+.mobile-cv-popup {
+    display: none;
+}
+
 .contact-form-backdrop {
     position: absolute;
     inset: 0;
@@ -843,5 +847,62 @@ body.contact-modal-open {
         width: 100%;
         min-height: 1px;
         height: 1px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-cv-popup {
+        position: fixed;
+        inset: 0;
+        z-index: 230;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .mobile-cv-popup[hidden] {
+        display: none;
+    }
+
+    .mobile-cv-popup-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(28, 28, 28, 0.24);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .mobile-cv-popup-card {
+        position: relative;
+        z-index: 1;
+        width: min(74vw, 300px);
+        line-height: 0;
+    }
+
+    .mobile-cv-popup-card a {
+        display: block;
+    }
+
+    .mobile-cv-popup-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 18px 30px rgba(28, 28, 28, 0.16));
+    }
+
+    .mobile-cv-popup-close {
+        position: absolute;
+        top: -22px;
+        right: -18px;
+        z-index: 2;
+        border: none;
+        background: transparent;
+        color: var(--color-text);
+        font: inherit;
+        font-size: 1.35rem;
+        font-weight: 800;
+        line-height: 1;
+        cursor: pointer;
     }
 }
