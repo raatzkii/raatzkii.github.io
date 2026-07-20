@@ -129,7 +129,7 @@ const projects = [
     },
     {
         id: 5,
-        title: "lunar new year '26",
+        title: "seollal '26",
         projectName: "the bearers of fortune have arrived",
         year: "2026",
         country: "south korea",
