@@ -1,0 +1,78 @@
+/* Shared navigation for desktop and mobile. */
+.floating-nav,
+.floating-nav * {
+    box-sizing: border-box !important;
+}
+
+.floating-nav {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    z-index: 1000 !important;
+
+    width: min(336px, calc(100vw - 32px)) !important;
+    height: 64px !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0 12px !important;
+
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(239, 239, 239, 0.42) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12) !important;
+    backdrop-filter: blur(22px) saturate(170%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(170%) !important;
+    transform: translateX(-50%) !important;
+    overflow: hidden !important;
+}
+
+.nav-item,
+.nav-item:hover,
+.nav-item:focus-visible {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    justify-self: stretch !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #1c1c1c !important;
+    text-decoration: none !important;
+    transform: none !important;
+}
+
+.nav-item.active,
+.nav-item.active:hover,
+.nav-item.active:focus-visible {
+    width: 100% !important;
+    background: #32ff00 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.nav-icon {
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+    flex: 0 0 24px !important;
+    object-fit: contain !important;
+    filter: brightness(0) saturate(100%) !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+@media (max-width: 480px) {
+    .floating-nav {
+        bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    }
+}
