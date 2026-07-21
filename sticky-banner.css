@@ -24,7 +24,7 @@
     height: auto;
     filter: drop-shadow(0 18px 28px rgba(28, 28, 28, 0.14));
     transform-origin: 50% 80%;
-    animation: stickyBannerTilt 2.7s ease-in-out infinite;
+    animation: stickyBannerTilt 1.3s cubic-bezier(0.45, 0, 0.2, 1) infinite;
 }
 
 .sticky-cv-close {
@@ -49,12 +49,31 @@
 }
 
 @keyframes stickyBannerTilt {
-    0%,
-    100% {
-        transform: rotate(0deg);
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
     }
 
-    50% {
-        transform: rotate(-5deg);
+    18% {
+        transform: translateY(-7px) rotate(-5deg) scale(1.025);
+    }
+
+    34% {
+        transform: translateY(1px) rotate(2deg) scale(0.995);
+    }
+
+    48% {
+        transform: translateY(-3px) rotate(-3deg) scale(1.01);
+    }
+
+    64% {
+        transform: translateY(0) rotate(1deg) scale(1);
+    }
+
+    82% {
+        transform: translateY(-1px) rotate(-1deg) scale(1.004);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
     }
 }
