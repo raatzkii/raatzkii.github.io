@@ -482,7 +482,7 @@ function setRestMode(isResting) {
 
     if (industryCaption) {
         industryCaption.innerHTML = isResting
-            ? "no great work happensø<br>without proper rest"
+            ? "no great work happens<br>without proper rest"
             : normalContent.industryCaption;
     }
 
