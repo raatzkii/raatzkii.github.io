@@ -154,7 +154,6 @@ body.contact-modal-open {
     display: grid;
     justify-items: center;
     gap: 18px;
-    margin-top: 28px;
     width: min(100%, 420px);
 }
 
