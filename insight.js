@@ -344,13 +344,19 @@ function addTypingBubble() {
 }
 
 function getTypingDelay(text) {
-    const baseDelay = 700;
-    const perCharacter = 22;
-    const randomDelay = Math.random() * 700;
+    const plainText = String(text || "")
+        .replace(/<[^>]*>/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const length = plainText.length;
+    const baseDelay = 520;
+    const perCharacter = length > 120 ? 26 : 20;
+    const randomDelay = 160 + Math.random() * 420;
 
     return Math.min(
-        3600,
-        baseDelay + (text.length * perCharacter) + randomDelay
+        4200,
+        baseDelay + (length * perCharacter) + randomDelay
     );
 }
 

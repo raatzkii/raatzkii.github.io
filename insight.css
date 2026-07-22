@@ -245,12 +245,12 @@ body {
 }
 
 .chat-message.user .chat-bubble {
-    background: var(--color-white);
+    background: var(--color-accent);
     border-top-right-radius: 6px;
 }
 
 .chat-message.cio .chat-bubble {
-    background: var(--color-accent);
+    background: var(--color-white);
     border-top-left-radius: 6px;
 }
 
@@ -274,7 +274,7 @@ body {
     border-radius: 18px;
     border-top-left-radius: 6px;
 
-    background: var(--color-accent);
+    background: var(--color-white);
 }
 
 .typing-dot {
