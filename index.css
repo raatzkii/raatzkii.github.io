@@ -168,7 +168,7 @@ body {
     max-width: none;
     font-size: clamp(3.25rem, 6vw, 7.25rem);
     line-height: 0.9;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -1486,12 +1486,12 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
     }
 
     .feature-cards-section .hello-card .portfolio-kicker {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         margin-bottom: 0;
     }
 
     .feature-cards-section .stats-card .portfolio-kicker {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 500;
         line-height: 1.25;
     }
