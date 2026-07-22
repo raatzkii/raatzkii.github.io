@@ -1072,7 +1072,7 @@ body {
 
 .feature-cards-section .industry-breakdown {
     display: grid;
-    grid-template-columns: 172px 22ch;
+    grid-template-columns: 172px 20ch;
     justify-content: center;
     align-items: center;
     gap: 22px;
@@ -1506,8 +1506,9 @@ body.is-resting .feature-cards-section .industry-bubble--healthcare {
     }
 
     .feature-cards-section .industry-breakdown {
-        grid-template-columns: 172px minmax(0, 1fr);
-        /*gap: 12px;*/
+        grid-template-columns: 165px 15ch;
+        justify-content: center;
+        gap: 19px;
         min-height: auto;
     }
 
