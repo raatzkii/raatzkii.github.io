@@ -242,7 +242,7 @@ async function renderLeaderboard() {
     if (!rows.length) {
         leaderboardList.innerHTML = `
             <li>
-                <span>checking...</span>
+                <span>no scores yet</span>
                 <strong>0</strong>
             </li>
         `;

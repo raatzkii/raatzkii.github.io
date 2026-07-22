@@ -70,6 +70,14 @@ body {
     transition: transform 0.25s ease;
 }
 
+.back-arrow-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
 .interact-cta:hover .cta-arrow {
     transform: translateX(-6px);
 }

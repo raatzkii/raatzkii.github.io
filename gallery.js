@@ -129,7 +129,7 @@ const projects = [
     },
     {
         id: 5,
-        title: "seollal '26",
+        title: "lunar new year '26",
         projectName: "the bearers of fortune have arrived",
         year: "2026",
         country: "south korea",
@@ -607,6 +607,7 @@ let currentGalleryColumns = 0;
 let currentGalleryMode = "";
 let currentGalleryIsMobile = false;
 let mobileOmniState = null;
+let mobileShuffledProjects = null;
 const gallerySkeletonMinTime = 360;
 const mobileGalleryQuery = window.matchMedia("(max-width: 768px)");
 
@@ -668,6 +669,25 @@ function orderGalleryProjects(projectList) {
 
         return a.id - b.id;
     });
+}
+
+function shuffleGalleryProjects(projectList) {
+    const shuffledProjects = [...projectList];
+
+    for (let i = shuffledProjects.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledProjects[i], shuffledProjects[j]] = [shuffledProjects[j], shuffledProjects[i]];
+    }
+
+    return shuffledProjects;
+}
+
+function getMobileShuffledProjects() {
+    if (!mobileShuffledProjects) {
+        mobileShuffledProjects = shuffleGalleryProjects(orderGalleryProjects(projects));
+    }
+
+    return mobileShuffledProjects;
 }
 
 function getProjectAspectRatio(project) {
@@ -1205,14 +1225,15 @@ function renderProjects(filter = activeGalleryFilter) {
     filteredProjects = orderGalleryProjects(filteredProjects);
 
     if (mobileGalleryQuery.matches) {
-        renderMobileGalleryOmni(orderGalleryProjects(projects));
+        renderMobileGalleryOmni(getMobileShuffledProjects());
         return;
     }
 
     if (!filteredProjects.length) {
         masonry.innerHTML = `
             <div class="gallery-empty-state">
-                nothing here yet.
+                <p class="gallery-empty-title">upload in progress</p>
+                <p class="gallery-empty-caption">this is a one-man show. please bear with me.</p>
             </div>
         `;
         return;

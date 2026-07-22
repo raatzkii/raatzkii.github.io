@@ -443,6 +443,10 @@ body {
     display: none;
 }
 
+.mobile-play-arrow-icon {
+    display: none;
+}
+
 .interact-item:hover .interact-cta,
 .interact-item:focus-within .interact-cta {
     transform: translateX(6px);
@@ -450,6 +454,12 @@ body {
 }
 
 .cta-arrow {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    margin-left: 0.3em;
+    object-fit: contain;
+    vertical-align: -0.08em;
     transition: transform 0.25s ease;
 }
 
@@ -526,12 +536,13 @@ body {
     }
 
     .interact-item.mobile-play-feature {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-content: end;
+        align-items: start;
+        justify-content: stretch;
         grid-column: 1 / -1;
-        gap: 16px;
+        column-gap: 16px;
         min-height: 136px;
         padding: 18px 0 20px;
         border-bottom: 2px solid #d0d0d0;
@@ -581,8 +592,8 @@ body {
     }
 
     .mobile-play-feature .interact-content {
-        flex: 1 1 auto;
-        align-self: stretch;
+        grid-column: 1;
+        align-self: start;
         width: auto;
         min-width: 0;
         min-height: 0;
@@ -592,7 +603,7 @@ body {
         color: var(--color-text);
         box-shadow: none;
         align-items: flex-start;
-        justify-content: flex-end;
+        justify-content: flex-start;
         gap: 8px;
         text-align: left;
     }
@@ -643,8 +654,9 @@ body {
 
     .mobile-play-feature .interact-cta {
         display: inline-flex;
-        flex: 0 0 auto;
-        align-self: flex-end;
+        grid-column: 2;
+        align-self: flex-start;
+        justify-self: end;
         width: auto;
         height: auto;
         min-width: 0;
@@ -652,7 +664,7 @@ body {
         align-items: center;
         justify-content: center;
         gap: 0;
-        margin-top: 0;
+        margin-top: clamp(1rem, 3.4vw, 1.55rem);
         padding: 0;
         border: 0;
         border-radius: 0;
@@ -661,7 +673,11 @@ body {
         font-size: 0;
         line-height: 1;
         opacity: 1;
-        transform: translateY(clamp(0.3rem, 2vw, 0.8rem));
+        transform: none;
+    }
+
+    .mobile-play-cta-text {
+        display: none;
     }
 
     .mobile-play-half .interact-cta {
@@ -683,9 +699,16 @@ body {
         font-size: clamp(2rem, 8vw, 3.2rem);
     }
 
+    .mobile-play-arrow-icon {
+        display: block;
+        width: clamp(2rem, 7vw, 2.8rem);
+        height: clamp(2rem, 7vw, 2.8rem);
+        object-fit: contain;
+    }
+
     .mobile-play-feature:hover .interact-cta,
     .mobile-play-feature:focus-within .interact-cta {
         opacity: 1;
-        transform: translateY(clamp(0.3rem, 2vw, 0.8rem));
+        transform: none;
     }
 }
