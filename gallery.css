@@ -311,13 +311,15 @@ body.modal-open {
 }
 
 .gallery-modal {
+    --gallery-nav-bottom: max(16px, env(safe-area-inset-bottom));
+    --gallery-modal-max-height: calc(100dvh - 120px - var(--gallery-nav-bottom));
     position: fixed;
     inset: 0;
     z-index: 200;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px;
+    padding: 28px 28px calc(92px + var(--gallery-nav-bottom));
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.24s ease;
@@ -344,7 +346,7 @@ body.modal-open {
     gap: 0;
     width: fit-content;
     max-width: calc(100vw - 56px);
-    max-height: calc(100vh - 56px);
+    max-height: var(--gallery-modal-max-height);
     overflow: hidden;
     border-radius: 26px;
     background: var(--color-bg);
@@ -387,8 +389,8 @@ body.modal-open {
     width: auto;
     max-width: 800px;
     min-width: 280px;
-    max-height: 700px;
-    min-height: min(520px, calc(100vh - 56px));
+    max-height: min(700px, var(--gallery-modal-max-height));
+    min-height: min(520px, var(--gallery-modal-max-height));
     background: var(--color-bg);
     padding: 10px;
 }
@@ -399,7 +401,7 @@ body.modal-open {
     width: auto;
     max-width: 780px;
     height: auto;
-    max-height: 680px;
+    max-height: min(680px, calc(var(--gallery-modal-max-height) - 20px));
     border-radius: 0;
     object-fit: contain;
 }
@@ -416,7 +418,7 @@ body.modal-open {
     justify-content: center;
     width: 420px;
     flex-shrink: 0;
-    min-height: 520px;
+    min-height: min(520px, var(--gallery-modal-max-height));
     height: 100%;
     padding: 48px 48px 48px 32px;
     background: var(--color-bg);
@@ -610,8 +612,9 @@ body.modal-open {
     }
 
     .gallery-modal {
+        --gallery-modal-max-height: calc(100svh - 96px - var(--gallery-nav-bottom));
         align-items: center;
-        padding: 16px;
+        padding: 16px 16px calc(80px + var(--gallery-nav-bottom));
     }
 
     .gallery-modal-panel {
@@ -619,7 +622,7 @@ body.modal-open {
         flex-direction: column;
         grid-template-columns: 1fr;
         width: min(520px, calc(100vw - 32px));
-        max-height: calc(100svh - 32px);
+        max-height: var(--gallery-modal-max-height);
         overflow-y: auto;
         border-radius: 24px;
     }
@@ -731,6 +734,10 @@ body.modal-open {
 }
 
 @media (max-width: 480px) {
+    .gallery-modal {
+        --gallery-nav-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+
     .masonry {
         --gallery-columns: 1;
     }
