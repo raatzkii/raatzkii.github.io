@@ -592,6 +592,7 @@ const filters = document.querySelector(".portfolio-filters");
 const chips = document.querySelectorAll(".chip");
 const galleryModal = document.getElementById("galleryModal");
 const modalMedia = document.getElementById("modalMedia");
+const modalPanel = galleryModal?.querySelector(".gallery-modal-panel");
 const modalCountry = document.getElementById("modalCountry");
 const modalProjectYear = document.getElementById("modalProjectYear");
 const modalProjectName = document.getElementById("modalProjectName");
@@ -1186,6 +1187,10 @@ function openProjectModal(projectId) {
     }
 
     updateModalReactions(project);
+
+    if (modalPanel) {
+        modalPanel.scrollTop = 0;
+    }
 
     galleryModal.classList.add("is-open");
     galleryModal.setAttribute("aria-hidden", "false");

@@ -612,9 +612,14 @@ body.modal-open {
     }
 
     .gallery-modal {
-        --gallery-modal-max-height: calc(100svh - 96px - var(--gallery-nav-bottom));
+        --gallery-modal-top-clearance: max(20px, env(safe-area-inset-top));
+        --gallery-modal-bottom-clearance: calc(84px + var(--gallery-nav-bottom));
+        --gallery-modal-max-height: calc(100dvh - var(--gallery-modal-top-clearance) - var(--gallery-modal-bottom-clearance));
+        inset: 0 0 auto;
+        height: 100dvh;
         align-items: center;
-        padding: 16px 16px calc(80px + var(--gallery-nav-bottom));
+        padding: var(--gallery-modal-top-clearance) 16px var(--gallery-modal-bottom-clearance);
+        overflow: hidden;
     }
 
     .gallery-modal-panel {
@@ -641,7 +646,7 @@ body.modal-open {
         width: 100%;
         max-width: 100%;
         height: auto;
-        max-height: min(52svh, 520px);
+        max-height: min(52dvh, 520px);
         border-radius: 16px;
         object-fit: contain;
     }
