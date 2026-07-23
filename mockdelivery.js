@@ -28,21 +28,21 @@ const MOCK_DELIVERY_NEAR_SECONDS = 90;
 const MOCK_DELIVERY_CLOSE_METERS = 50;
 
 const mockFoodItems = [
-    { name: "cheese burger", price: 155, image: "assets/food/burger.png" },
-    { name: "chicken bucket", price: 185, image: "assets/food/chicken.png" },
-    { name: "hot latte", price: 95, image: "assets/food/coffee.png" },
-    { name: "oatmeal cookies", price: 120, image: "assets/food/cookies.png" },
-    { name: "cherry muffin", price: 85, image: "assets/food/cupcake.png" },
-    { name: "glazed donut", price: 70, image: "assets/food/donut.png" },
-    { name: "pork dumplings", price: 145, image: "assets/food/dumplings.png" },
-    { name: "large fries", price: 110, image: "assets/food/fries.png" },
-    { name: "matcha latte", price: 130, image: "assets/food/matcha.png" },
-    { name: "flapjacks", price: 165, image: "assets/food/pancake.png" },
-    { name: "pepperoni pizza", price: 220, image: "assets/food/pizza.png" },
-    { name: "chicken salad", price: 135, image: "assets/food/salad.png" },
-    { name: "spaghetti", price: 170, image: "assets/food/spaghetti.png" },
-    { name: "ribeye steak", price: 380, image: "assets/food/steak.png" },
-    { name: "salmon sushi", price: 240, image: "assets/food/sushi.png" },
+    { name: "cheese burger", price: 155, image: "assets/food/burger.avif" },
+    { name: "chicken bucket", price: 185, image: "assets/food/chicken.avif" },
+    { name: "hot latte", price: 95, image: "assets/food/coffee.avif" },
+    { name: "oatmeal cookies", price: 120, image: "assets/food/cookies.avif" },
+    { name: "cherry muffin", price: 85, image: "assets/food/cupcake.avif" },
+    { name: "glazed donut", price: 70, image: "assets/food/donut.avif" },
+    { name: "pork dumplings", price: 145, image: "assets/food/dumplings.avif" },
+    { name: "large fries", price: 110, image: "assets/food/fries.avif" },
+    { name: "matcha latte", price: 130, image: "assets/food/matcha.avif" },
+    { name: "flapjacks", price: 165, image: "assets/food/pancake.avif" },
+    { name: "pepperoni pizza", price: 220, image: "assets/food/pizza.avif" },
+    { name: "chicken salad", price: 135, image: "assets/food/salad.avif" },
+    { name: "spaghetti", price: 170, image: "assets/food/spaghetti.avif" },
+    { name: "ribeye steak", price: 380, image: "assets/food/steak.avif" },
+    { name: "salmon sushi", price: 240, image: "assets/food/sushi.avif" },
 ];
 
 const selectedFood = new Map();
