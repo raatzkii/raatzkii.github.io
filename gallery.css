@@ -696,7 +696,7 @@ body.modal-open {
         order: 2;
         max-width: none;
         margin: 0;
-        font-size: clamp(1.7rem, 8vw, 2.65rem);
+        font-size: clamp(1.3rem, 5.5vw, 1.8rem);
         line-height: 0.92;
         letter-spacing: -0.055em;
     }
