@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 37,
+        title: "world cup '26",
+        projectName: "la roja v. das team",
+        year: "2026",
+        country: "south korea",
+        description: "an odds banner for spain and austria world cup matchup",
+        category: "sports",
+        categories: ["latest", "sports", "digital", "events"],
+        image: "assets/works/latest-sports-digital-events_wc26-spainaustria.avif",
+        width: 700,
+        height: 910,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 8,
         title: "nba '25-'26 season: thunder vs pistons",
         projectName: "the titans of regular season",
