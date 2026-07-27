@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 38,
+        title: "added bonus",
+        projectName: "10% additional exchange",
+        year: "2026",
+        country: "south korea",
+        description: "a promo banner for extra bonus for converting currencies",
+        category: "igaming",
+        categories: ["latest", "igaming", "digital"],
+        image: "assets/works/latest-digital-igaming-10addedbonus.avif",
+        width: 700,
+        height: 764,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 37,
         title: "world cup '26",
         projectName: "la roja v. das team",
