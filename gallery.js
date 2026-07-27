@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 39,
+        title: "rank levels",
+        projectName: "god-mode in progress",
+        year: "2026",
+        country: "south korea",
+        description: "a ui design for different levels of player ranking",
+        category: "igaming",
+        categories: ["latest", "igaming", "digital", "uiux"],
+        image: "assets/works/latest-igaming-uiux-digital_levelranking.avif",
+        width: 700,
+        height: 464,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 38,
         title: "added bonus",
         projectName: "10% additional exchange",
@@ -1130,6 +1146,10 @@ function getProjectDetails(project) {
     };
 }
 
+function getCategoryLabel(category) {
+    return category === "uiux" ? "ui/ux" : category;
+}
+
 function renderModalMedia(project) {
     const mediaPadding = 20;
 
@@ -1214,7 +1234,7 @@ function openProjectModal(projectId) {
     if (modalCategoryPills) {
         modalCategoryPills.innerHTML = details.categories
             .filter(Boolean)
-            .map(category => `<span class="modal-category-pill">${category}</span>`)
+            .map(category => `<span class="modal-category-pill">${getCategoryLabel(category)}</span>`)
             .join("");
     }
 
