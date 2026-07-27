@@ -1,5 +1,37 @@
 const projects = [
     {
+        id: 42,
+        title: "app screenshot",
+        projectName: "the king now on ios",
+        year: "2024",
+        country: "india",
+        description: "a localized view of screenshot banners for an ios app",
+        category: "igaming",
+        categories: ["igaming", "digital"],
+        image: "assets/works/dgital-igaming_wkappstore.avif",
+        width: 700,
+        height: 456,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
+        id: 41,
+        title: "app screenshot",
+        projectName: "niki now on ios",
+        year: "2022",
+        country: "thailand",
+        description: "a localized view of screenshot banners for an ios app",
+        category: "igaming",
+        categories: ["igaming", "digital"],
+        image: "assets/works/digital-igaming_appscreenshot.avif",
+        width: 700,
+        height: 699,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 40,
         title: "welcome bonus landing page",
         projectName: "mr. monopoly has a gift for you",
