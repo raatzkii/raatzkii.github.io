@@ -625,9 +625,12 @@ body {
         color: var(--color-text);
     }
 
-    .mobile-play-insight:hover .interact-title,
-    .mobile-play-insight:focus-within .interact-title {
+    .interact-item.mobile-play-insight:hover .interact-title,
+    .interact-item.mobile-play-insight:focus-within .interact-title,
+    .interact-item.mobile-play-insight:active .interact-title {
         animation: none;
+        opacity: 1;
+        transform: none;
     }
 
     .mobile-play-feature .interact-content .portfolio-kicker {
