@@ -718,7 +718,7 @@ body.modal-open {
     }
 
     .modal-category-pills {
-        display: flex;
+        display: none;
         order: 1;
         grid-column: 1 / -1;
         flex-wrap: wrap;
