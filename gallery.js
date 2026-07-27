@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 40,
+        title: "welcome bonus landing page",
+        projectName: "mr. monopoly has a gift for you",
+        year: "2025",
+        country: "india",
+        description: "a welcome offer landing page for monopoly live players",
+        category: "igaming",
+        categories: ["igaming", "digital"],
+        image: "assets/works/digital-igaming_monopoly-wo.avif",
+        width: 1920,
+        height: 865,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 39,
         title: "rank levels",
         projectName: "god-mode in progress",
