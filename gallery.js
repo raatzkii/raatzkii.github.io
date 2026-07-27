@@ -657,6 +657,7 @@ let currentGalleryMode = "";
 let currentGalleryIsMobile = false;
 let mobileOmniState = null;
 let mobileShuffledProjects = null;
+let desktopShuffledProjects = null;
 const gallerySkeletonMinTime = 360;
 const mobileGalleryQuery = window.matchMedia("(max-width: 768px)");
 
@@ -737,6 +738,14 @@ function getMobileShuffledProjects() {
     }
 
     return mobileShuffledProjects;
+}
+
+function getDesktopShuffledProjects() {
+    if (!desktopShuffledProjects) {
+        desktopShuffledProjects = shuffleGalleryProjects(projects);
+    }
+
+    return desktopShuffledProjects;
 }
 
 function getProjectAspectRatio(project) {
@@ -1274,17 +1283,16 @@ function renderProjects(filter = activeGalleryFilter) {
 
     mobileOmniState = null;
 
-    let filteredProjects =
-        filter === "all"
-            ? projects
-            : projects.filter(project => projectMatchesFilter(project, filter));
-
-    filteredProjects = orderGalleryProjects(filteredProjects);
-
     if (mobileGalleryQuery.matches) {
         renderMobileGalleryOmni(getMobileShuffledProjects());
         return;
     }
+
+    const desktopProjects = getDesktopShuffledProjects();
+    const filteredProjects =
+        filter === "all"
+            ? desktopProjects
+            : desktopProjects.filter(project => projectMatchesFilter(project, filter));
 
     if (!filteredProjects.length) {
         masonry.innerHTML = `
