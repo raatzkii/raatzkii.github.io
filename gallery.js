@@ -1,7 +1,23 @@
 const projects = [
     {
+        id: 44,
+        title: "webinar invite",
+        projectName: "uncovering cyber security threats",
+        year: "2024",
+        country: "united states",
+        description: "an invitational webinar poster for an online conference about healthcare's online security",
+        category: "healthcare",
+        categories: ["healthcare", "digital", "events"],
+        image: "assets/works/digital-healthcare-event_cybersec.avif",
+        width: 1200,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 43,
-        title: "38th annual educational conference",
+        title: "38th annual educ conference",
         projectName: "advance. develop. elevate.",
         year: "2023",
         country: "united states",
