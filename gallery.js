@@ -1,7 +1,7 @@
 const projects = [
     {
         id: 43,
-        title: "38th annual educ conference",
+        title: "38th annual educational conference",
         projectName: "advance. develop. elevate.",
         year: "2023",
         country: "united states",
