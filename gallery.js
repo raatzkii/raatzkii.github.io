@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 43,
+        title: "38th annual educ conference",
+        projectName: "advance. develop. elevate.",
+        year: "2023",
+        country: "united states",
+        description: "an invitational event poster for a conference hosted by the national association of health services executives",
+        category: "healthcare",
+        categories: ["healthcare", "digital", "events"],
+        image: "assets/works/digital-healthcare-event-nahseatlanta.avif",
+        width: 1200,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 42,
         title: "app screenshot",
         projectName: "the king now on ios",
