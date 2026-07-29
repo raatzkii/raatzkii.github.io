@@ -1,5 +1,37 @@
 const projects = [
     {
+        id: 46,
+        title: "interview promo",
+        projectName: "responding to workforce shortages",
+        year: "2023",
+        country: "united states",
+        description: "an invite image for a healthcare interview series",
+        category: "healthcare",
+        categories: ["healthcare", "digital"],
+        image: "assets/works/digital-healthcare_ciwdpcary.avif",
+        width: 700,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
+        id: 45,
+        title: "email header",
+        projectName: "create better staffing plans",
+        year: "2024",
+        country: "united states",
+        description: "a mailer image for a mobile scheduling app for hospitals and healthcare organizations",
+        category: "healthcare",
+        categories: ["healthcare", "digital"],
+        image: "assets/works/digital-healthcare_appdownload.avif",
+        width: 1200,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 44,
         title: "webinar invite",
         projectName: "uncovering cyber security threats",
