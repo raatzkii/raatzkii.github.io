@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 47,
+        title: "mlb match",
+        projectName: "california clash",
+        year: "2026",
+        country: "south korea",
+        description: "an odds banner for showdown between san francisco giants and san diego padres",
+        category: "sports",
+        categories: ["latest", "sports", "digital"],
+        image: "assets/works/latest-sports-digital_padresgiants.avif",
+        width: 700,
+        height: 910,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 46,
         title: "interview promo",
         projectName: "responding to workforce shortages",
