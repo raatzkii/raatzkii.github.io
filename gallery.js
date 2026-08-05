@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 48,
+        title: "recruitment flyer",
+        projectName: "school slp opportunities",
+        year: "2024",
+        country: "united states",
+        description: "a recruitment flyer for speech-language pathologists highlighting nationwide school opportunities and employee benefits",
+        category: "healthcare",
+        categories: ["healthcare", "digital", "print"],
+        image: "assets/works/digital-healthcare-print_slprecruitmentflyer.avif",
+        width: 700,
+        height: 1235,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 47,
         title: "mlb match",
         projectName: "california clash",
