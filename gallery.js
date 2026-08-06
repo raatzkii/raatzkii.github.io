@@ -1,11 +1,11 @@
 const projects = [
     {
         id: 49,
-        title: "contractor journey infographic",
-        projectName: "navigating the contractor journey",
+        title: "infographic",
+        projectName: "your journey made clear and easy",
         year: "2024",
         country: "united states",
-        description: "a step-by-step digital infographic explaining the onboarding journey for medical interpreters",
+        description: "a step-by-step digital guide explaining the onboarding journey for medical interpreters",
         category: "healthcare",
         categories: ["healthcare", "digital"],
         image: "assets/works/digital-healthcare-ls-infographic.avif",
