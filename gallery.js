@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 49,
+        title: "contractor journey infographic",
+        projectName: "navigating the contractor journey",
+        year: "2024",
+        country: "united states",
+        description: "a step-by-step digital infographic explaining the onboarding journey for medical interpreters",
+        category: "healthcare",
+        categories: ["healthcare", "digital"],
+        image: "assets/works/digital-healthcare-ls-infographic.avif",
+        width: 700,
+        height: 1235,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 48,
         title: "recruitment flyer",
         projectName: "qualified school slp wanted",
@@ -7,8 +23,8 @@ const projects = [
         country: "united states",
         description: "a print out about job opportunities for qualified speech-language pathologists",
         category: "healthcare",
-        categories: ["healthcare", "digital", "print"],
-        image: "assets/works/digital-healthcare-print_slprecruitmentflyer.avif",
+        categories: ["healthcare", "print"],
+        image: "assets/works/print-healthcare_slprecruitmentflyer.avif",
         width: 700,
         height: 1235,
         likes: 0,
