@@ -50,7 +50,7 @@ const projects = [
     {
         id: 47,
         title: "mlb match",
-        projectName: "california clash",
+        projectName: "classic california clash",
         year: "2026",
         country: "south korea",
         description: "an odds banner for showdown between san francisco giants and san diego padres",
