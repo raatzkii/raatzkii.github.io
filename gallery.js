@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 51,
+        title: "employee portal",
+        projectName: "your workday at a glance",
+        year: "2026",
+        country: "philippines",
+        description: "a dashboard ui design for employee payroll, attendance, requests, and company updates",
+        category: "uiux",
+        categories: ["uiux", "digital"],
+        image: "assets/works/digital-uiux_employeeportal.avif",
+        width: 3268,
+        height: 1876,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 50,
         title: "academic spotlight",
         projectName: "brilliant minds dedicated to excellence",
@@ -50,7 +66,7 @@ const projects = [
     {
         id: 47,
         title: "mlb match",
-        projectName: "classic california clash",
+        projectName: "california clash",
         year: "2026",
         country: "south korea",
         description: "an odds banner for showdown between san francisco giants and san diego padres",
