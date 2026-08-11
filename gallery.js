@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 52,
+        title: "site analytics",
+        projectName: "what the data says",
+        year: "2026",
+        country: "philippines",
+        description: "an internal igaming system analytics ui design for the business intelligence department to monitor site, player, and traffic activity",
+        category: "igaming",
+        categories: ["uiux", "digital", "igaming"],
+        image: "assets/works/digital-igaming-uiux_analytics.avif",
+        width: 1223,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 51,
         title: "employee portal",
         projectName: "your workday at a glance",
