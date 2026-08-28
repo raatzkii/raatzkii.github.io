@@ -1,5 +1,21 @@
 const projects = [
     {
+        id: 53,
+        title: "government portal",
+        projectName: "much better than egovph",
+        year: "2026",
+        country: "philippines",
+        description: "my take on revamping the current egovph site. simpler, faster, better.",
+        category: "uiux",
+        categories: ["uiux", "digital"],
+        image: "assets/works/digital-uiux_govtportal.avif",
+        width: 1223,
+        height: 700,
+        likes: 0,
+        dislikes: 0,
+        userVote: null
+    },
+    {
         id: 52,
         title: "site analytics",
         projectName: "what the data says",
