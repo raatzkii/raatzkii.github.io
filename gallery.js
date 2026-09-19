@@ -1565,6 +1565,18 @@ function renderProjects(filter = activeGalleryFilter) {
         const image = card.querySelector(".gallery-image-shell img");
         prepareGalleryImage(image);
 
+        const projectOpener = card.querySelector(".gallery-image-shell");
+        projectOpener.tabIndex = 0;
+        projectOpener.setAttribute("role", "button");
+        projectOpener.setAttribute("aria-label", `Open ${project.title}`);
+        projectOpener.setAttribute("aria-haspopup", "dialog");
+        projectOpener.addEventListener("keydown", event => {
+            if (event.key !== "Enter" && event.key !== " ") return;
+            event.preventDefault();
+            if (event.repeat) return;
+            openProjectModal(project.id);
+        });
+
         card.querySelector(".like-btn").addEventListener("click", event => {
             event.stopPropagation();
             handleVote(project.id, "like", event.currentTarget);

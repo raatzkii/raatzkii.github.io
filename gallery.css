@@ -188,6 +188,11 @@ body.modal-open {
     background: #dedede;
 }
 
+.gallery-image-shell[role="button"]:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 4px;
+}
+
 .gallery-image-shell::before {
     content: "";
     position: absolute;
@@ -620,6 +625,10 @@ body.modal-open {
         align-items: center;
         padding: var(--gallery-modal-top-clearance) 16px var(--gallery-modal-bottom-clearance);
         overflow: hidden;
+    }
+
+    .gallery-modal-close {
+        display: none;
     }
 
     .gallery-modal-panel {

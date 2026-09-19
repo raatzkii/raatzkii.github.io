@@ -26,6 +26,8 @@ const MOCK_WALLET_START = 10000;
 const MOCK_DELIVERY_FEE = 49;
 const MOCK_DELIVERY_NEAR_SECONDS = 90;
 const MOCK_DELIVERY_CLOSE_METERS = 50;
+const MAPLIBRE_CSS_URL = "https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css";
+const MAPLIBRE_JS_URL = "https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js";
 
 const mockFoodItems = [
     { name: "cheese burger", price: 155, image: "assets/food/burger.avif" },
@@ -62,6 +64,7 @@ let currentDropoffPoint = null;
 let currentMapFocusState = 1;
 let deliveryRunId = 0;
 let completedDeliveryRunId = 0;
+let mapLibreLoadPromise = null;
 
 const MOCK_MAP_STYLE = {
     version: 8,
@@ -92,6 +95,38 @@ const MOCK_MAP_STYLE = {
         },
     ],
 };
+
+function loadMapLibre() {
+    if (window.maplibregl) return Promise.resolve(true);
+    if (mapLibreLoadPromise) return mapLibreLoadPromise;
+
+    if (!document.querySelector("link[data-maplibre]")) {
+        const stylesheet = document.createElement("link");
+        stylesheet.rel = "stylesheet";
+        stylesheet.href = MAPLIBRE_CSS_URL;
+        stylesheet.dataset.maplibre = "true";
+        document.head.appendChild(stylesheet);
+    }
+
+    mapLibreLoadPromise = new Promise(resolve => {
+        const script = document.createElement("script");
+        script.src = MAPLIBRE_JS_URL;
+        script.async = true;
+        script.dataset.maplibre = "true";
+        script.addEventListener("load", () => {
+            resolve(Boolean(window.maplibregl));
+        }, { once: true });
+        script.addEventListener("error", () => {
+            script.remove();
+            mapLibreLoadPromise = null;
+            console.warn("MapLibre failed to load.");
+            resolve(false);
+        }, { once: true });
+        document.head.appendChild(script);
+    });
+
+    return mapLibreLoadPromise;
+}
 
 function formatCoins(amount) {
     return `${amount.toLocaleString("en-US")} coins`;
@@ -221,6 +256,7 @@ function renderMockFood() {
 }
 
 function showMockApp() {
+    void loadMapLibre();
     refreshMockWallet();
     renderMockFood();
     selectedFood.clear();
@@ -649,7 +685,8 @@ async function renderMapLibreTracking(durationSeconds, runId) {
     if (routeOverlayRider) {
         routeOverlayRider.setAttribute("transform", "translate(-9999 -9999)");
     }
-    if (!window.maplibregl) return null;
+    const mapLibreReady = await loadMapLibre();
+    if (!mapLibreReady || runId !== deliveryRunId) return null;
 
     const center = await getMapCenter();
     const { shop, destination, fallbackRoutePoints } = generateRoutePoints(center);
