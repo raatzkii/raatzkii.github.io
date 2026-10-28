@@ -761,3 +761,416 @@ body.modal-open {
         padding: 0;
     }
 }
+
+/* Full-screen project preview: artwork and copy beside a vertical toolbar. */
+.gallery-modal {
+    z-index: 1100;
+    inset: 0;
+    height: 100dvh;
+    padding: 24px;
+    visibility: hidden;
+}
+.gallery-modal.is-open { visibility: visible; }
+.gallery-modal-backdrop {
+    background: rgba(239, 239, 239, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.gallery-modal-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56px;
+    align-items: start;
+    gap: 12px;
+    width: min(100%, calc(var(--preview-image-width, 900px) + 68px));
+    max-width: 100%;
+    max-height: calc(100dvh - 48px);
+    padding-top: max(0px, calc(328px - var(--preview-image-height, 400px)));
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+.gallery-modal-content {
+    min-width: 0;
+    max-height: calc(100dvh - 48px - max(0px, 328px - var(--preview-image-height, 400px)));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+}
+.gallery-modal-media {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    max-height: none;
+    padding: 0;
+    background: transparent;
+}
+.gallery-modal-media img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 70dvh;
+    object-fit: contain;
+    border-radius: 16px;
+}
+.gallery-modal-details {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 22px 0 12px;
+    background: transparent;
+}
+.modal-project-copy { display: block; }
+.modal-project-copy h2 {
+    max-width: none;
+    margin: 0 0 12px;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+.modal-project-copy #modalProjectDescription {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+.modal-project-meta, .modal-rule, .modal-category-pills { display: none; }
+.gallery-preview-toolbar {
+    position: relative;
+    top: var(--preview-image-height, 400px);
+    transform: translateY(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.gallery-preview-toolbar .preview-control {
+    position: static;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+.preview-control:hover { background: rgba(28, 28, 28, 0.08); }
+.preview-control:disabled { opacity: 0.3; cursor: default; }
+.gallery-preview-toolbar .reaction-btn {
+    flex-direction: column;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 56px;
+    gap: 4px;
+    padding: 0;
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 20px;
+}
+.gallery-preview-toolbar button:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 3px;
+}
+@media (max-width: 768px) {
+    .gallery-modal { padding: max(16px, env(safe-area-inset-top)) 12px 16px; }
+    .gallery-modal-panel {
+        grid-template-columns: minmax(0, 1fr) 56px;
+        gap: 10px;
+        width: min(100%, calc(var(--preview-image-width, 900px) + 66px));
+        max-height: calc(100dvh - 48px);
+    }
+    .gallery-modal-media img { max-height: 65dvh; }
+    .gallery-modal-details { padding-top: 18px; }
+    .gallery-preview-toolbar { gap: 12px; }
+}
+
+.gallery-preview-toolbar svg {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+.gallery-preview-toolbar .reaction-btn.is-popping svg {
+    animation: reactionPop 0.28s ease;
+}
+
+/* Selection belongs to the icon, never the counter or button background. */
+.reaction-btn.is-liked,
+.reaction-btn.is-disliked {
+    color: var(--color-text);
+    background: transparent;
+    padding: 0;
+}
+.reaction-btn.is-liked svg {
+    fill: var(--color-accent);
+    stroke: var(--color-text);
+}
+.reaction-btn.is-disliked svg {
+    fill: var(--color-text);
+    stroke: var(--color-text);
+}
+.reaction-btn.is-liked i { color: var(--color-accent); }
+.reaction-btn.is-disliked i { color: var(--color-text); }
+.reaction-btn.is-liked span,
+.reaction-btn.is-disliked span { color: var(--color-text); }
+.gallery-like-confetti {
+    position: fixed;
+    z-index: 1200;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+.gallery-like-confetti span {
+    position: absolute;
+    width: 6px;
+    height: 9px;
+    border-radius: 1px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .reaction-btn.is-popping svg,
+    .reaction-btn.is-popping i,
+    .reaction-btn.is-counting span { animation: none; }
+}
+
+/* Standalone Phosphor icons: top, middle and bottom control groups. */
+.gallery-modal-panel { padding-top: 0; }
+.gallery-modal-content { max-height: calc(100dvh - 48px); }
+.gallery-preview-toolbar {
+    top: 0;
+    transform: none;
+    position: relative;
+    height: max(352px, var(--preview-image-height, 400px));
+}
+.gallery-preview-toolbar > .gallery-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.preview-navigation, .preview-votes {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.preview-navigation {
+    top: max(68px, calc(var(--preview-image-height, 400px) / 2 - 68px));
+}
+.preview-votes {
+    top: max(calc(var(--preview-image-height, 400px) - 136px), calc(var(--preview-image-height, 400px) / 2 + 80px), 216px);
+}
+.gallery-preview-toolbar svg {
+    fill: currentColor;
+    stroke: none;
+}
+.gallery-preview-toolbar .reaction-btn.is-liked svg {
+    color: var(--color-accent);
+    fill: currentColor;
+    stroke: none;
+}
+.gallery-preview-toolbar .reaction-btn.is-disliked svg {
+    color: var(--color-text);
+    fill: currentColor;
+    stroke: none;
+}
+
+/* Keep the generous hit areas invisible, including on hover. */
+.gallery-preview-toolbar .preview-control {
+    border-radius: 0;
+    background: transparent;
+}
+.gallery-preview-toolbar .preview-control:hover {
+    background: transparent;
+    opacity: 0.65;
+}
+
+/* Swap the outline artwork for a true solid silhouette after selection. */
+.reaction-btn .reaction-solid { display: none; }
+.reaction-btn.is-liked .reaction-outline,
+.reaction-btn.is-disliked .reaction-outline { display: none; }
+.reaction-btn.is-liked .reaction-solid,
+.reaction-btn.is-disliked .reaction-solid { display: inline; }
+
+.portfolio-card .reaction-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    stroke: none;
+    flex-shrink: 0;
+}
+.portfolio-card .reaction-btn.is-liked svg { color: var(--color-accent); }
+.portfolio-card .reaction-btn.is-disliked svg { color: var(--color-text); }
+.portfolio-card .reaction-btn.is-popping svg { animation: reactionPop 0.28s ease; }
+
+/* Mobile viewer: full-width artwork, top close control and bottom action row. */
+@media (max-width: 768px) {
+    .gallery-modal {
+        padding: 0;
+        height: 100dvh;
+        align-items: stretch;
+    }
+    .gallery-modal-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: calc(56px + env(safe-area-inset-top)) minmax(0, 1fr) auto calc(80px + env(safe-area-inset-bottom));
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
+        padding: 0;
+        overflow: hidden;
+        transform: none;
+    }
+    .gallery-modal-content,
+    .gallery-preview-toolbar { display: contents; }
+    .gallery-modal-media {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        touch-action: pan-y;
+    }
+    .gallery-modal-media img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 0;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+    .gallery-modal-details {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        padding: 20px 20px 8px;
+        max-height: 26dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+    .modal-project-copy h2 {
+        font-size: clamp(1.2rem, 5.2vw, 1.65rem);
+        margin-bottom: 10px;
+        line-height: 1.15;
+    }
+    .modal-project-copy #modalProjectDescription {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .gallery-preview-toolbar > .gallery-modal-close {
+        position: static;
+        grid-column: 1;
+        grid-row: 1;
+        align-self: end;
+        justify-self: start;
+        margin-left: 8px;
+    }
+    .preview-navigation,
+    .preview-votes {
+        position: static;
+        grid-row: 4;
+        align-self: start;
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        padding-top: 8px;
+    }
+    .preview-votes {
+        grid-column: 1;
+        justify-self: start;
+        padding-left: 12px;
+    }
+    .preview-navigation {
+        grid-column: 2;
+        justify-self: end;
+        padding-right: 12px;
+    }
+    .preview-navigation svg { transform: rotate(-90deg); }
+}
+
+.gallery-heart-particle { background: transparent; }
+.gallery-like-confetti .gallery-heart-particle {
+    width: 14px;
+    height: 14px;
+}
+.gallery-heart-particle svg { width: 100%; height: 100%; fill: currentColor; stroke: none; }
+.gallery-heart-particle .reaction-outline { display: none; }
+.gallery-heart-particle .reaction-solid { display: inline; }
+.gallery-action-status {
+    position: fixed;
+    z-index: 1250;
+    bottom: max(92px, calc(env(safe-area-inset-bottom) + 92px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 15px;
+    line-height: 1.4;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .gallery-modal .preview-navigation { display: none; }
+    .gallery-modal .preview-votes { grid-column: 1 / -1; }
+}
+
+.gallery-video-badge {
+    position: absolute;
+    z-index: 3;
+    left: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(239, 239, 239, 0.95);
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 700;
+    pointer-events: none;
+}
+.gallery-video-badge svg { width: 14px; height: 14px; fill: currentColor; }
+.gallery-modal-media video {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 70dvh;
+    object-fit: contain;
+    border-radius: 16px;
+    background: var(--color-text);
+}
+@media (max-width: 768px) {
+    .gallery-modal-media video {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+        background: transparent;
+    }
+}

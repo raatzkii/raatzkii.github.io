@@ -1,5 +1,74 @@
 const projects = [
     {
+        "id": 56,
+        "title": "world series '26 — game 4",
+        "projectName": "rays v. brewers",
+        "year": "2026",
+        "country": "south korea",
+        "description": "animated odds creative for the tampa bay rays and milwaukee brewers world series matchup",
+        "category": "sports",
+        "categories": [
+            "latest",
+            "sports",
+            "events",
+            "digital",
+            "motion"
+        ],
+        "image": "assets/works/latest-sports-events-digital-motion_worldseries26.avif",
+        "video": "assets/works/latest-sports-events-digital-motion_worldseries26.mp4",
+        "width": 700,
+        "height": 874,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
+        "id": 55,
+        "title": "lol worlds '26",
+        "projectName": "gen.g v. invictus gaming",
+        "year": "2026",
+        "country": "south korea",
+        "description": "animated esports matchup creative for gen.g and invictus gaming at the league of legends world championship",
+        "category": "sports",
+        "categories": [
+            "latest",
+            "sports",
+            "events",
+            "digital",
+            "motion"
+        ],
+        "image": "assets/works/latest-sports-events-digital-motion_lolworlds26.avif",
+        "video": "assets/works/latest-sports-events-digital-motion_lolworlds26.mp4",
+        "width": 700,
+        "height": 874,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
+        "id": 54,
+        "title": "nba season premiere",
+        "projectName": "a new season takes the court",
+        "year": "2026",
+        "country": "south korea",
+        "description": "animated odds creative featuring the nba season opening matchups",
+        "category": "sports",
+        "categories": [
+            "latest",
+            "sports",
+            "events",
+            "digital",
+            "motion"
+        ],
+        "image": "assets/works/latest-sports-events-digital-motion_nbapremier.avif",
+        "video": "assets/works/latest-sports-events-digital-motion_nbapremier.mp4",
+        "width": 1280,
+        "height": 720,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
         id: 53,
         title: "government portal",
         projectName: "much better than egovph",
@@ -12,7 +81,7 @@ const projects = [
         width: 1223,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -28,7 +97,7 @@ const projects = [
         width: 1223,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -44,7 +113,7 @@ const projects = [
         width: 3268,
         height: 1876,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -60,7 +129,7 @@ const projects = [
         width: 1200,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -76,7 +145,7 @@ const projects = [
         width: 700,
         height: 1235,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -92,7 +161,7 @@ const projects = [
         width: 700,
         height: 1235,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -108,7 +177,7 @@ const projects = [
         width: 700,
         height: 910,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -124,7 +193,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -140,7 +209,7 @@ const projects = [
         width: 1200,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -156,7 +225,7 @@ const projects = [
         width: 1200,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -172,7 +241,7 @@ const projects = [
         width: 1200,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -188,7 +257,7 @@ const projects = [
         width: 700,
         height: 456,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -204,7 +273,7 @@ const projects = [
         width: 700,
         height: 699,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -220,7 +289,7 @@ const projects = [
         width: 1920,
         height: 865,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -236,7 +305,7 @@ const projects = [
         width: 700,
         height: 464,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -252,7 +321,7 @@ const projects = [
         width: 700,
         height: 764,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -268,7 +337,7 @@ const projects = [
         width: 700,
         height: 910,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -284,7 +353,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -300,7 +369,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -316,7 +385,7 @@ const projects = [
         width: 980,
         height: 485,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -332,7 +401,7 @@ const projects = [
         width: 980,
         height: 485,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -348,7 +417,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -364,7 +433,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -380,7 +449,7 @@ const projects = [
         width: 630,
         height: 430,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -396,7 +465,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -412,7 +481,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -428,7 +497,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -444,7 +513,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -460,7 +529,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -476,7 +545,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -492,7 +561,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -508,7 +577,7 @@ const projects = [
         width: 705,
         height: 1000,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -524,7 +593,7 @@ const projects = [
         width: 1280,
         height: 600,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -540,7 +609,7 @@ const projects = [
         width: 1280,
         height: 600,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -556,7 +625,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -572,7 +641,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -588,7 +657,7 @@ const projects = [
         width: 1920,
         height: 472,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -604,7 +673,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -620,7 +689,7 @@ const projects = [
         width: 1244,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -636,7 +705,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -652,7 +721,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -668,7 +737,7 @@ const projects = [
         width: 700,
         height: 977,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -684,7 +753,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -700,7 +769,7 @@ const projects = [
         width: 1280,
         height: 512,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -716,7 +785,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -732,7 +801,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -748,7 +817,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -764,7 +833,7 @@ const projects = [
         width: 506,
         height: 900,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -780,7 +849,7 @@ const projects = [
         width: 700,
         height: 927,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -796,7 +865,7 @@ const projects = [
         width: 700,
         height: 909,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -812,7 +881,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -828,7 +897,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     },
     {
@@ -844,7 +913,7 @@ const projects = [
         width: 700,
         height: 700,
         likes: 0,
-        dislikes: 0,
+        shares: null,
         userVote: null
     }
 ];
@@ -871,9 +940,9 @@ const modalProjectName = document.getElementById("modalProjectName");
 const modalProjectDescription = document.getElementById("modalProjectDescription");
 const modalCategoryPills = document.getElementById("modalCategoryPills");
 const modalLikeBtn = galleryModal?.querySelector(".modal-like-btn");
-const modalDislikeBtn = galleryModal?.querySelector(".modal-dislike-btn");
+const modalShareBtn = galleryModal?.querySelector(".modal-share-btn");
 const modalLikeCount = galleryModal?.querySelector(".modal-like-count");
-const modalDislikeCount = galleryModal?.querySelector(".modal-dislike-count");
+const modalShareCount = galleryModal?.querySelector(".modal-share-count");
 let activeModalProjectId = null;
 let activeGalleryFilter = "latest";
 let currentGalleryColumns = 0;
@@ -1037,6 +1106,7 @@ function createGalleryImageMarkup(project) {
     return project.image
         ? `<div class="gallery-image-shell" style="aspect-ratio:${getProjectAspectRatio(project)};">
             <img src="${project.image}" alt="${project.title}" loading="lazy">
+            ${project.video ? '<span class="gallery-video-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></svg>video</span>' : ''}
         </div>`
         : `<div class="placeholder" style="height:${project.height}px;"></div>`;
 }
@@ -1205,11 +1275,16 @@ function renderMobileGalleryOmni(projectList) {
             masonry.releasePointerCapture(event.pointerId);
         }
 
-        if (shouldOpenCard) {
-            openProjectModal(Number(targetCard.dataset.projectId));
-        }
+        mobileOmniState.targetCard = shouldOpenCard ? targetCard : null;
+    };
 
+    // Open on click, after the pointer gesture finishes, so its trailing click
+    // cannot land on the newly opened preview's close button or backdrop.
+    masonry.onclick = event => {
+        if (!mobileOmniState || mobileOmniState.moved) return;
+        const card = mobileOmniState.targetCard || event.target.closest(".mobile-omni-card");
         mobileOmniState.targetCard = null;
+        if (card) openProjectModal(Number(card.dataset.projectId));
     };
 
     masonry.onpointercancel = event => {
@@ -1256,10 +1331,30 @@ function getEstimatedCardHeight(project, columnWidth) {
     return columnWidth / ratio + 58;
 }
 
+async function loadGalleryShareCounts() {
+    const { data, error } = await window.supabaseClient
+        .from("gallery_project_shares")
+        .select("project_id, shares");
+    if (error) {
+        console.warn("Gallery share counts unavailable:", error);
+        return;
+    }
+    projects.forEach(project => { project.shares = 0; });
+    (data || []).forEach(row => {
+        const project = getProjectById(row.project_id);
+        if (project) project.shares = row.shares;
+    });
+    projects.forEach(updateProjectCard);
+}
+
+function formatShareCount(project) {
+    return project.shares === null ? "—" : String(project.shares);
+}
+
 async function loadGalleryReactions() {
     const { data: reactions, error: reactionsError } = await window.supabaseClient
         .from("gallery_reactions")
-        .select("project_id, likes, dislikes");
+        .select("project_id, likes");
 
     if (reactionsError) {
         console.error("Error loading gallery reactions:", reactionsError);
@@ -1282,7 +1377,7 @@ async function loadGalleryReactions() {
         if (!project) return;
 
         project.likes = reaction.likes;
-        project.dislikes = reaction.dislikes;
+
     });
 
     userVotes.forEach(vote => {
@@ -1295,28 +1390,6 @@ async function loadGalleryReactions() {
 }
 
 function updateProjectCard(project) {
-    const card = masonry.querySelector(`[data-project-id="${project.id}"]`);
-
-    if (!card) {
-        updateModalReactions(project);
-        return;
-    }
-
-    const likeBtn = card.querySelector(".like-btn");
-    const dislikeBtn = card.querySelector(".dislike-btn");
-    const likeCount = card.querySelector(".like-count");
-    const dislikeCount = card.querySelector(".dislike-count");
-
-    if (!likeBtn || !dislikeBtn || !likeCount || !dislikeCount) {
-        updateModalReactions(project);
-        return;
-    }
-
-    likeCount.textContent = project.likes;
-    dislikeCount.textContent = project.dislikes;
-
-    likeBtn.classList.toggle("is-liked", project.userVote === "like");
-    dislikeBtn.classList.toggle("is-disliked", project.userVote === "dislike");
     updateModalReactions(project);
 }
 
@@ -1324,15 +1397,51 @@ function updateModalReactions(project) {
     if (!project || activeModalProjectId !== project.id || !galleryModal) return;
 
     modalLikeCount.textContent = project.likes;
-    modalDislikeCount.textContent = project.dislikes;
+    modalShareCount.textContent = formatShareCount(project);
     modalLikeBtn.classList.toggle("is-liked", project.userVote === "like");
-    modalDislikeBtn.classList.toggle("is-disliked", project.userVote === "dislike");
+    modalLikeBtn.setAttribute("aria-pressed", String(project.userVote === "like"));
+}
+
+function burstLikeCelebration(button) {
+    if (!button?.isConnected || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const icon = button.querySelector("svg, i") || button;
+    const rect = icon.getBoundingClientRect();
+    const burst = document.createElement("div");
+    burst.className = "gallery-like-confetti";
+    burst.setAttribute("aria-hidden", "true");
+    burst.style.left = `${rect.left + rect.width / 2}px`;
+    burst.style.top = `${rect.top + rect.height / 2}px`;
+    document.body.appendChild(burst);
+    for (let index = 0; index < 24; index += 1) {
+        const piece = document.createElement("span");
+        if (!mobileGalleryQuery.matches) {
+            piece.className = "gallery-heart-particle";
+            piece.innerHTML = modalLikeBtn.querySelector("svg").outerHTML;
+            piece.style.color = index % 2 ? "var(--color-text)" : "var(--color-accent)";
+        } else {
+            piece.style.background = index % 2 ? "var(--color-text)" : "var(--color-accent)";
+        }
+        burst.appendChild(piece);
+        const angle = (index / 24) * Math.PI * 2;
+        const distance = 38 + Math.random() * 44;
+        const x = Math.cos(angle) * distance;
+        const y = mobileGalleryQuery.matches ? Math.sin(angle) * distance : -35 - Math.random() * 85;
+        const endY = mobileGalleryQuery.matches ? y + 38 : y - 35;
+        const rotation = mobileGalleryQuery.matches ? index * 31 : (index % 5 - 2) * 12;
+        piece.animate([
+            { transform: "translate(-50%, -50%) scale(0.3)", opacity: 1 },
+            { transform: `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(1)`, opacity: 1, offset: 0.55 },
+            { transform: `translate(${x * 1.2}px, ${endY}px) rotate(${rotation * 1.5}deg) scale(0.5)`, opacity: 0 }
+        ], { duration: 650 + Math.random() * 200, easing: "cubic-bezier(.15,.7,.4,1)", fill: "forwards" });
+    }
+    setTimeout(() => burst.remove(), 900);
 }
 
 async function handleVote(projectId, voteType, sourceButton = null) {
     const project = getProjectById(projectId);
 
-    if (!project || !["like", "dislike"].includes(voteType)) return;
+    if (!project || voteType !== "like" || project.votePending) return;
+    project.votePending = true;
 
     const { data, error } = await window.supabaseClient
         .rpc("vote_gallery_project", {
@@ -1341,15 +1450,16 @@ async function handleVote(projectId, voteType, sourceButton = null) {
             target_vote_type: voteType
         });
 
+    project.votePending = false;
     if (error) {
         console.error("Error voting:", error);
         return;
     }
 
-    const updatedProject = data[0];
+    const updatedProject = data?.[0];
+    if (!updatedProject) return;
 
     project.likes = updatedProject.likes;
-    project.dislikes = updatedProject.dislikes;
     project.userVote = updatedProject.user_vote;
 
     updateProjectCard(project);
@@ -1357,9 +1467,9 @@ async function handleVote(projectId, voteType, sourceButton = null) {
     const card = masonry.querySelector(`[data-project-id="${project.id}"]`);
     const activeBtn =
         sourceButton ||
-        card?.querySelector(voteType === "like" ? ".like-btn" : ".dislike-btn") ||
-        (voteType === "like" ? modalLikeBtn : modalDislikeBtn);
+        card?.querySelector(".like-btn") || modalLikeBtn;
 
+    if (voteType === "like" && project.userVote === "like") burstLikeCelebration(activeBtn);
     activeBtn.classList.remove("is-popping", "is-counting");
     void activeBtn.offsetWidth;
     activeBtn.classList.add("is-popping", "is-counting");
@@ -1367,6 +1477,53 @@ async function handleVote(projectId, voteType, sourceButton = null) {
     setTimeout(() => {
         activeBtn.classList.remove("is-popping", "is-counting");
     }, 300);
+}
+
+let actionStatusTimer;
+function showGalleryActionStatus(message) {
+    const status = document.getElementById("galleryActionStatus");
+    clearTimeout(actionStatusTimer);
+    status.textContent = message;
+    status.hidden = false;
+    actionStatusTimer = setTimeout(() => { status.hidden = true; }, 4500);
+}
+
+async function handleProjectShare(projectId, button) {
+    const project = getProjectById(projectId);
+    if (!project || project.sharePending) return;
+    project.sharePending = true;
+    button.disabled = true;
+    const url = `https://raatzkii.com/gallery.html?project=${project.id}`;
+    try {
+        if (typeof navigator.share === "function") {
+            await navigator.share({ title: project.projectName, text: project.description, url });
+        } else if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(url);
+            showGalleryActionStatus("Project link copied — ready to share.");
+        } else {
+            showGalleryActionStatus("Sharing is unavailable in this browser.");
+            return;
+        }
+        const { data, error } = await window.supabaseClient.rpc("record_gallery_share", {
+            target_project_id: project.id,
+            share_event_id: crypto.randomUUID()
+        });
+        if (error || !data?.length) {
+            console.error("Share count could not be saved:", error);
+            showGalleryActionStatus("Project shared. Share count is temporarily unavailable.");
+            return;
+        }
+        project.shares = data[0].shares;
+        updateProjectCard(project);
+    } catch (error) {
+        if (error.name !== "AbortError") {
+            console.warn("Sharing failed:", error);
+            showGalleryActionStatus("Could not share this project. Please try again.");
+        }
+    } finally {
+        project.sharePending = false;
+        button.disabled = false;
+    }
 }
 
 function getProjectDetails(project) {
@@ -1380,81 +1537,88 @@ function getProjectDetails(project) {
 }
 
 function getCategoryLabel(category) {
-    return category === "uiux" ? "ui/ux" : category;
+    return category === "uiux" ? "ui/ux" : category === "motion" ? "motion graphics" : category;
+}
+
+function stopProjectVideo() {
+    const video = modalMedia.querySelector("video");
+    if (!video) return;
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
 }
 
 function renderModalMedia(project) {
-    const mediaPadding = 20;
-
-    modalMedia.style.width = "";
-    modalMedia.style.height = "";
-    modalMedia.classList.remove("is-edge-image");
-
-    if (project.image) {
-        modalMedia.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
-        const image = modalMedia.querySelector("img");
-
-        if (mobileGalleryQuery.matches) {
-            modalMedia.style.width = "";
-            modalMedia.style.height = "";
-            modalMedia.classList.add("is-edge-image");
-            return;
-        }
-
-        function sizeLoadedImage() {
-            const ratio = image.naturalWidth / image.naturalHeight || 1;
-            const maxWidth = 780;
-            const maxHeight = 680;
-            let width = Math.min(image.naturalWidth, maxWidth);
-            let height = width / ratio;
-
-            if (height > maxHeight) {
-                height = maxHeight;
-                width = height * ratio;
-            }
-
-            if (height < maxHeight) {
-                modalMedia.style.width = `${Math.round(width + mediaPadding)}px`;
-                modalMedia.style.height = `${maxHeight + mediaPadding}px`;
-                return;
-            }
-
-            modalMedia.classList.add("is-edge-image");
-            modalMedia.style.width = `${Math.round(width + mediaPadding)}px`;
-            modalMedia.style.height = `${Math.round(height + mediaPadding)}px`;
-        }
-
-        modalMedia.style.width = "800px";
-        modalMedia.style.height = "700px";
-
-        if (image.complete && image.naturalWidth) {
-            sizeLoadedImage();
-        } else {
-            image.addEventListener("load", sizeLoadedImage, { once: true });
-        }
-        return;
+    stopProjectVideo();
+    modalMedia.replaceChildren();
+    const media = document.createElement(project.video ? "video" : "img");
+    if (project.video) {
+        media.controls = true;
+        media.tabIndex = 0;
+        media.muted = true;
+        media.defaultMuted = true;
+        media.playsInline = true;
+        media.loop = true;
+        media.preload = "metadata";
+        media.poster = project.image;
+        media.setAttribute("aria-label", project.title);
+        media.addEventListener("loadedmetadata", sizeProjectPreview);
+    } else {
+        media.alt = project.title;
+        media.addEventListener("load", sizeProjectPreview);
     }
-
-    const aspectRatio = 4 / 3;
-    const imageHeight = Math.min(Math.max(project.height, 520), 680);
-    const modalWidth = Math.min(Math.round(imageHeight * aspectRatio), 780);
-
-    modalMedia.innerHTML = `
-        <div
-            class="placeholder"
-            style="width:${modalWidth}px; height:${imageHeight}px;">
-        </div>
-    `;
-    modalMedia.classList.toggle("is-edge-image", imageHeight >= 680);
-    modalMedia.style.width = `${modalWidth + mediaPadding}px`;
-    modalMedia.style.height = `${(imageHeight < 680 ? 680 : imageHeight) + mediaPadding}px`;
+    media.src = project.video || project.image;
+    modalMedia.appendChild(media);
+    sizeProjectPreview();
 }
 
-function openProjectModal(projectId) {
+function sizeProjectPreview() {
+    const media = modalMedia.querySelector("img, video");
+    if (!media) return;
+    const project = getProjectById(activeModalProjectId);
+    const naturalWidth = media.videoWidth || media.naturalWidth || project?.width;
+    const naturalHeight = media.videoHeight || media.naturalHeight || project?.height;
+    if (!naturalWidth || !naturalHeight) return;
+    const mobile = mobileGalleryQuery.matches;
+    const availableWidth = Math.min(window.innerWidth - (mobile ? 90 : 116), 900);
+    const availableHeight = window.innerHeight * (mobile ? 0.65 : 0.7);
+    const ratio = naturalWidth / naturalHeight;
+    const width = Math.min(naturalWidth, availableWidth, availableHeight * ratio);
+    modalPanel.style.setProperty("--preview-image-width", `${width}px`);
+    modalPanel.style.setProperty("--preview-image-height", `${width / ratio}px`);
+}
+
+window.addEventListener("resize", sizeProjectPreview);
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) modalMedia.querySelector("video")?.pause();
+});
+
+let modalReturnFocus = null;
+let modalProjectSequence = [];
+
+function navigateProject(direction) {
+    const index = modalProjectSequence.findIndex(project => project.id === activeModalProjectId);
+    if (index < 0 || modalProjectSequence.length < 2) return;
+    const nextIndex = (index + direction + modalProjectSequence.length) % modalProjectSequence.length;
+    openProjectModal(modalProjectSequence[nextIndex].id);
+}
+
+document.getElementById("modalPrevious").addEventListener("click", () => navigateProject(-1));
+document.getElementById("modalNext").addEventListener("click", () => navigateProject(1));
+
+function openProjectModal(projectId, playVideo = true) {
     const project = getProjectById(projectId);
 
     if (!project || !galleryModal) return;
 
+    const wasOpen = galleryModal.classList.contains("is-open");
+    if (!wasOpen) {
+        modalReturnFocus = document.activeElement;
+        modalProjectSequence = mobileGalleryQuery.matches
+            ? getMobileShuffledProjects()
+            : getDesktopShuffledProjects().filter(item => projectMatchesFilter(item, activeGalleryFilter));
+    }
     const details = getProjectDetails(project);
     activeModalProjectId = project.id;
 
@@ -1480,15 +1644,25 @@ function openProjectModal(projectId) {
     galleryModal.classList.add("is-open");
     galleryModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    const video = modalMedia.querySelector("video");
+    if (video && playVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        video.play().catch(() => { /* Native controls remain available if playback is blocked. */ });
+    }
+    document.getElementById("modalPrevious").disabled = modalProjectSequence.length < 2;
+    document.getElementById("modalNext").disabled = modalProjectSequence.length < 2;
+    modalPanel.querySelector(".gallery-modal-content").scrollTop = 0;
+    if (!wasOpen) galleryModal.querySelector(".gallery-modal-close").focus({ preventScroll: true });
 }
 
 function closeProjectModal() {
     if (!galleryModal) return;
 
+    stopProjectVideo();
     galleryModal.classList.remove("is-open");
     galleryModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
     activeModalProjectId = null;
+    modalReturnFocus?.focus({ preventScroll: true });
 }
 
 function renderProjects(filter = activeGalleryFilter) {
@@ -1496,6 +1670,7 @@ function renderProjects(filter = activeGalleryFilter) {
     currentGalleryIsMobile = mobileGalleryQuery.matches;
     masonry.innerHTML = "";
     masonry.classList.remove("is-mobile-omni", "is-dragging");
+    masonry.onclick = null;
     masonry.onpointerdown = null;
     masonry.onpointermove = null;
     masonry.onpointerup = null;
@@ -1548,17 +1723,7 @@ function renderProjects(filter = activeGalleryFilter) {
             <div class="portfolio-card-footer">
                 <h3 class="portfolio-card-title">${project.title}</h3>
 
-                <div class="portfolio-reactions">
-                    <button class="reaction-btn like-btn ${project.userVote === "like" ? "is-liked" : ""}" type="button" aria-label="Like this project">
-                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-up"></i>
-                        <span class="like-count">${project.likes}</span>
-                    </button>
 
-                    <button class="reaction-btn dislike-btn ${project.userVote === "dislike" ? "is-disliked" : ""}" type="button" aria-label="Dislike this project">
-                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-down"></i>
-                        <span class="dislike-count">${project.dislikes}</span>
-                    </button>
-                </div>
             </div>
         `;
 
@@ -1577,16 +1742,6 @@ function renderProjects(filter = activeGalleryFilter) {
             openProjectModal(project.id);
         });
 
-        card.querySelector(".like-btn").addEventListener("click", event => {
-            event.stopPropagation();
-            handleVote(project.id, "like", event.currentTarget);
-        });
-
-        card.querySelector(".dislike-btn").addEventListener("click", event => {
-            event.stopPropagation();
-            handleVote(project.id, "dislike", event.currentTarget);
-        });
-
         card.addEventListener("click", () => {
             openProjectModal(project.id);
         });
@@ -1601,10 +1756,27 @@ modalLikeBtn?.addEventListener("click", () => {
     handleVote(activeModalProjectId, "like", modalLikeBtn);
 });
 
-modalDislikeBtn?.addEventListener("click", () => {
+modalShareBtn?.addEventListener("click", () => {
     if (!activeModalProjectId) return;
-    handleVote(activeModalProjectId, "dislike", modalDislikeBtn);
+    handleProjectShare(activeModalProjectId, modalShareBtn);
 });
+
+let previewSwipeStart = null;
+modalMedia.addEventListener("pointerdown", event => {
+    if (!mobileGalleryQuery.matches || event.pointerType === "mouse" || !event.isPrimary || event.target.closest("video")) return;
+    previewSwipeStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+    modalMedia.setPointerCapture(event.pointerId);
+});
+modalMedia.addEventListener("pointerup", event => {
+    if (!previewSwipeStart || event.pointerId !== previewSwipeStart.id) return;
+    const dx = event.clientX - previewSwipeStart.x;
+    const dy = event.clientY - previewSwipeStart.y;
+    previewSwipeStart = null;
+    if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        navigateProject(dx < 0 ? 1 : -1);
+    }
+});
+modalMedia.addEventListener("pointercancel", () => { previewSwipeStart = null; });
 
 galleryModal?.addEventListener("click", event => {
     if (!event.target.closest("[data-modal-close]")) return;
@@ -1612,6 +1784,20 @@ galleryModal?.addEventListener("click", event => {
 });
 
 window.addEventListener("keydown", event => {
+    if (!galleryModal.classList.contains("is-open")) return;
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        navigateProject(event.key === "ArrowLeft" ? -1 : 1);
+    }
+    if (event.key === "Tab") {
+        const controls = [...modalPanel.querySelectorAll("button:not(:disabled), video[controls]")].filter(button => button.getClientRects().length);
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault(); first.focus();
+        }
+    }
     if (event.key === "Escape") {
         closeProjectModal();
     }
@@ -1655,9 +1841,19 @@ async function initGallery() {
         });
     }
 
-    await loadGalleryReactions();
+    await Promise.all([loadGalleryReactions(), loadGalleryShareCounts()]);
     currentGalleryIsMobile = mobileGalleryQuery.matches;
     renderProjects();
+    const linkedProjectId = Number(new URLSearchParams(window.location.search).get("project"));
+    if (getProjectById(linkedProjectId)) {
+        openProjectModal(linkedProjectId, false);
+        // Shared projects may be outside the default desktop filter.
+        if (!modalProjectSequence.some(project => project.id === linkedProjectId)) {
+            modalProjectSequence = getDesktopShuffledProjects();
+            document.getElementById("modalPrevious").disabled = false;
+            document.getElementById("modalNext").disabled = false;
+        }
+    }
     moveIndicator(getActiveChip());
 }
 

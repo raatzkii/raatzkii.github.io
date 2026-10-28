@@ -52,7 +52,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
-    <link rel="stylesheet" href="gallery.css?v=20260919-mobile-hide-close">
+    <link rel="stylesheet" href="gallery.css?v=20261028-motion-avif">
     <link rel="stylesheet" href="nav.css?v=20260721-unified-nav">
     <link rel="stylesheet" href="sticky-banner.css">
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
@@ -84,6 +84,7 @@
             <button class="chip" data-filter="events">events</button>
             <button class="chip" data-filter="digital">digital</button>
             <button class="chip" data-filter="print">print</button>
+            <button class="chip" data-filter="motion">motion graphics</button>
         </div>
 
         <div class="masonry" id="masonry"></div>
@@ -94,25 +95,9 @@
         <div class="gallery-modal-backdrop" data-modal-close></div>
 
         <section class="gallery-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectName">
-            <button class="gallery-modal-close" type="button" data-modal-close aria-label="Close project preview">
-                ×
-            </button>
-
-            <div class="gallery-modal-media" id="modalMedia"></div>
-
-            <div class="gallery-modal-details">
-                <div class="modal-actions portfolio-reactions">
-                    <button class="reaction-btn modal-like-btn" type="button" aria-label="Like this project">
-                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-up"></i>
-                        <span class="modal-like-count">0</span>
-                    </button>
-
-                    <button class="reaction-btn modal-dislike-btn" type="button" aria-label="Dislike this project">
-                        <i class="hgi hgi-stroke hgi-rounded hgi-thumbs-down"></i>
-                        <span class="modal-dislike-count">0</span>
-                    </button>
-                </div>
-
+            <div class="gallery-modal-content">
+                <div class="gallery-modal-media" id="modalMedia"></div>
+                <div class="gallery-modal-details">
                 <div class="modal-project-copy">
                     <h2 id="modalProjectName">Project name</h2>
                     <p class="modal-project-meta">
@@ -125,8 +110,28 @@
                     <p id="modalProjectDescription">Project description</p>
                 </div>
             </div>
+            </div>
+            <div class="gallery-preview-toolbar" role="group" aria-label="Project controls">
+                <button class="gallery-modal-close preview-control" type="button" data-modal-close aria-label="Close project preview"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+                <div class="preview-navigation">
+                <button class="preview-control" id="modalPrevious" type="button" aria-label="Previous project"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"/></svg></button>
+                <button class="preview-control" id="modalNext" type="button" aria-label="Next project"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+                </div>
+                <div class="preview-votes">
+                    <button class="reaction-btn modal-like-btn" type="button" aria-label="Like this project">
+                        <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><g class="reaction-outline"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></g><g class="reaction-solid"><path d="M240,102c0,70-103.79,126.66-108.21,129a8,8,0,0,1-7.58,0C119.79,228.66,16,172,16,102A62.07,62.07,0,0,1,78,40c20.65,0,38.73,8.88,50,23.89C139.27,48.88,157.35,40,178,40A62.07,62.07,0,0,1,240,102Z"/></g></svg>
+                        <span class="modal-like-count">0</span>
+                    </button>
+
+                    <button class="reaction-btn modal-share-btn" type="button" aria-label="Share this project">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,106.35l-80-80A8,8,0,0,0,144,32V72.35c-25.94,2.22-54.59,14.92-78.16,34.91-28.38,24.08-46.05,55.11-49.76,87.37a12,12,0,0,0,20.68,9.58h0c11-11.71,50.14-48.74,107.24-52V192a8,8,0,0,0,13.66,5.65l80-80A8,8,0,0,0,237.66,106.35ZM160,172.69V144a8,8,0,0,0-8-8c-28.08,0-55.43,7.33-81.29,21.8a196.17,196.17,0,0,0-36.57,26.52c5.8-23.84,20.42-46.51,42.05-64.86C99.41,99.77,127.75,88,152,88a8,8,0,0,0,8-8V51.32L220.69,112Z"/></svg>
+                        <span class="modal-share-count">0</span>
+                    </button>
+            </div>
+            </div>
         </section>
     </div>
+    <p id="galleryActionStatus" class="gallery-action-status" role="status" aria-live="polite" hidden></p>
 
     <aside class="sticky-cv-banner" aria-label="CV download banner">
         <button class="sticky-cv-close" type="button" aria-label="Close CV banner">×</button>
@@ -162,7 +167,7 @@
         SUPABASE_ANON_KEY
     );
     </script>
-    <script src="gallery.js?v=20260919-keyboard-access"></script>
+    <script src="gallery.js?v=20261028-motion-avif"></script>
     <script src="sticky-banner.js"></script>
 </body>
 </html>
