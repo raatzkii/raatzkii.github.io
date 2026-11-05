@@ -1,5 +1,85 @@
 const projects = [
     {
+        "id": 60,
+        "title": "in-store poster",
+        "projectName": "nothing's more valuable than you",
+        "year": "2026",
+        "country": "philippines",
+        "description": "a side-by-side reimagination of an in-store body support poster, bringing the product, movement, and message into a more focused composition",
+        "category": "retail",
+        "categories": [
+            "print",
+            "healthcare",
+            "retail"
+        ],
+        "image": "assets/works/print-healthcare-retail_instoreposterreimagination3.avif",
+        "width": 1490,
+        "height": 970,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
+        "id": 59,
+        "title": "in-store poster",
+        "projectName": "vibrance is wellness",
+        "year": "2026",
+        "country": "philippines",
+        "description": "a side-by-side reimagination of a necklace poster, using a bold lifestyle direction to bring its color range into focus",
+        "category": "retail",
+        "categories": [
+            "print",
+            "healthcare",
+            "retail"
+        ],
+        "image": "assets/works/print-healthcare-retail_instoreposterreimagination2.avif",
+        "width": 1280,
+        "height": 522,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
+        "id": 58,
+        "title": "in-store poster",
+        "projectName": "premium level reached",
+        "year": "2026",
+        "country": "philippines",
+        "description": "a side-by-side reimagination of a premium necklace poster, with a cleaner product composition and an elegant monochrome treatment",
+        "category": "retail",
+        "categories": [
+            "print",
+            "healthcare",
+            "retail"
+        ],
+        "image": "assets/works/print-healthcare-retail_instoreposterreimagination1.avif",
+        "width": 1280,
+        "height": 833,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
+        "id": 57,
+        "title": "store-exclusive promo poster",
+        "projectName": "top-tier deal",
+        "year": "2026",
+        "country": "philippines",
+        "description": "a side-by-side reimagination of a necklace promotion exclusive for sm city taytay, simplifying the offer and refining its visual hierarchy",
+        "category": "retail",
+        "categories": [
+            "print",
+            "healthcare",
+            "retail"
+        ],
+        "image": "assets/works/print-healthcare-retail_promoposterreimagination.avif",
+        "width": 1582,
+        "height": 760,
+        "likes": 0,
+        "shares": null,
+        "userVote": null
+    },
+    {
         "id": 56,
         "title": "world series '26 — game 4",
         "projectName": "rays v. brewers",
